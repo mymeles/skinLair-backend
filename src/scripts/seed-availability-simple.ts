@@ -44,10 +44,10 @@ export default async function seedAvailability({ container }: ExecArgs) {
     logger.info(`✅ Total availability records after seeding: ${allAvailabilities.length}`)
     
     if (allAvailabilities.length > 0) {
-      logger.info("Sample availability record:", allAvailabilities[0])
+      logger.info(`Sample availability record: ${JSON.stringify(allAvailabilities[0], null, 2)}`)
     }
 
-    logger.info("✅ Availability data seeded successfully!")
+    logger.info("Finished seeding availability data!")
   } catch (error) {
     logger.error("Error seeding availability data:", error)
     throw error

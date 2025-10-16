@@ -1,4 +1,5 @@
 import { defineMiddlewares } from "@medusajs/framework/http"
+import { raw } from "body-parser"
 import type {
   MedusaRequest,
   MedusaResponse,
@@ -12,7 +13,7 @@ import type {
  */
 async function allowCustomStoreRoutes(
   req: MedusaRequest,
-  res: MedusaResponse,
+  _res: MedusaResponse,
   next: MedusaNextFunction
 ) {
   // Log the request for debugging
@@ -25,6 +26,11 @@ async function allowCustomStoreRoutes(
   // Just pass through - no validation needed for custom routes
   next()
 }
+
+/**
+ * Middleware to preserve raw body for Stripe webhook signature verification
+ */
+const rawBodyMiddleware = raw({ type: "application/json" })
 
 export default defineMiddlewares({
   routes: [
@@ -43,6 +49,11 @@ export default defineMiddlewares({
     {
       matcher: "/store/payments*",
       middlewares: [allowCustomStoreRoutes],
+    },
+    {
+      matcher: "/webhooks/stripe",
+      bodyParser: false,
+      middlewares: [rawBodyMiddleware],
     },
   ],
 })

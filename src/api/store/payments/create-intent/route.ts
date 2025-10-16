@@ -1,4 +1,5 @@
 import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
+import { randomUUID } from "crypto"
 import { createPaymentIntent } from "@modules/payment/stripe-service"
 import { BOOKING_MODULE } from "@modules/booking"
 
@@ -68,6 +69,7 @@ export const POST = async (
 
     // Create payment record
     const payment = await bookingModuleService.createPayments({
+      id: `pay_${randomUUID()}`,
       booking_id: booking.id,
       stripe_payment_intent_id: paymentIntent.id,
       amount,

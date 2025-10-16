@@ -74,6 +74,21 @@ export async function createRefund(
   return await stripe.refunds.create(refundParams)
 }
 
+export function constructWebhook({ signature, body }: {
+  signature: any, body: any
+}) {
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+  if (!webhookSecret) {
+    throw new Error("Stripe webhook secret is not configured.")
+  }
+
+  return stripe.webhooks.constructEvent(
+    body,
+    signature,
+    webhookSecret
+  )
+}
+
 /**
  * Confirm a payment intent
  */

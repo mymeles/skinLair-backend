@@ -5,8 +5,63 @@
  * Run with: node quick-test.mjs
  */
 
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 const BACKEND_URL = 'http://localhost:9000';
-const PUBLISHABLE_KEY = 'pk_test_01JGQXQXQXQXQXQXQXQXQX';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+function resolvePublishableKey() {
+  const directEnvKey =
+    process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY ||
+    process.env.MEDUSA_PUBLISHABLE_KEY;
+
+  if (directEnvKey) {
+    return directEnvKey.trim();
+  }
+
+  const storefrontEnvPath = path.resolve(
+    __dirname,
+    '../skinLair-storefront/.env.local'
+  );
+
+  if (fs.existsSync(storefrontEnvPath)) {
+    const envContent = fs.readFileSync(storefrontEnvPath, 'utf-8');
+
+    for (const line of envContent.split(/\r?\n/)) {
+      if (!line || line.trim().startsWith('#')) {
+        continue;
+      }
+
+      const [key, ...valueParts] = line.split('=');
+      if (!key || !valueParts.length) {
+        continue;
+      }
+
+      const value = valueParts.join('=').trim();
+
+      if (key.trim() === 'NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY' && value) {
+        return value;
+      }
+    }
+  }
+
+  return undefined;
+}
+
+const PUBLISHABLE_KEY = resolvePublishableKey();
+
+if (!PUBLISHABLE_KEY) {
+  console.error(
+    '\n✗ Unable to locate NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY.\n' +
+      '  • Set NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY in your environment before running this script,\n' +
+      '    or ensure skinLair-storefront/.env.local contains the key.\n'
+  );
+  process.exit(1);
+}
 
 console.log('\n===========================================');
 console.log('BOOKING FLOW QUICK TEST');

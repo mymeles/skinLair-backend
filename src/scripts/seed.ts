@@ -3,6 +3,7 @@ import {
   ContainerRegistrationKeys,
   Modules,
   ProductStatus,
+  loadEnv,
 } from "@medusajs/framework/utils";
 import {
   createApiKeysWorkflow,
@@ -20,12 +21,15 @@ import {
   updateStoresWorkflow,
 } from "@medusajs/medusa/core-flows";
 
+loadEnv(process.env.NODE_ENV || "development", process.cwd());
+
 export default async function seedDemoData({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER);
   const link = container.resolve(ContainerRegistrationKeys.LINK);
   const query = container.resolve(ContainerRegistrationKeys.QUERY);
   const fulfillmentModuleService = container.resolve(Modules.FULFILLMENT);
   const salesChannelModuleService = container.resolve(Modules.SALES_CHANNEL);
+  const regionModuleService = container.resolve(Modules.REGION);
   const storeModuleService = container.resolve(Modules.STORE);
 
   const countries = ["gb", "de", "dk", "se", "fr", "es", "it"];
@@ -70,29 +74,52 @@ export default async function seedDemoData({ container }: ExecArgs) {
     },
   });
   logger.info("Seeding region data...");
-  const { result: regionResult } = await createRegionsWorkflow(container).run({
-    input: {
-      regions: [
-        {
-          name: "Europe",
-          currency_code: "eur",
-          countries,
-          payment_providers: ["pp_system_default"],
-        },
-      ],
-    },
+  let [region] = await regionModuleService.listRegions({
+    name: "Europe",
   });
-  const region = regionResult[0];
+
+  if (!region) {
+    const { result: regionResult } = await createRegionsWorkflow(container).run({
+      input: {
+        regions: [
+          {
+            name: "Europe",
+            currency_code: "eur",
+            countries,
+            payment_providers: ["pp_system_default"],
+          },
+        ],
+      },
+    });
+    region = regionResult[0];
+    logger.info("Created Europe region.");
+  } else {
+    logger.info("Found existing Europe region. Skipping creation.");
+  }
   logger.info("Finished seeding regions.");
 
   logger.info("Seeding tax regions...");
-  await createTaxRegionsWorkflow(container).run({
-    input: countries.map((country_code) => ({
-      country_code,
-      provider_id: "tp_system"
-    })),
-  });
-  logger.info("Finished seeding tax regions.");
+  try {
+    await createTaxRegionsWorkflow(container).run({
+      input: countries.map((country_code) => ({
+        country_code,
+        provider_id: "tp_system",
+      })),
+    });
+    logger.info("Finished seeding tax regions.");
+  } catch (error) {
+    if (
+      error &&
+      typeof error === "object" &&
+      "message" in error &&
+      typeof (error as Error).message === "string" &&
+      (error as Error).message.includes("already exists")
+    ) {
+      logger.info("Tax regions already exist. Skipping creation.");
+    } else {
+      throw error;
+    }
+  }
 
   logger.info("Seeding stock location data...");
   const { result: stockLocationResult } = await createStockLocationsWorkflow(
@@ -291,21 +318,53 @@ export default async function seedDemoData({ container }: ExecArgs) {
   });
   logger.info("Finished seeding stock location data.");
 
+  const pgConnection = container.resolve(ContainerRegistrationKeys.PG_CONNECTION);
+  const publishableKeyFromEnv =
+    process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY ||
+    process.env.MEDUSA_PUBLISHABLE_KEY;
+
   logger.info("Seeding publishable API key data...");
-  const { result: publishableApiKeyResult } = await createApiKeysWorkflow(
-    container
-  ).run({
-    input: {
-      api_keys: [
-        {
-          title: "Webshop",
-          type: "publishable",
-          created_by: "",
-        },
-      ],
-    },
-  });
-  const publishableApiKey = publishableApiKeyResult[0];
+
+  let publishableApiKey = await pgConnection("api_key")
+    .where({ type: "publishable" })
+    .first();
+
+  if (!publishableApiKey) {
+    const { result: publishableApiKeyResult } = await createApiKeysWorkflow(
+      container
+    ).run({
+      input: {
+        api_keys: [
+          {
+            title: "Webshop",
+            type: "publishable",
+            created_by: "",
+          },
+        ],
+      },
+    });
+
+    publishableApiKey = publishableApiKeyResult[0];
+    logger.info("Created new publishable API key token.");
+  } else {
+    logger.info("Found existing publishable API key token. Skipping creation.");
+  }
+
+  if (!publishableApiKey) {
+    throw new Error("Failed to locate or create a publishable API key record.");
+  }
+
+  if (
+    publishableKeyFromEnv &&
+    publishableApiKey?.token !== publishableKeyFromEnv
+  ) {
+    await pgConnection("api_key")
+      .update({ token: publishableKeyFromEnv })
+      .where({ id: publishableApiKey.id });
+
+    publishableApiKey.token = publishableKeyFromEnv;
+    logger.info("Synced publishable API key with environment value.");
+  }
 
   await linkSalesChannelsToApiKeyWorkflow(container).run({
     input: {
@@ -313,7 +372,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
       add: [defaultSalesChannel[0].id],
     },
   });
-  logger.info("Finished seeding publishable API key data.");
+
+  logger.info(
+    `Finished seeding publishable API key data. Token: ${publishableApiKey.token}`
+  );
 
   logger.info("Seeding product data...");
 
