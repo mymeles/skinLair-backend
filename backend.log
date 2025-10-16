@@ -1,0 +1,6 @@
+
+> skinLair@0.0.1 dev
+> medusa develop
+
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Watching filesystem to reload dev server on file change
