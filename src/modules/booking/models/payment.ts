@@ -1,9 +1,8 @@
 import { model } from "@medusajs/framework/utils"
 
 const Payment = model.define("booking_payment", {
-  id: model.id().primaryKey(),
+  id: model.text().primaryKey(), // Use Stripe Payment Intent ID as primary key
   booking_id: model.text(),
-  stripe_payment_intent_id: model.text().nullable(),
   stripe_charge_id: model.text().nullable(),
   amount: model.number(),
   currency: model.text().default("usd"),

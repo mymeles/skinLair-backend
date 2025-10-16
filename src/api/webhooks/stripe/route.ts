@@ -40,27 +40,33 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
         const paymentIntent = event.data.object as Stripe.PaymentIntent
         console.log("Payment intent succeeded:", paymentIntent.id)
 
-        // Find and update payment record
-        const payments = await bookingModuleService.listPayments({
-          stripe_payment_intent_id: paymentIntent.id,
-        })
+        // Find and update payment record using Stripe Payment Intent ID as primary key
+        console.log("Looking for payment with intent ID:", paymentIntent.id)
+        const payment = await bookingModuleService.retrievePayment(paymentIntent.id)
+        
+        if (payment) {
+          console.log("Payment found with ID:", payment.id)
+          console.log("Payment object:", JSON.stringify(payment, null, 2))
 
-        if (payments && payments.length > 0) {
-          const payment = payments[0]
-
-          await bookingModuleService.updatePayments(payment.id as any, {
+          console.log("Attempting to update payment with ID:", payment.id)
+          console.log("Payment ID type:", typeof payment.id)
+          console.log("Payment ID length:", payment.id?.length)
+          
+          await bookingModuleService.updatePayments({
+            id: payment.id,
             status: "succeeded",
             stripe_charge_id: paymentIntent.latest_charge as string,
             updated_at: new Date(),
-          } as any)
+          })
 
           // Update booking status
           if (payment.payment_type === "deposit") {
-            await bookingModuleService.updateBookings(payment.booking_id as any, {
+            await bookingModuleService.updateBookings({
+              id: payment.booking_id,
               deposit_paid: true,
               status: "confirmed",
               updated_at: new Date(),
-            } as any)
+            })
           }
 
           console.log("Payment and booking updated successfully")
@@ -73,12 +79,10 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
         const failedPayment = event.data.object as Stripe.PaymentIntent
         console.log("Payment intent failed:", failedPayment.id)
 
-        const failedPayments = await bookingModuleService.listPayments({
-          stripe_payment_intent_id: failedPayment.id,
-        })
+        const failedPaymentRecord = await bookingModuleService.retrievePayment(failedPayment.id)
 
-        if (failedPayments && failedPayments.length > 0) {
-          await bookingModuleService.updatePayments(failedPayments[0].id as any, {
+        if (failedPaymentRecord) {
+          await bookingModuleService.updatePayments(failedPaymentRecord.id as any, {
             status: "failed",
             updated_at: new Date(),
           } as any)

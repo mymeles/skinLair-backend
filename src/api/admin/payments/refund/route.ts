@@ -35,31 +35,29 @@ export const POST = async (
       return res.status(400).json({ error: "Can only refund succeeded payments" })
     }
 
-    if (!payment.stripe_payment_intent_id) {
-      return res.status(400).json({ error: "No Stripe payment intent found" })
-    }
-
-    // Create refund in Stripe
+    // Create refund in Stripe using payment ID (which is now the Stripe Payment Intent ID)
     const refund = await createRefund({
-      payment_intent_id: payment.stripe_payment_intent_id,
+      payment_intent_id: payment.id,
       amount,
       reason,
     })
 
     // Update payment record
-    await bookingModuleService.updatePayments(payment_id as any, {
+    await bookingModuleService.updatePayments({
+      id: payment_id,
       status: "refunded",
       refund_amount: refund.amount,
       refund_reason: reason,
       updated_at: new Date(),
-    } as any)
+    })
 
     // Update booking if it was a deposit
     if (payment.payment_type === "deposit") {
-      await bookingModuleService.updateBookings(payment.booking_id as any, {
+      await bookingModuleService.updateBookings({
+        id: payment.booking_id,
         deposit_paid: false,
         updated_at: new Date(),
-      } as any)
+      })
     }
 
     res.json({

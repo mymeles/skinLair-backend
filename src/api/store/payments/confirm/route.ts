@@ -40,39 +40,64 @@ export const POST = async (
       })
     }
 
-    // Find payment record
-    const payments = await bookingModuleService.listPayments({
-      stripe_payment_intent_id: payment_intent_id,
-    })
+    // Find payment record using Stripe Payment Intent ID as primary key
+    const payment = await bookingModuleService.retrievePayment(payment_intent_id)
 
-    if (!payments || payments.length === 0) {
+    if (!payment) {
       return res.status(404).json({ error: "Payment record not found" })
     }
+    
+    console.log("Payment confirmation - attempting to update payment with ID:", payment.id)
+    console.log("Payment ID type:", typeof payment.id)
+    console.log("Payment ID length:", payment.id?.length)
+    console.log("Payment ID stringified:", JSON.stringify(payment.id))
+    console.log("Payment object keys:", Object.keys(payment))
 
-    const payment = payments[0]
-
-    // Update payment status
-    await bookingModuleService.updatePayments(payment.id as any, {
-      status: "succeeded",
-      stripe_charge_id: paymentIntent.latest_charge as string,
-      updated_at: new Date(),
-    } as any)
+    // Update payment status using the correct Medusa service method
+    try {
+      console.log("Trying updatePayments with payment.id:", payment.id)
+      await bookingModuleService.updatePayments({
+        id: payment.id,
+        status: "succeeded",
+        stripe_charge_id: paymentIntent.latest_charge as string,
+        updated_at: new Date(),
+      })
+    } catch (updateError: any) {
+      console.error("updatePayments failed with error:", updateError.message)
+      console.error("Error details:", updateError)
+      
+      // Try alternative approach using upsert
+      try {
+        console.log("Trying upsertPayments approach")
+        await bookingModuleService.upsertPayments([{
+          id: payment.id,
+          status: "succeeded",
+          stripe_charge_id: paymentIntent.latest_charge as string,
+          updated_at: new Date(),
+        }])
+      } catch (upsertError: any) {
+        console.error("upsertPayments also failed:", upsertError.message)
+        throw updateError // Throw original error
+      }
+    }
 
     // Update booking
     const booking = await bookingModuleService.retrieveBooking(payment.booking_id)
 
     if (payment.payment_type === "deposit") {
-      await bookingModuleService.updateBookings(payment.booking_id as any, {
+      await bookingModuleService.updateBookings({
+        id: payment.booking_id,
         deposit_paid: true,
         status: "confirmed",
         updated_at: new Date(),
-      } as any)
+      })
     } else if (payment.payment_type === "full") {
-      await bookingModuleService.updateBookings(payment.booking_id as any, {
+      await bookingModuleService.updateBookings({
+        id: payment.booking_id,
         deposit_paid: true,
         status: "confirmed",
         updated_at: new Date(),
-      } as any)
+      })
     }
 
     // Send confirmation email

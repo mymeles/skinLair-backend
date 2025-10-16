@@ -9,6 +9,27 @@ class BookingModuleService extends MedusaService({
   Service,
   Availability,
   Payment,
-}) {}
+}) {
+  // Add debug method to test payment creation
+  async testPaymentCreation() {
+    console.log("Testing payment creation...")
+    try {
+      const testPayment = await this.createPayments({
+        id: "test_payment_debug",
+        booking_id: "01K7QHMJ1MMBQA0TRA7S85AN5W",
+        amount: 100,
+        currency: "usd",
+        status: "pending",
+        payment_type: "full",
+        customer_email: "test@example.com",
+      })
+      console.log("Test payment created:", testPayment)
+      return testPayment
+    } catch (error) {
+      console.error("Test payment creation failed:", error)
+      throw error
+    }
+  }
+}
 
 export default BookingModuleService

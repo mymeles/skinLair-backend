@@ -1,5 +1,4 @@
 import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
-import { randomUUID } from "crypto"
 import { createPaymentIntent } from "@modules/payment/stripe-service"
 import { BOOKING_MODULE } from "@modules/booking"
 
@@ -67,11 +66,11 @@ export const POST = async (
       },
     })
 
-    // Create payment record
-    const payment = await bookingModuleService.createPayments({
-      id: `pay_${randomUUID()}`,
+    // Create payment record using Stripe Payment Intent ID as primary key
+    console.log("[Payment] Creating payment record with ID:", paymentIntent.id)
+    console.log("[Payment] Payment data:", {
+      id: paymentIntent.id,
       booking_id: booking.id,
-      stripe_payment_intent_id: paymentIntent.id,
       amount,
       currency: "usd",
       status: "pending",
@@ -81,6 +80,27 @@ export const POST = async (
         service_name: booking.service_name,
       },
     })
+    
+    let payment
+    try {
+      payment = await bookingModuleService.createPayments({
+        id: paymentIntent.id, // Use Stripe Payment Intent ID as primary key
+        booking_id: booking.id,
+        amount,
+        currency: "usd",
+        status: "pending",
+        payment_type,
+        customer_email: booking.customer_email,
+        metadata: {
+          service_name: booking.service_name,
+        },
+      })
+      console.log("[Payment] Payment record created successfully:", payment.id)
+      console.log("[Payment] Full payment object:", JSON.stringify(payment, null, 2))
+    } catch (createError) {
+      console.error("[Payment] Error creating payment record:", createError)
+      throw createError
+    }
 
     res.json({
       payment,

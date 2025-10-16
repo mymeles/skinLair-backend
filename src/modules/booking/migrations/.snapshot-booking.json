@@ -394,15 +394,6 @@
           "nullable": false,
           "mappedType": "text"
         },
-        "stripe_payment_intent_id": {
-          "name": "stripe_payment_intent_id",
-          "type": "text",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": true,
-          "mappedType": "text"
-        },
         "stripe_charge_id": {
           "name": "stripe_charge_id",
           "type": "text",

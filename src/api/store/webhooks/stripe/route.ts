@@ -47,19 +47,21 @@ export const POST = async (
         if (payments && payments.length > 0) {
           const payment = payments[0]
 
-          await bookingModuleService.updatePayments(payment.id as any, {
+          await bookingModuleService.updatePayments({
+            id: payment.id,
             status: "succeeded",
             stripe_charge_id: paymentIntent.latest_charge as string,
             updated_at: new Date(),
-          } as any)
+          })
 
           // Update booking status
           if (payment.payment_type === "deposit") {
-            await bookingModuleService.updateBookings(payment.booking_id as any, {
+            await bookingModuleService.updateBookings({
+              id: payment.booking_id,
               deposit_paid: true,
               status: "confirmed",
               updated_at: new Date(),
-            } as any)
+            })
           }
         }
         break
@@ -72,10 +74,11 @@ export const POST = async (
         })
 
         if (failedPayments && failedPayments.length > 0) {
-          await bookingModuleService.updatePayments(failedPayments[0].id as any, {
+          await bookingModuleService.updatePayments({
+            id: failedPayments[0].id,
             status: "failed",
             updated_at: new Date(),
-          } as any)
+          })
         }
         break
 
