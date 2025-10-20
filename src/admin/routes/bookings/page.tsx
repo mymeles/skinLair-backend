@@ -74,22 +74,25 @@ const BookingManagementPage = () => {
     if (!selectedBooking) return
 
     try {
-      const response = await fetch(`/store/bookings/${selectedBooking.id}`, {
-        method: "POST",
+      const response = await fetch(`/admin/bookings/${selectedBooking.id}`, {
+        method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          status: "cancelled",
-          notes: cancelReason,
+          reason: cancelReason,
         }),
       })
 
-      if (!response.ok) throw new Error("Failed to cancel booking")
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.error || errorData.message || "Failed to cancel booking")
+      }
 
       setShowCancelModal(false)
       setCancelReason("")
       setSelectedBooking(null)
       await fetchBookings()
     } catch (err) {
+      console.error("Cancel booking error:", err)
       setError(err instanceof Error ? err.message : "Failed to cancel booking")
     }
   }

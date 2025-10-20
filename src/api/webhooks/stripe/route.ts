@@ -57,7 +57,7 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
             status: "succeeded",
             stripe_charge_id: paymentIntent.latest_charge as string,
             updated_at: new Date(),
-          })
+          } as any)
 
           // Update booking status
           if (payment.payment_type === "deposit") {
@@ -66,7 +66,7 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
               deposit_paid: true,
               status: "confirmed",
               updated_at: new Date(),
-            })
+            } as any)
           }
 
           console.log("Payment and booking updated successfully")
@@ -82,7 +82,8 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
         const failedPaymentRecord = await bookingModuleService.retrievePayment(failedPayment.id)
 
         if (failedPaymentRecord) {
-          await bookingModuleService.updatePayments(failedPaymentRecord.id as any, {
+          await bookingModuleService.updatePayments({
+            id: failedPaymentRecord.id,
             status: "failed",
             updated_at: new Date(),
           } as any)
@@ -99,7 +100,8 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
         })
 
         if (refundedPayments && refundedPayments.length > 0) {
-          await bookingModuleService.updatePayments(refundedPayments[0].id as any, {
+          await bookingModuleService.updatePayments({
+            id: refundedPayments[0].id,
             status: "refunded",
             refund_amount: refund.amount_refunded,
             updated_at: new Date(),

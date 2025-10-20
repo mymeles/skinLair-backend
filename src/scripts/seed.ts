@@ -149,14 +149,33 @@ export default async function seedDemoData({ container }: ExecArgs) {
     },
   });
 
-  await link.create({
-    [Modules.STOCK_LOCATION]: {
-      stock_location_id: stockLocation.id,
-    },
-    [Modules.FULFILLMENT]: {
-      fulfillment_provider_id: "manual_manual",
-    },
-  });
+  // Link stock location to fulfillment provider (check if already exists)
+  try {
+    const existingLinks = await link.list({
+      [Modules.STOCK_LOCATION]: {
+        stock_location_id: stockLocation.id,
+      },
+      [Modules.FULFILLMENT]: {
+        fulfillment_provider_id: "manual_manual",
+      },
+    });
+    
+    if (!existingLinks.length) {
+      await link.create({
+        [Modules.STOCK_LOCATION]: {
+          stock_location_id: stockLocation.id,
+        },
+        [Modules.FULFILLMENT]: {
+          fulfillment_provider_id: "manual_manual",
+        },
+      });
+      logger.info("Linked stock location to fulfillment provider.");
+    } else {
+      logger.info("Stock location already linked to fulfillment provider.");
+    }
+  } catch (linkError) {
+    logger.info("Stock location link may already exist, continuing...");
+  }
 
   logger.info("Seeding fulfillment data...");
   const shippingProfiles = await fulfillmentModuleService.listShippingProfiles({
@@ -179,63 +198,100 @@ export default async function seedDemoData({ container }: ExecArgs) {
     shippingProfile = shippingProfileResult[0];
   }
 
-  const fulfillmentSet = await fulfillmentModuleService.createFulfillmentSets({
+  // Check for existing fulfillment set
+  const existingFulfillmentSets = await fulfillmentModuleService.listFulfillmentSets({
     name: "European Warehouse delivery",
-    type: "shipping",
-    service_zones: [
-      {
-        name: "Europe",
-        geo_zones: [
-          {
-            country_code: "gb",
-            type: "country",
-          },
-          {
-            country_code: "de",
-            type: "country",
-          },
-          {
-            country_code: "dk",
-            type: "country",
-          },
-          {
-            country_code: "se",
-            type: "country",
-          },
-          {
-            country_code: "fr",
-            type: "country",
-          },
-          {
-            country_code: "es",
-            type: "country",
-          },
-          {
-            country_code: "it",
-            type: "country",
-          },
-        ],
+  });
+  
+  let fulfillmentSet;
+  if (existingFulfillmentSets.length > 0) {
+    fulfillmentSet = existingFulfillmentSets[0];
+    logger.info("Found existing fulfillment set. Skipping creation.");
+  } else {
+    fulfillmentSet = await fulfillmentModuleService.createFulfillmentSets({
+      name: "European Warehouse delivery",
+      type: "shipping",
+      service_zones: [
+        {
+          name: "Europe",
+          geo_zones: [
+            {
+              country_code: "gb",
+              type: "country",
+            },
+            {
+              country_code: "de",
+              type: "country",
+            },
+            {
+              country_code: "dk",
+              type: "country",
+            },
+            {
+              country_code: "se",
+              type: "country",
+            },
+            {
+              country_code: "fr",
+              type: "country",
+            },
+            {
+              country_code: "es",
+              type: "country",
+            },
+            {
+              country_code: "it",
+              type: "country",
+            },
+          ],
+        },
+      ],
+    });
+    logger.info("Created fulfillment set.");
+  }
+
+  // Link stock location to fulfillment set (check if already exists)
+  try {
+    const existingSetLinks = await link.list({
+      [Modules.STOCK_LOCATION]: {
+        stock_location_id: stockLocation.id,
       },
-    ],
-  });
+      [Modules.FULFILLMENT]: {
+        fulfillment_set_id: fulfillmentSet.id,
+      },
+    });
+    
+    if (!existingSetLinks.length) {
+      await link.create({
+        [Modules.STOCK_LOCATION]: {
+          stock_location_id: stockLocation.id,
+        },
+        [Modules.FULFILLMENT]: {
+          fulfillment_set_id: fulfillmentSet.id,
+        },
+      });
+      logger.info("Linked stock location to fulfillment set.");
+    } else {
+      logger.info("Stock location already linked to fulfillment set.");
+    }
+  } catch (linkError) {
+    logger.info("Fulfillment set link may already exist, continuing...");
+  }
 
-  await link.create({
-    [Modules.STOCK_LOCATION]: {
-      stock_location_id: stockLocation.id,
-    },
-    [Modules.FULFILLMENT]: {
-      fulfillment_set_id: fulfillmentSet.id,
-    },
-  });
-
-  await createShippingOptionsWorkflow(container).run({
-    input: [
-      {
-        name: "Standard Shipping",
-        price_type: "flat",
-        provider_id: "manual_manual",
-        service_zone_id: fulfillmentSet.service_zones[0].id,
-        shipping_profile_id: shippingProfile.id,
+  // Get service zone ID safely
+  const serviceZoneId = fulfillmentSet.service_zones?.[0]?.id;
+  
+  if (!serviceZoneId) {
+    logger.warn("No service zone found in fulfillment set. Skipping shipping options creation.");
+  } else {
+    await createShippingOptionsWorkflow(container).run({
+      input: [
+        {
+          name: "Standard Shipping",
+          price_type: "flat",
+          provider_id: "manual_manual",
+          service_zone_id: serviceZoneId,
+          shipping_profile_id: shippingProfile.id,
         type: {
           label: "Standard",
           description: "Ship in 2-3 days.",
@@ -272,7 +328,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
         name: "Express Shipping",
         price_type: "flat",
         provider_id: "manual_manual",
-        service_zone_id: fulfillmentSet.service_zones[0].id,
+        service_zone_id: serviceZoneId,
         shipping_profile_id: shippingProfile.id,
         type: {
           label: "Express",
@@ -306,9 +362,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
           },
         ],
       },
-    ],
-  });
-  logger.info("Finished seeding fulfillment data.");
+      ],
+    });
+    logger.info("Finished seeding fulfillment data.");
+  }
 
   await linkSalesChannelsToStockLocationWorkflow(container).run({
     input: {
@@ -379,32 +436,54 @@ export default async function seedDemoData({ container }: ExecArgs) {
 
   logger.info("Seeding product data...");
 
-  const { result: categoryResult } = await createProductCategoriesWorkflow(
-    container
-  ).run({
-    input: {
-      product_categories: [
-        {
-          name: "Shirts",
-          is_active: true,
-        },
-        {
-          name: "Sweatshirts",
-          is_active: true,
-        },
-        {
-          name: "Pants",
-          is_active: true,
-        },
-        {
-          name: "Merch",
-          is_active: true,
-        },
-      ],
-    },
+  // Check for existing categories first
+  const productModuleService = container.resolve(Modules.PRODUCT);
+  let existingCategories = await productModuleService.listProductCategories({
+    handle: ["shirts", "sweatshirts", "pants", "merch"],
   });
+  
+  let categoryResult;
+  if (existingCategories.length >= 4) {
+    logger.info("Found existing product categories. Skipping creation.");
+    categoryResult = existingCategories;
+  } else {
+    const { result: newCategories } = await createProductCategoriesWorkflow(
+      container
+    ).run({
+      input: {
+        product_categories: [
+          {
+            name: "Shirts",
+            is_active: true,
+          },
+          {
+            name: "Sweatshirts",
+            is_active: true,
+          },
+          {
+            name: "Pants",
+            is_active: true,
+          },
+          {
+            name: "Merch",
+            is_active: true,
+          },
+        ],
+      },
+    });
+    categoryResult = newCategories;
+    logger.info("Created product categories.");
+  }
 
-  await createProductsWorkflow(container).run({
+  // Check if products already exist
+  const existingProducts = await productModuleService.listProducts({
+    handle: ["t-shirt", "sweatshirt", "sweatpants", "shorts"],
+  });
+  
+  if (existingProducts.length >= 4) {
+    logger.info("Products already exist. Skipping product creation.");
+  } else {
+    await createProductsWorkflow(container).run({
     input: {
       products: [
         {
@@ -898,9 +977,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
           ],
         },
       ],
-    },
-  });
-  logger.info("Finished seeding product data.");
+      },
+    });
+    logger.info("Finished seeding product data.");
+  }
 
   logger.info("Seeding inventory levels.");
 

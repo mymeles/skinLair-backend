@@ -4,3 +4,1533 @@
 
 [32minfo[39m:    redisUrl not found. A fake redis instance will be used.
 [32minfo[39m:    Watching filesystem to reload dev server on file change
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+Error: listen EADDRINUSE: address already in use :::9000
+    at Server.setupListenHandle [as _listen2] (node:net:1903:16)
+    at listenInCluster (node:net:1960:12)
+    at Server.listen (node:net:2062:7)
+    at internalStart (/Users/mela/isis/skinLair/node_modules/@medusajs/medusa/src/commands/start.ts:223:15)
+    at async start (/Users/mela/isis/skinLair/node_modules/@medusajs/medusa/src/commands/start.ts:305:5) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 9000
+}
+[32minfo[39m:    medusa-config.ts modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+Error: listen EADDRINUSE: address already in use :::9000
+    at Server.setupListenHandle [as _listen2] (node:net:1903:16)
+    at listenInCluster (node:net:1960:12)
+    at Server.listen (node:net:2062:7)
+    at internalStart (/Users/mela/isis/skinLair/node_modules/@medusajs/medusa/src/commands/start.ts:223:15)
+    at async start (/Users/mela/isis/skinLair/node_modules/@medusajs/medusa/src/commands/start.ts:305:5) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 9000
+}
+[32minfo[39m:    backend.log modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 19ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32minfo[39m:    yarn.lock modified: Restarting dev server
+[32minfo[39m:    package-lock.json modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    yarn.lock modified: Restarting dev server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 28ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32minfo[39m:    package-lock.json modified: Restarting dev server
+[32minfo[39m:    yarn.lock modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 32ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32minfo[39m:    yarn.lock modified: Restarting dev server
+[32minfo[39m:    package-lock.json modified: Restarting dev server
+[32minfo[39m:    package-lock.json modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 57ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32minfo[39m:    DATABASE_SCHEMA.md created: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 31ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32mhttp[39m:    GET /store/regions ← - (200) - 253.404 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 31.758 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 347.192 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 43.068 ms
+[32mhttp[39m:    GET /store/shipping-options?cart_id=cart_01K7QJH9KMCASH5XSBZPGWAXZM ← - (200) - 276.151 ms
+[Middleware] GET /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    GET /store/services ← - (200) - 43.213 ms
+[32mhttp[39m:    OPTIONS /store/services ← http://localhost:8000/ (204) - 12.489 ms
+[32mhttp[39m:    OPTIONS /store/services ← http://localhost:8000/ (204) - 0.503 ms
+[Middleware] GET /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    GET /store/services ← http://localhost:8000/ (304) - 44.777 ms
+[Middleware] GET /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    GET /store/services ← http://localhost:8000/ (304) - 17.199 ms
+[32mhttp[39m:    OPTIONS /store/availability?service_id=01K7NKP7RKBXKEHHV6JYCF6ARJ&date=2025-10-22 ← http://localhost:8000/ (204) - 2.210 ms
+[Middleware] GET /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    GET /store/availability?service_id=01K7NKP7RKBXKEHHV6JYCF6ARJ&date=2025-10-22 ← http://localhost:8000/ (200) - 45.541 ms
+[32mhttp[39m:    OPTIONS /store/bookings ← http://localhost:8000/ (204) - 9.568 ms
+[Middleware] POST /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    POST /store/bookings ← http://localhost:8000/ (201) - 442.230 ms
+[32mhttp[39m:    OPTIONS /store/bookings/01K7W61MRWB6AYVCSSST3ZFAQF ← http://localhost:8000/ (204) - 3.475 ms
+[32mhttp[39m:    OPTIONS /store/bookings/01K7W61MRWB6AYVCSSST3ZFAQF ← http://localhost:8000/ (204) - 0.301 ms
+[Middleware] GET /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    GET /store/bookings/01K7W61MRWB6AYVCSSST3ZFAQF ← http://localhost:8000/ (200) - 38.124 ms
+[32mhttp[39m:    OPTIONS /store/payments/create-intent ← http://localhost:8000/ (204) - 0.774 ms
+[Middleware] GET /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    GET /store/bookings/01K7W61MRWB6AYVCSSST3ZFAQF ← http://localhost:8000/ (304) - 14.094 ms
+[Middleware] POST /
+[Middleware] Publishable Key Header: Present
+[Payment] POST /store/payments/create-intent
+[Payment] Headers: { publishableKey: 'Present', contentType: 'application/json' }
+[Payment] Request body: { booking_id: '01K7W61MRWB6AYVCSSST3ZFAQF', payment_type: 'full' }
+[Middleware] POST /
+[Middleware] Publishable Key Header: Present
+[Payment] POST /store/payments/create-intent
+[Payment] Headers: { publishableKey: 'Present', contentType: 'application/json' }
+[Payment] Request body: { booking_id: '01K7W61MRWB6AYVCSSST3ZFAQF', payment_type: 'full' }
+[Payment] Creating payment record with ID: pi_3SJdz4Q5iUeaQQDO1eWfldL6
+[Payment] Payment data: {
+  id: 'pi_3SJdz4Q5iUeaQQDO1eWfldL6',
+  booking_id: '01K7W61MRWB6AYVCSSST3ZFAQF',
+  amount: 100,
+  currency: 'usd',
+  status: 'pending',
+  payment_type: 'full',
+  customer_email: 'M@gmail.com',
+  metadata: { service_name: 'new service ' }
+}
+[Payment] Payment record created successfully: pi_3SJdz4Q5iUeaQQDO1eWfldL6
+[Payment] Full payment object: {
+  "id": "pi_3SJdz4Q5iUeaQQDO1eWfldL6",
+  "booking_id": "01K7W61MRWB6AYVCSSST3ZFAQF",
+  "stripe_charge_id": null,
+  "amount": 100,
+  "currency": "usd",
+  "status": "pending",
+  "payment_type": "full",
+  "customer_email": "M@gmail.com",
+  "metadata": {
+    "service_name": "new service "
+  },
+  "refund_amount": null,
+  "refund_reason": null,
+  "created_at": "2025-10-18T17:32:02.262Z",
+  "updated_at": "2025-10-18T17:32:02.262Z",
+  "deleted_at": null
+}
+[32mhttp[39m:    POST /store/payments/create-intent ← http://localhost:8000/ (200) - 437.943 ms
+[Payment] Creating payment record with ID: pi_3SJdz4Q5iUeaQQDO02FsAX2M
+[Payment] Payment data: {
+  id: 'pi_3SJdz4Q5iUeaQQDO02FsAX2M',
+  booking_id: '01K7W61MRWB6AYVCSSST3ZFAQF',
+  amount: 100,
+  currency: 'usd',
+  status: 'pending',
+  payment_type: 'full',
+  customer_email: 'M@gmail.com',
+  metadata: { service_name: 'new service ' }
+}
+[Payment] Payment record created successfully: pi_3SJdz4Q5iUeaQQDO02FsAX2M
+[Payment] Full payment object: {
+  "id": "pi_3SJdz4Q5iUeaQQDO02FsAX2M",
+  "booking_id": "01K7W61MRWB6AYVCSSST3ZFAQF",
+  "stripe_charge_id": null,
+  "amount": 100,
+  "currency": "usd",
+  "status": "pending",
+  "payment_type": "full",
+  "customer_email": "M@gmail.com",
+  "metadata": {
+    "service_name": "new service "
+  },
+  "refund_amount": null,
+  "refund_reason": null,
+  "created_at": "2025-10-18T17:32:02.287Z",
+  "updated_at": "2025-10-18T17:32:02.287Z",
+  "deleted_at": null
+}
+[32mhttp[39m:    POST /store/payments/create-intent ← http://localhost:8000/ (200) - 402.653 ms
+[32mhttp[39m:    OPTIONS /store/payments/confirm ← http://localhost:8000/ (204) - 134.953 ms
+[Middleware] POST /
+[Middleware] Publishable Key Header: Present
+[Payment] POST /store/payments/confirm
+[Payment] Headers: { publishableKey: 'Present', contentType: 'application/json' }
+[Payment] Request body: { payment_intent_id: 'pi_3SJdz4Q5iUeaQQDO02FsAX2M' }
+Payment confirmation - attempting to update payment with ID: pi_3SJdz4Q5iUeaQQDO02FsAX2M
+Payment ID type: string
+Payment ID length: 27
+Payment ID stringified: "pi_3SJdz4Q5iUeaQQDO02FsAX2M"
+Payment object keys: [
+  'id',               'booking_id',
+  'stripe_charge_id', 'amount',
+  'currency',         'status',
+  'payment_type',     'customer_email',
+  'metadata',         'refund_amount',
+  'refund_reason',    'created_at',
+  'updated_at',       'deleted_at'
+]
+Trying updatePayments with payment.id: pi_3SJdz4Q5iUeaQQDO02FsAX2M
+[32mhttp[39m:    POST /store/payments/confirm ← http://localhost:8000/ (200) - 951.550 ms
+[Middleware] GET /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    GET /store/bookings/01K7W61MRWB6AYVCSSST3ZFAQF ← - (200) - 60.552 ms
+[Middleware] GET /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    GET /store/services ← - (200) - 40.615 ms
+[Middleware] GET /
+[Middleware] Publishable Key Header: Present
+[32mhttp[39m:    GET /store/services ← - (200) - 49.064 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 51.083 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 207.694 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 40.591 ms
+[32mhttp[39m:    GET /us ← - (404) - 25.836 ms
+[32mhttp[39m:    GET /us/app ← - (404) - 14.709 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 23.363 ms
+[32mhttp[39m:    GET /app ← - (304) - 129.242 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app (304) - 352.587 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app/entry.jsx (304) - 2747.179 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app (304) - 1.941 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app (401) - 0.646 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app (401) - 5.504 ms
+[32mhttp[39m:    POST /auth/user/emailpass ← http://localhost:9000/app/login (200) - 142.955 ms
+[32mhttp[39m:    POST /auth/session ← http://localhost:9000/app/login (200) - 3.220 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app (304) - 7.675 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app (304) - 18.054 ms
+[32mhttp[39m:    GET /admin/products?q=&limit=3&fields=id%2Ctitle%2Cthumbnail ← http://localhost:9000/app (304) - 29.951 ms
+[32mhttp[39m:    GET /admin/stores ← http://localhost:9000/app (200) - 112.231 ms
+[32mhttp[39m:    GET /admin/customers?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app (200) - 91.299 ms
+[32mhttp[39m:    GET /admin/product-variants?q=&limit=3&fields=id%2Ctitle%2Csku%2Cproduct_id ← http://localhost:9000/app (304) - 99.882 ms
+[32mhttp[39m:    GET /admin/product-categories?limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 89.174 ms
+[32mhttp[39m:    GET /admin/collections?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app (304) - 45.986 ms
+[32mhttp[39m:    GET /admin/inventory-items?q=&limit=3&fields=id%2Ctitle%2Csku ← http://localhost:9000/app (304) - 20.991 ms
+[32mhttp[39m:    GET /admin/customer-groups?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 8.080 ms
+[32mhttp[39m:    GET /admin/promotions?q=&limit=3&fields=id%2Ccode%2Cstatus ← http://localhost:9000/app (304) - 26.304 ms
+[32mhttp[39m:    GET /admin/campaigns?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 14.712 ms
+[32mhttp[39m:    GET /admin/price-lists?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app (304) - 22.896 ms
+[32mhttp[39m:    GET /admin/orders?q=&limit=3&fields=id%2Cdisplay_id%2Cemail ← http://localhost:9000/app (200) - 176.793 ms
+[32mhttp[39m:    GET /admin/sales-channels?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 13.513 ms
+[32mhttp[39m:    GET /admin/users?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app (304) - 23.060 ms
+[32mhttp[39m:    GET /admin/regions?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (200) - 13.882 ms
+[32mhttp[39m:    GET /admin/tax-regions?q=&limit=3&fields=id%2Ccountry_code%2Cprovince_code ← http://localhost:9000/app (304) - 18.744 ms
+[32mhttp[39m:    GET /admin/product-tags?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app (304) - 8.278 ms
+[32mhttp[39m:    GET /admin/return-reasons?q=&limit=3&fields=id%2Clabel%2Cvalue ← http://localhost:9000/app (304) - 14.914 ms
+[32mhttp[39m:    GET /admin/stock-locations?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (200) - 9.165 ms
+[32mhttp[39m:    GET /admin/product-types?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app (304) - 9.642 ms
+[32mhttp[39m:    GET /admin/shipping-profiles?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 14.955 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=secret ← http://localhost:9000/app (304) - 9.234 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=publishable ← http://localhost:9000/app (304) - 17.314 ms
+[32mhttp[39m:    GET /admin/sales-channels?limit=1000&fields=id%2Cname ← http://localhost:9000/app/orders (304) - 16.153 ms
+[32mhttp[39m:    GET /admin/regions?limit=1000&fields=id%2Cname ← http://localhost:9000/app/orders (200) - 24.275 ms
+[32mhttp[39m:    GET /admin/orders?fields=id%2Cstatus%2Ccreated_at%2Cemail%2Cdisplay_id%2Cpayment_status%2Cfulfillment_status%2Ctotal%2Ccurrency_code%2C%2Acustomer%2C%2Asales_channel&limit=20&offset=0&order=-display_id ← http://localhost:9000/app/orders (200) - 60.464 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 51.594 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 19.017 ms
+[32minfo[39m:    Publishable API key required in the request header: x-publishable-api-key. You can manage your keys in settings in the dashboard.
+[32mhttp[39m:    POST /store/bookings/01K7N3FXSZ5XJNJY9N49XXKW44 ← http://localhost:9000/app/bookings (400) - 1.565 ms
+[32mhttp[39m:    GET /.well-known/appspecific/com.chrome.devtools.json ← - (404) - 9.854 ms
+[32minfo[39m:    Publishable API key required in the request header: x-publishable-api-key. You can manage your keys in settings in the dashboard.
+[32mhttp[39m:    POST /store/bookings/01K7N3FXSZ5XJNJY9N49XXKW44 ← http://localhost:9000/app/bookings (400) - 11.438 ms
+[32mhttp[39m:    GET /app/bookings ← - (200) - 35.467 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app/bookings (304) - 0.851 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app/entry.jsx (304) - 0.793 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app/bookings (304) - 2.015 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app/bookings (304) - 35.368 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 41.389 ms
+[32mhttp[39m:    GET /admin/product-categories?limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 54.095 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (304) - 64.038 ms
+[32mhttp[39m:    GET /admin/products?q=&limit=3&fields=id%2Ctitle%2Cthumbnail ← http://localhost:9000/app/bookings (304) - 63.535 ms
+[32mhttp[39m:    GET /admin/collections?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app/bookings (304) - 40.085 ms
+[32mhttp[39m:    GET /admin/product-variants?q=&limit=3&fields=id%2Ctitle%2Csku%2Cproduct_id ← http://localhost:9000/app/bookings (304) - 48.715 ms
+[32mhttp[39m:    GET /admin/customers?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app/bookings (304) - 22.178 ms
+[32mhttp[39m:    GET /admin/stores ← http://localhost:9000/app/bookings (304) - 141.538 ms
+[32mhttp[39m:    GET /admin/customer-groups?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 24.068 ms
+[32mhttp[39m:    GET /admin/promotions?q=&limit=3&fields=id%2Ccode%2Cstatus ← http://localhost:9000/app/bookings (304) - 12.743 ms
+[32mhttp[39m:    GET /admin/inventory-items?q=&limit=3&fields=id%2Ctitle%2Csku ← http://localhost:9000/app/bookings (304) - 36.209 ms
+[32mhttp[39m:    GET /admin/campaigns?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 17.592 ms
+[32mhttp[39m:    GET /admin/price-lists?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app/bookings (304) - 17.683 ms
+[32mhttp[39m:    GET /admin/orders?q=&limit=3&fields=id%2Cdisplay_id%2Cemail ← http://localhost:9000/app/bookings (304) - 178.151 ms
+[32mhttp[39m:    GET /admin/regions?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 8.499 ms
+[32mhttp[39m:    GET /admin/users?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app/bookings (304) - 15.836 ms
+[32mhttp[39m:    GET /admin/sales-channels?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 7.823 ms
+[32mhttp[39m:    GET /admin/return-reasons?q=&limit=3&fields=id%2Clabel%2Cvalue ← http://localhost:9000/app/bookings (304) - 8.190 ms
+[32mhttp[39m:    GET /admin/tax-regions?q=&limit=3&fields=id%2Ccountry_code%2Cprovince_code ← http://localhost:9000/app/bookings (304) - 17.286 ms
+[32mhttp[39m:    GET /admin/product-tags?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app/bookings (304) - 5.832 ms
+[32mhttp[39m:    GET /admin/product-types?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app/bookings (304) - 14.560 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=secret ← http://localhost:9000/app/bookings (304) - 7.509 ms
+[32mhttp[39m:    GET /admin/shipping-profiles?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 8.138 ms
+[32mhttp[39m:    GET /admin/stock-locations?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 14.732 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=publishable ← http://localhost:9000/app/bookings (304) - 11.202 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 13.228 ms
+[32mhttp[39m:    GET /admin/sales-channels?limit=1000&fields=id%2Cname ← http://localhost:9000/app/orders (304) - 55.738 ms
+[32mhttp[39m:    GET /admin/regions?limit=1000&fields=id%2Cname ← http://localhost:9000/app/orders (304) - 50.389 ms
+[32mhttp[39m:    GET /admin/orders?fields=id%2Cstatus%2Ccreated_at%2Cemail%2Cdisplay_id%2Cpayment_status%2Cfulfillment_status%2Ctotal%2Ccurrency_code%2C%2Acustomer%2C%2Asales_channel&limit=20&offset=0&order=-display_id ← http://localhost:9000/app/orders (304) - 97.433 ms
+[32mhttp[39m:    GET /admin/product-types?limit=1000&offset=0 ← http://localhost:9000/app/products (200) - 15.512 ms
+[32mhttp[39m:    GET /admin/product-tags?limit=1000&offset=0 ← http://localhost:9000/app/products (200) - 25.234 ms
+[32mhttp[39m:    GET /admin/products?limit=20&offset=0&is_giftcard=false&fields=id%2Ctitle%2Chandle%2Cstatus%2C%2Acollection%2C%2Asales_channels%2Cvariants.id%2Cthumbnail ← http://localhost:9000/app/products (200) - 58.709 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← http://localhost:9000/app/products (200) - 18.063 ms
+[32mhttp[39m:    GET /admin/collections?limit=20&offset=0&fields=%2Bproducts.id ← http://localhost:9000/app/collections (200) - 52.340 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 66.352 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 7.236 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (304) - 21.053 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (304) - 35.208 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (304) - 25.742 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (304) - 16.412 ms
+[32minfo[39m:    src/api/store/bookings/[id]/route.ts modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    src/api/webhooks/stripe/route.ts modified: Restarting dev server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+Error: listen EADDRINUSE: address already in use :::9000
+    at Server.setupListenHandle [as _listen2] (node:net:1903:16)
+    at listenInCluster (node:net:1960:12)
+    at Server.listen (node:net:2062:7)
+    at internalStart (/Users/mela/isis/skinLair/node_modules/@medusajs/medusa/src/commands/start.ts:223:15)
+    at async start (/Users/mela/isis/skinLair/node_modules/@medusajs/medusa/src/commands/start.ts:305:5) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 9000
+}
+[32minfo[39m:    src/scripts/seed.ts modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 31ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32minfo[39m:    src/api/admin/bookings/[id]/route.ts created: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 9ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32minfo[39m:    src/scripts/seed.ts modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 35ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32mhttp[39m:    GET / ← - (404) - 62.385 ms
+[32mhttp[39m:    GET / ← - (404) - 6.733 ms
+[32mhttp[39m:    GET /app ← - (304) - 172.754 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app (304) - 438.393 ms
+[32mhttp[39m:    GET /app/@fs/Users/mela/isis/skinLair/src/admin/routes/orders/page.tsx ← http://localhost:9000/app (404) - 22.565 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app (304) - 2814.474 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app (304) - 3.951 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app (401) - 5.028 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app (401) - 1.422 ms
+[32mhttp[39m:    POST /auth/user/emailpass ← http://localhost:9000/app/login (200) - 152.112 ms
+[32mhttp[39m:    POST /auth/session ← http://localhost:9000/app/login (200) - 3.037 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app (200) - 18.324 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app (304) - 22.787 ms
+[32mhttp[39m:    GET /admin/product-categories?limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 93.695 ms
+[32mhttp[39m:    GET /admin/products?q=&limit=3&fields=id%2Ctitle%2Cthumbnail ← http://localhost:9000/app (304) - 96.064 ms
+[32mhttp[39m:    GET /admin/stores ← http://localhost:9000/app (200) - 135.814 ms
+[32mhttp[39m:    GET /admin/collections?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app (304) - 82.491 ms
+[32mhttp[39m:    GET /admin/product-variants?q=&limit=3&fields=id%2Ctitle%2Csku%2Cproduct_id ← http://localhost:9000/app (304) - 112.053 ms
+[32mhttp[39m:    GET /admin/customers?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app (304) - 70.603 ms
+[32mhttp[39m:    GET /admin/customer-groups?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 26.957 ms
+[32mhttp[39m:    GET /admin/inventory-items?q=&limit=3&fields=id%2Ctitle%2Csku ← http://localhost:9000/app (304) - 29.085 ms
+[32mhttp[39m:    GET /admin/promotions?q=&limit=3&fields=id%2Ccode%2Cstatus ← http://localhost:9000/app (304) - 28.303 ms
+[32mhttp[39m:    GET /admin/users?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app (304) - 18.988 ms
+[32mhttp[39m:    GET /admin/campaigns?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 38.890 ms
+[32mhttp[39m:    GET /admin/price-lists?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app (304) - 23.335 ms
+[32mhttp[39m:    GET /admin/regions?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 38.821 ms
+[32mhttp[39m:    GET /admin/tax-regions?q=&limit=3&fields=id%2Ccountry_code%2Cprovince_code ← http://localhost:9000/app (304) - 28.455 ms
+[32mhttp[39m:    GET /admin/return-reasons?q=&limit=3&fields=id%2Clabel%2Cvalue ← http://localhost:9000/app (304) - 13.513 ms
+[32mhttp[39m:    GET /admin/sales-channels?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 13.529 ms
+[32mhttp[39m:    GET /admin/product-types?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app (304) - 16.622 ms
+[32mhttp[39m:    GET /admin/orders?q=&limit=3&fields=id%2Cdisplay_id%2Cemail ← http://localhost:9000/app (304) - 161.840 ms
+[32mhttp[39m:    GET /admin/product-tags?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app (304) - 13.854 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=publishable ← http://localhost:9000/app (304) - 11.119 ms
+[32mhttp[39m:    GET /admin/stock-locations?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (200) - 16.056 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=secret ← http://localhost:9000/app (304) - 12.201 ms
+[32mhttp[39m:    GET /admin/shipping-profiles?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app (304) - 12.975 ms
+[32mhttp[39m:    GET /admin/regions?limit=1000&fields=id%2Cname ← http://localhost:9000/app/orders (304) - 16.184 ms
+[32mhttp[39m:    GET /admin/sales-channels?limit=1000&fields=id%2Cname ← http://localhost:9000/app/orders (304) - 8.427 ms
+[32mhttp[39m:    GET /admin/orders?fields=id%2Cstatus%2Ccreated_at%2Cemail%2Cdisplay_id%2Cpayment_status%2Cfulfillment_status%2Ctotal%2Ccurrency_code%2C%2Acustomer%2C%2Asales_channel&limit=20&offset=0&order=-display_id ← http://localhost:9000/app/orders (304) - 54.524 ms
+[32mhttp[39m:    GET /admin/payments ← http://localhost:9000/app/payments (200) - 196.954 ms
+[32mhttp[39m:    GET /admin/payments ← http://localhost:9000/app/payments (200) - 165.620 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 26.614 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 32.525 ms
+[32mhttp[39m:    GET /app/bookings ← - (200) - 29.405 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app/bookings (304) - 6.105 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app/bookings (304) - 11.053 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app/bookings (304) - 2.655 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app/bookings (304) - 23.627 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 65.349 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 54.126 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (304) - 54.327 ms
+[32mhttp[39m:    GET /admin/products?q=&limit=3&fields=id%2Ctitle%2Cthumbnail ← http://localhost:9000/app/bookings (304) - 61.157 ms
+[32mhttp[39m:    GET /admin/stores ← http://localhost:9000/app/bookings (304) - 78.788 ms
+[32mhttp[39m:    GET /admin/collections?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app/bookings (304) - 23.774 ms
+[32mhttp[39m:    GET /admin/product-categories?limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 23.028 ms
+[32mhttp[39m:    GET /admin/customers?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app/bookings (304) - 29.874 ms
+[32mhttp[39m:    GET /admin/product-variants?q=&limit=3&fields=id%2Ctitle%2Csku%2Cproduct_id ← http://localhost:9000/app/bookings (304) - 44.770 ms
+[32mhttp[39m:    GET /admin/inventory-items?q=&limit=3&fields=id%2Ctitle%2Csku ← http://localhost:9000/app/bookings (304) - 41.597 ms
+[32mhttp[39m:    GET /admin/customer-groups?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 34.625 ms
+[32mhttp[39m:    GET /admin/promotions?q=&limit=3&fields=id%2Ccode%2Cstatus ← http://localhost:9000/app/bookings (304) - 34.563 ms
+[32mhttp[39m:    GET /admin/campaigns?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 38.176 ms
+[32mhttp[39m:    GET /admin/orders?q=&limit=3&fields=id%2Cdisplay_id%2Cemail ← http://localhost:9000/app/bookings (304) - 169.682 ms
+[32mhttp[39m:    GET /admin/price-lists?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app/bookings (304) - 42.142 ms
+[32mhttp[39m:    GET /admin/users?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app/bookings (304) - 9.138 ms
+[32mhttp[39m:    GET /admin/return-reasons?q=&limit=3&fields=id%2Clabel%2Cvalue ← http://localhost:9000/app/bookings (304) - 7.411 ms
+[32mhttp[39m:    GET /admin/regions?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 16.918 ms
+[32mhttp[39m:    GET /admin/tax-regions?q=&limit=3&fields=id%2Ccountry_code%2Cprovince_code ← http://localhost:9000/app/bookings (304) - 8.355 ms
+[32mhttp[39m:    GET /admin/product-types?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app/bookings (304) - 8.399 ms
+[32mhttp[39m:    GET /admin/sales-channels?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 13.576 ms
+[32mhttp[39m:    GET /admin/shipping-profiles?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 10.482 ms
+[32mhttp[39m:    GET /admin/product-tags?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app/bookings (304) - 19.454 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=publishable ← http://localhost:9000/app/bookings (304) - 13.974 ms
+[32mhttp[39m:    GET /admin/stock-locations?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 25.861 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=secret ← http://localhost:9000/app/bookings (304) - 13.608 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7N3FXSZ5XJNJY9N49XXKW44 ← http://localhost:9000/app/bookings (200) - 576.715 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 9.424 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7QPVK2C5F0KE907RSWQRJX9 ← http://localhost:9000/app/bookings (200) - 128.337 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.703 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NYRGCRPTB6B2PF577G7R2E ← http://localhost:9000/app/bookings (200) - 218.779 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 23.908 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7N525VA56RPMW6CZ9C69JHC ← http://localhost:9000/app/bookings (200) - 42.191 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 7.454 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7N3WK2EYFX7N0WN2E43NM4B ← http://localhost:9000/app/bookings (200) - 57.482 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 5.952 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NWS6D4FTNC1F173DJSRJRQ ← http://localhost:9000/app/bookings (200) - 81.420 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 9.210 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NTECCDH9KGYPM8RHB5NWPZ ← http://localhost:9000/app/bookings (200) - 58.043 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 7.580 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NPW6JVKKVWDBQ9RWHD59WG ← http://localhost:9000/app/bookings (200) - 52.481 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 6.414 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7QXB5BHR665TF6362JAJMW6 ← http://localhost:9000/app/bookings (200) - 91.201 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 6.891 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NK7GA7FR90DCW1BSPKK9H2 ← http://localhost:9000/app/bookings (200) - 68.732 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 5.628 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NKJ7XNXDVGKDD0EQXH20TB ← http://localhost:9000/app/bookings (200) - 123.676 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.192 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NKX3H78QBN6ZR758N2JEBZ ← http://localhost:9000/app/bookings (200) - 54.357 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 7.802 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NKSQJAWWDF3Z72NBVCEAEE ← http://localhost:9000/app/bookings (200) - 138.386 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 6.824 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NPMT6CRDGXG83Y6462Z79E ← http://localhost:9000/app/bookings (200) - 92.162 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 6.392 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PX1YE8BK8QPRTFB2J0MN42 ← http://localhost:9000/app/bookings (200) - 78.396 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 5.645 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PSTBA2F4W8MB3D4PNY90EC ← http://localhost:9000/app/bookings (200) - 56.984 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 5.879 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PXPZA2506N9NRFC19KTR7F ← http://localhost:9000/app/bookings (200) - 90.300 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 9.570 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PZ78R6B9WN70YC8Y6H1WFF ← http://localhost:9000/app/bookings (200) - 75.488 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.261 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (304) - 7.214 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PYJK0XABG605NVTDR5KHFB ← http://localhost:9000/app/bookings (200) - 103.735 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.924 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PTFRC0KWH2N0XGECXWH21V ← http://localhost:9000/app/bookings (200) - 119.961 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.104 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PV7YHKT7TK332ZZGMVC88X ← http://localhost:9000/app/bookings (200) - 178.617 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.068 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7QNWE8XYMM807NZQ59471HH ← http://localhost:9000/app/bookings (200) - 168.742 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 5.751 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7QNDT01ET3ZXY42SF7RYAF7 ← http://localhost:9000/app/bookings (200) - 59.232 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 6.092 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7QHMJ1MMBQA0TRA7S85AN5W ← http://localhost:9000/app/bookings (200) - 65.948 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 7.002 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7W61MRWB6AYVCSSST3ZFAQF ← http://localhost:9000/app/bookings (200) - 74.319 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 9.262 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PT7Y3Y31Z05DZKKNRPJ75V ← http://localhost:9000/app/bookings (200) - 77.538 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 9.044 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PYEBQDEWMED96KC241YP55 ← http://localhost:9000/app/bookings (200) - 74.319 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 5.220 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NXYRA9S0QW726DXDMAE7KH ← http://localhost:9000/app/bookings (200) - 74.384 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.375 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7R3RSMAKD0TAPASB1KJRR8Z ← http://localhost:9000/app/bookings (200) - 61.112 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 8.026 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PVZR0PSGE7BB0QS65G8WHG ← http://localhost:9000/app/bookings (200) - 86.640 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 6.491 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PWW3YMFMFNJMXREFGTAHD4 ← http://localhost:9000/app/bookings (200) - 64.439 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 7.284 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PQQ0REDF3FH8T5DJB1H85E ← http://localhost:9000/app/bookings (200) - 61.081 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.842 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NH8KYCP2SK8XYQMZSMA6RH ← http://localhost:9000/app/bookings (200) - 134.744 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.565 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NZVJR1FXZ7N5RCGK3EANY4 ← http://localhost:9000/app/bookings (200) - 109.485 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 3.663 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7PVEDN6Z7T0CZXZ3RK3F5ED ← http://localhost:9000/app/bookings (200) - 54.429 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 7.298 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7Q1V5HNKG420R6M0WN6V2N4 ← http://localhost:9000/app/bookings (200) - 70.161 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.278 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (304) - 10.799 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7NVC3GJFCAMJWKNDSRSDWXR ← http://localhost:9000/app/bookings (200) - 64.042 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 8.286 ms
+[32mhttp[39m:    DELETE /admin/bookings/01K7P3BEJSW1BYV9A26BZNKY5Y ← http://localhost:9000/app/bookings (200) - 50.889 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (200) - 4.224 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 21.848 ms
+[32mhttp[39m:    GET /admin/services ← http://localhost:9000/app/services (200) - 47.582 ms
+[32mhttp[39m:    GET /admin/services ← http://localhost:9000/app/services (200) - 15.267 ms
+PUT /admin/services/[id] - Request params: { id: '01K7Q1PA5X2SGD7WK5E5WYGBAA' }
+PUT /admin/services/[id] - ID: 01K7Q1PA5X2SGD7WK5E5WYGBAA
+PUT /admin/services/[id] - Request body: {
+  name: 'New',
+  description: '',
+  duration: 200,
+  price: 100,
+  category: '200',
+  is_active: true,
+  deposit_required: false,
+  deposit_amount: 0,
+  buffer_time: 100,
+  max_advance_booking: 90
+}
+PUT /admin/services/[id] - Existing service found: New
+PUT /admin/services/[id] - Error: MedusaError: Service with id "" not found
+    at AbstractService_.update (/Users/mela/isis/skinLair/node_modules/@medusajs/utils/src/modules-sdk/medusa-internal-service.ts:412:17)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async transaction.transaction (/Users/mela/isis/skinLair/node_modules/@medusajs/utils/src/modules-sdk/decorators/inject-transaction-manager.ts:63:18)
+    at async fork.getConnection.transactional (/Users/mela/isis/skinLair/node_modules/@mikro-orm/core/EntityManager.js:954:29)
+    at async PostgreSqlConnection.transactional (/Users/mela/isis/skinLair/node_modules/@mikro-orm/knex/AbstractSqlConnection.js:58:25)
+    at async transactionWrapper (/Users/mela/isis/skinLair/node_modules/@medusajs/utils/src/dal/utils.ts:30:10)
+    at async MikroOrmAbstractBaseRepository_.transaction (/Users/mela/isis/skinLair/node_modules/@medusajs/utils/src/dal/mikro-orm/mikro-orm-repository.ts:68:12)
+    at async AbstractService_.descriptor.value (/Users/mela/isis/skinLair/node_modules/@medusajs/utils/src/modules-sdk/decorators/inject-transaction-manager.ts:31:14)
+    at async BookingModuleService.methodImplementation (/Users/mela/isis/skinLair/node_modules/@medusajs/utils/src/modules-sdk/medusa-service.ts:209:28)
+    at async BookingModuleService.descriptor.value (/Users/mela/isis/skinLair/node_modules/@medusajs/utils/src/modules-sdk/decorators/inject-into-context.ts:27:14)
+    at async BookingModuleService.descriptor.value (/Users/mela/isis/skinLair/node_modules/@medusajs/utils/src/modules-sdk/decorators/emit-events.ts:26:22)
+    at async PUT (/Users/mela/isis/skinLair/src/api/admin/services/[id]/route.ts:79:21)
+    at async PUT (/Users/mela/isis/skinLair/node_modules/@medusajs/framework/src/http/utils/wrap-handler.ts:27:14) {
+  __isMedusaError: true,
+  type: 'not_found',
+  code: undefined,
+  date: 2025-10-18T17:55:46.355Z
+}
+[32mhttp[39m:    PUT /admin/services/01K7Q1PA5X2SGD7WK5E5WYGBAA ← http://localhost:9000/app/services (400) - 52.854 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 37.031 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 14.590 ms
+[32mhttp[39m:    GET /admin/payments ← http://localhost:9000/app/payments (304) - 27.949 ms
+[32mhttp[39m:    GET /admin/payments ← http://localhost:9000/app/payments (304) - 50.865 ms
+Refund error: StripeInvalidRequestError: Invalid reason: must be one of duplicate, fraudulent, or requested_by_customer
+    at generateV1Error (/Users/mela/isis/skinLair/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/Users/mela/isis/skinLair/node_modules/stripe/cjs/RequestSender.js:114:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  type: 'StripeInvalidRequestError',
+  raw: {
+    message: 'Invalid reason: must be one of duplicate, fraudulent, or requested_by_customer',
+    param: 'reason',
+    request_log_url: 'https://dashboard.stripe.com/test/logs/req_eeVMGyazxy8RrO?t=1760810177',
+    type: 'invalid_request_error',
+    headers: {
+      server: 'nginx',
+      date: 'Sat, 18 Oct 2025 17:56:17 GMT',
+      'content-type': 'application/json',
+      'content-length': '274',
+      connection: 'keep-alive',
+      'access-control-allow-credentials': 'true',
+      'access-control-allow-methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
+      'access-control-allow-origin': '*',
+      'access-control-expose-headers': 'Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required',
+      'access-control-max-age': '300',
+      'cache-control': 'no-cache, no-store',
+      'content-security-policy': "base-uri 'none'; default-src 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests; report-uri https://q.stripe.com/csp-violation?q=IWfQvi6nF71EoQfEjQYyQbR3hLZdq-H24sXg7eAFQyQ8ICQHKzuQbJKuEr74cVCqum2-AsSxp4-cwovU",
+      'idempotency-key': 'stripe-node-retry-2bddbe7d-9c86-4464-b044-153c8d2bc6fb',
+      'original-request': 'req_eeVMGyazxy8RrO',
+      'request-id': 'req_eeVMGyazxy8RrO',
+      'stripe-version': '2025-09-30.clover',
+      vary: 'Origin',
+      'x-stripe-priority-routing-enabled': 'true',
+      'x-stripe-routing-context-priority-tier': 'api-testmode',
+      'x-wc': 'ABGHIJ',
+      'strict-transport-security': 'max-age=63072000; includeSubDomains; preload'
+    },
+    statusCode: 400,
+    requestId: 'req_eeVMGyazxy8RrO'
+  },
+  rawType: 'invalid_request_error',
+  code: undefined,
+  doc_url: undefined,
+  param: 'reason',
+  detail: undefined,
+  headers: {
+    server: 'nginx',
+    date: 'Sat, 18 Oct 2025 17:56:17 GMT',
+    'content-type': 'application/json',
+    'content-length': '274',
+    connection: 'keep-alive',
+    'access-control-allow-credentials': 'true',
+    'access-control-allow-methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
+    'access-control-allow-origin': '*',
+    'access-control-expose-headers': 'Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required',
+    'access-control-max-age': '300',
+    'cache-control': 'no-cache, no-store',
+    'content-security-policy': "base-uri 'none'; default-src 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'; worker-src 'none'; upgrade-insecure-requests; report-uri https://q.stripe.com/csp-violation?q=IWfQvi6nF71EoQfEjQYyQbR3hLZdq-H24sXg7eAFQyQ8ICQHKzuQbJKuEr74cVCqum2-AsSxp4-cwovU",
+    'idempotency-key': 'stripe-node-retry-2bddbe7d-9c86-4464-b044-153c8d2bc6fb',
+    'original-request': 'req_eeVMGyazxy8RrO',
+    'request-id': 'req_eeVMGyazxy8RrO',
+    'stripe-version': '2025-09-30.clover',
+    vary: 'Origin',
+    'x-stripe-priority-routing-enabled': 'true',
+    'x-stripe-routing-context-priority-tier': 'api-testmode',
+    'x-wc': 'ABGHIJ',
+    'strict-transport-security': 'max-age=63072000; includeSubDomains; preload'
+  },
+  requestId: 'req_eeVMGyazxy8RrO',
+  statusCode: 400,
+  userMessage: undefined,
+  charge: undefined,
+  decline_code: undefined,
+  payment_intent: undefined,
+  payment_method: undefined,
+  payment_method_type: undefined,
+  setup_intent: undefined,
+  source: undefined
+}
+[32mhttp[39m:    POST /admin/payments/refund ← http://localhost:9000/app/payments (500) - 369.478 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/payments (304) - 15.074 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 152.055 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 251.509 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 68.419 ms
+[32mhttp[39m:    GET /app/payments ← - (200) - 38.834 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app/payments (304) - 1.173 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app/payments (304) - 1.118 ms
+[32mhttp[39m:    GET /app/payments ← - (200) - 13.477 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app/payments (304) - 0.829 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app/payments (304) - 1.273 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app/payments (304) - 6.983 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app/payments (304) - 45.894 ms
+[32mhttp[39m:    GET /admin/product-variants?q=&limit=3&fields=id%2Ctitle%2Csku%2Cproduct_id ← http://localhost:9000/app/payments (304) - 171.354 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/payments (304) - 169.690 ms
+[32mhttp[39m:    GET /admin/products?q=&limit=3&fields=id%2Ctitle%2Cthumbnail ← http://localhost:9000/app/payments (304) - 175.218 ms
+[32mhttp[39m:    GET /admin/stores ← http://localhost:9000/app/payments (304) - 250.356 ms
+[32mhttp[39m:    GET /admin/product-categories?limit=3&fields=id%2Cname ← http://localhost:9000/app/payments (304) - 202.722 ms
+[32mhttp[39m:    GET /admin/collections?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app/payments (304) - 72.807 ms
+[32mhttp[39m:    GET /admin/customers?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app/payments (304) - 73.065 ms
+[32mhttp[39m:    GET /admin/inventory-items?q=&limit=3&fields=id%2Ctitle%2Csku ← http://localhost:9000/app/payments (304) - 74.104 ms
+[32mhttp[39m:    GET /admin/customer-groups?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/payments (304) - 52.218 ms
+[32mhttp[39m:    GET /admin/promotions?q=&limit=3&fields=id%2Ccode%2Cstatus ← http://localhost:9000/app/payments (304) - 52.565 ms
+[32mhttp[39m:    GET /admin/users?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app/payments (304) - 33.106 ms
+[32mhttp[39m:    GET /admin/price-lists?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app/payments (304) - 31.388 ms
+[32mhttp[39m:    GET /admin/campaigns?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/payments (304) - 31.023 ms
+[32mhttp[39m:    GET /admin/orders?q=&limit=3&fields=id%2Cdisplay_id%2Cemail ← http://localhost:9000/app/payments (304) - 347.455 ms
+[32mhttp[39m:    GET /admin/payments ← http://localhost:9000/app/payments (304) - 19.396 ms
+[32mhttp[39m:    GET /admin/payments ← http://localhost:9000/app/payments (304) - 36.182 ms
+[32mhttp[39m:    GET /admin/regions?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/payments (304) - 51.825 ms
+[32mhttp[39m:    GET /admin/tax-regions?q=&limit=3&fields=id%2Ccountry_code%2Cprovince_code ← http://localhost:9000/app/payments (304) - 41.845 ms
+[32mhttp[39m:    GET /admin/return-reasons?q=&limit=3&fields=id%2Clabel%2Cvalue ← http://localhost:9000/app/payments (304) - 39.181 ms
+[32mhttp[39m:    GET /admin/sales-channels?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/payments (304) - 38.895 ms
+[32mhttp[39m:    GET /admin/product-tags?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app/payments (304) - 16.155 ms
+[32mhttp[39m:    GET /admin/product-types?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app/payments (304) - 49.135 ms
+[32mhttp[39m:    GET /admin/shipping-profiles?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/payments (304) - 23.028 ms
+[32mhttp[39m:    GET /admin/stock-locations?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/payments (304) - 26.572 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=secret ← http://localhost:9000/app/payments (304) - 45.383 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=publishable ← http://localhost:9000/app/payments (304) - 22.333 ms
+[32mhttp[39m:    GET /admin/product-types?limit=1000&offset=0 ← http://localhost:9000/app/products (200) - 34.409 ms
+[32mhttp[39m:    GET /admin/product-tags?limit=1000&offset=0 ← http://localhost:9000/app/products (200) - 35.486 ms
+[32mhttp[39m:    GET /admin/sales-channels?limit=1000&fields=id%2Cname ← http://localhost:9000/app/products (304) - 38.080 ms
+[32mhttp[39m:    GET /admin/products?limit=20&offset=0&is_giftcard=false&fields=id%2Ctitle%2Chandle%2Cstatus%2C%2Acollection%2C%2Asales_channels%2Cvariants.id%2Cthumbnail ← http://localhost:9000/app/products (200) - 96.298 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← http://localhost:9000/app/products (200) - 27.576 ms
+[32mhttp[39m:    GET /admin/collections?limit=20&offset=0&fields=%2Bproducts.id ← http://localhost:9000/app/collections (200) - 45.527 ms
+[32mhttp[39m:    GET /admin/product-categories?include_descendants_tree=true&parent_category_id=null&fields=id%2Cname%2Ccategory_children%2Chandle%2Cis_internal%2Cis_active&limit=20&offset=0 ← http://localhost:9000/app/categories (200) - 47.339 ms
+[32mhttp[39m:    GET /admin/customers?limit=20&offset=0 ← http://localhost:9000/app/customers (200) - 52.285 ms
+[32mhttp[39m:    GET /admin/customer-groups?limit=1000 ← http://localhost:9000/app/customers (200) - 10.386 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/customers (304) - 34.653 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/customers (304) - 13.163 ms
+[32minfo[39m:    Publishable API key required in the request header: x-publishable-api-key. You can manage your keys in settings in the dashboard.
+[32mhttp[39m:    POST /store/bookings/01K7N3FXSZ5XJNJY9N49XXKW44 ← http://localhost:9000/app/bookings (400) - 27.235 ms
+[32minfo[39m:    Publishable API key required in the request header: x-publishable-api-key. You can manage your keys in settings in the dashboard.
+[32mhttp[39m:    POST /store/bookings/01K7N3FXSZ5XJNJY9N49XXKW44 ← http://localhost:9000/app/bookings (400) - 1.431 ms
+[32minfo[39m:    Publishable API key required in the request header: x-publishable-api-key. You can manage your keys in settings in the dashboard.
+[32mhttp[39m:    POST /store/bookings/01K7N3FXSZ5XJNJY9N49XXKW44 ← http://localhost:9000/app/bookings (400) - 0.982 ms
+[32mhttp[39m:    GET /app/bookings ← - (200) - 28.891 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app/bookings (304) - 0.849 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app/bookings (304) - 2.114 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app/bookings (304) - 9.104 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app/bookings (304) - 30.360 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 197.199 ms
+[32mhttp[39m:    GET /admin/bookings ← http://localhost:9000/app/bookings (304) - 191.669 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (304) - 334.046 ms
+[32mhttp[39m:    GET /admin/products?q=&limit=3&fields=id%2Ctitle%2Cthumbnail ← http://localhost:9000/app/bookings (304) - 399.258 ms
+[32mhttp[39m:    GET /admin/product-variants?q=&limit=3&fields=id%2Ctitle%2Csku%2Cproduct_id ← http://localhost:9000/app/bookings (304) - 171.753 ms
+[32mhttp[39m:    GET /admin/product-categories?limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 67.344 ms
+[32mhttp[39m:    GET /admin/stores ← http://localhost:9000/app/bookings (304) - 427.405 ms
+[32mhttp[39m:    GET /admin/collections?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app/bookings (304) - 32.496 ms
+[32mhttp[39m:    GET /admin/customers?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app/bookings (304) - 17.784 ms
+[32mhttp[39m:    GET /admin/customer-groups?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 35.703 ms
+[32mhttp[39m:    GET /admin/campaigns?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 14.825 ms
+[32mhttp[39m:    GET /admin/promotions?q=&limit=3&fields=id%2Ccode%2Cstatus ← http://localhost:9000/app/bookings (304) - 28.806 ms
+[32mhttp[39m:    GET /admin/inventory-items?q=&limit=3&fields=id%2Ctitle%2Csku ← http://localhost:9000/app/bookings (304) - 65.313 ms
+[32mhttp[39m:    GET /admin/users?q=&limit=3&fields=id%2Cemail%2Cfirst_name%2Clast_name ← http://localhost:9000/app/bookings (304) - 19.487 ms
+[32mhttp[39m:    GET /admin/orders?q=&limit=3&fields=id%2Cdisplay_id%2Cemail ← http://localhost:9000/app/bookings (304) - 558.884 ms
+[32mhttp[39m:    GET /admin/regions?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 47.185 ms
+[32mhttp[39m:    GET /admin/tax-regions?q=&limit=3&fields=id%2Ccountry_code%2Cprovince_code ← http://localhost:9000/app/bookings (304) - 66.268 ms
+[32mhttp[39m:    GET /admin/price-lists?q=&limit=3&fields=id%2Ctitle ← http://localhost:9000/app/bookings (304) - 47.723 ms
+[32mhttp[39m:    GET /admin/return-reasons?q=&limit=3&fields=id%2Clabel%2Cvalue ← http://localhost:9000/app/bookings (304) - 50.930 ms
+[32mhttp[39m:    GET /admin/product-types?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app/bookings (304) - 8.294 ms
+[32mhttp[39m:    GET /admin/sales-channels?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 12.767 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=publishable ← http://localhost:9000/app/bookings (304) - 9.222 ms
+[32mhttp[39m:    GET /admin/stock-locations?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 8.597 ms
+[32mhttp[39m:    GET /admin/shipping-profiles?q=&limit=3&fields=id%2Cname ← http://localhost:9000/app/bookings (304) - 17.731 ms
+[32mhttp[39m:    GET /admin/product-tags?q=&limit=3&fields=id%2Cvalue ← http://localhost:9000/app/bookings (304) - 22.171 ms
+[32mhttp[39m:    GET /admin/api-keys?q=&limit=3&fields=id%2Ctitle%2Credacted&type=secret ← http://localhost:9000/app/bookings (304) - 14.201 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/customers (304) - 60.848 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/customers (304) - 49.845 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/customers (304) - 45.671 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/customers (304) - 86.161 ms
+[32minfo[39m:    src/scripts/seed.ts modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 162ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32minfo[39m:    src/scripts/seed.ts modified: Restarting dev server
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 39ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
+[32minfo[39m:    Region with id reg_01K7Q8R1X0RXGNMWBM5KVDTSGD not found when populating the pricing context
+[32mhttp[39m:    GET /store/products?region_id=reg_01K7Q8R1X0RXGNMWBM5KVDTSGD&limit=10 ← - (400) - 64.445 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 47.525 ms
+[32mhttp[39m:    GET /store/products?region_id=reg_01K7G7JN30V990EHS734AAX0FA&limit=10 ← - (200) - 165.085 ms
+[32mhttp[39m:    GET /store/products?region_id=reg_01K7G7JN30V990EHS734AAX0FA&limit=1 ← - (200) - 78.526 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 338.527 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7W7YHRQ9ZYG1BQ7H7N1AP9M/line-items ← - (200) - 409.263 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 240.290 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_01K7G7JN30V990EHS734AAX0FA&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&order=created_at ← - (200) - 452.084 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 73.850 ms
+[32mhttp[39m:    GET /admin/services ← - (401) - 6.754 ms
+[32mhttp[39m:    GET /admin/bookings ← - (401) - 5.762 ms
+[32mhttp[39m:    GET /admin/bookings ← - (401) - 6.283 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/customers (401) - 55.950 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/customers (401) - 3.908 ms
+[32mhttp[39m:    GET /app ← - (200) - 315.892 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app (200) - 90.138 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app/entry.jsx (200) - 3427.880 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app (200) - 2.251 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app (401) - 1.185 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app (401) - 32.758 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 79.911 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QPR91TEAKQZEN9PJ0MEGY2?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 410.085 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QPR91TEAKQZEN9PJ0MEGY2?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 87.985 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 87.161 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 57.617 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 23.043 ms
+[32minfo[39m:    Publishable API key required in the request header: x-publishable-api-key. You can manage your keys in settings in the dashboard.
+[32mhttp[39m:    GET /store/products?limit=5 ← - (400) - 61.185 ms
+[32mhttp[39m:    GET /store/products?limit=5 ← - (200) - 495.738 ms
+[32mhttp[39m:    GET /store/products?limit=10 ← - (200) - 425.887 ms
+[32mhttp[39m:    GET /store/products?limit=5 ← - (200) - 127.043 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 31.680 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 11.321 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 286.686 ms
+[32mhttp[39m:    GET /store/products?limit=1&region_id=reg_01K7G7JN30V990EHS734AAX0FA ← - (200) - 48.061 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7W9F969JD43N2SNPWQ72ZA5/line-items ← - (200) - 206.046 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 106.955 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 35.859 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 138.073 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 130.828 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 145.335 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QPR91TEAKQZEN9PJ0MEGY2?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 574.065 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 242.971 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 448.080 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 66.344 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 168.263 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QPR91TEAKQZEN9PJ0MEGY2?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 587.739 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 116.684 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 99.745 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 78.304 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QPR91TEAKQZEN9PJ0MEGY2?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 114.374 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 131.224 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 116.889 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (401) - 55.429 ms
+[32mhttp[39m:    GET /admin/notifications?limit=1&offset=0&fields=created_at ← http://localhost:9000/app/bookings (401) - 12.269 ms
+[32minfo[39m:    Publishable API key required in the request header: x-publishable-api-key. You can manage your keys in settings in the dashboard.
+[32mhttp[39m:    GET /store/regions ← - (400) - 270.941 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 588.325 ms
+[32mhttp[39m:    GET /store/products ← - (200) - 313.498 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 49.133 ms
+[32mhttp[39m:    GET /app/login ← http://localhost:9000/app/login (200) - 543.782 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app/login (304) - 27.515 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app/entry.jsx (304) - 87.573 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app/login (304) - 28.808 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app/login (304) - 232.267 ms
+[32minfo[39m:    Region with id reg_01JFF3W7GRNDMX73FMVK1ZY54E not found when populating the pricing context
+[32mhttp[39m:    GET /store/products?region_id=reg_01JFF3W7GRNDMX73FMVK1ZY54E ← - (400) - 900.674 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 312.457 ms
+[32mhttp[39m:    GET /store/products?region_id=reg_us_default&fields=*variants.calculated_price ← - (200) - 1002.813 ms
+[32mhttp[39m:    GET /store/products?region_id=reg_us_default&fields=*variants.calculated_price ← - (200) - 175.635 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 218.865 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 205.267 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 73.868 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 217.612 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 204.581 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 417.932 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=*variants.calculated_price,+variants.inventory_quantity,+metadata,+tags ← - (200) - 419.670 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 331.280 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 43.034 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 699.618 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 579.431 ms
+[32minfo[39m:    Region with id reg_01JFF3W7GRNDMX73FMVK1ZY54E not found when populating the pricing context
+[32mhttp[39m:    GET /store/products?region_id=reg_01JFF3W7GRNDMX73FMVK1ZY54E&limit=10 ← - (400) - 433.386 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 79.542 ms
+[32mhttp[39m:    GET /store/products?region_id=reg_us_default&limit=10 ← - (200) - 757.743 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 172.493 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 202.319 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 761.154 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 138.434 ms
+[32mhttp[39m:    GET /admin/payments ← http://localhost:9000/app/payments (401) - 38.638 ms
+[32mhttp[39m:    GET /admin/payments ← http://localhost:9000/app/payments (401) - 0.792 ms
+[32mhttp[39m:    GET /app/payments ← - (200) - 120.409 ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app/payments (304) - 1.165 ms
+[32mhttp[39m:    GET /app/index.css ← http://localhost:9000/app/payments (304) - 3.849 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app/payments (304) - 13.710 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app/payments (401) - 1.516 ms
+[32mhttp[39m:    GET /admin/users/me ← http://localhost:9000/app/payments (401) - 2.573 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 344.795 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 523.364 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 152.776 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 617.829 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7QJH9KMCASH5XSBZPGWAXZM?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 851.814 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 1236.223 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 250.697 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 649.296 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 2950.467 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 2843.278 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 529.058 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 945.987 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 3245.591 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 258.418 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 350.064 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 253.749 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&order=created_at ← - (200) - 422.747 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 227.570 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 106.031 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 418.359 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 27.414 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 16.852 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7N3H7HM9JXREX4F2R9QMM6R?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 551.790 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7N3H7HM9JXREX4F2R9QMM6R?fields=id%2Citems%2Cregion_id%2Ccurrency_code%2Citem_total ← - (200) - 85.912 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&order=created_at ← - (200) - 739.096 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 32.823 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 4.905 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 1.268 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 11.271 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 64.789 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 94.641 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 110.147 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 129.013 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 134.987 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 144.643 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 133.227 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 115.499 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 103.275 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_01K7G7JN30V990EHS734AAX0FA&fields=handle ← - (200) - 143.538 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_us_default&fields=handle ← - (200) - 110.924 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 17.181 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&handle=shorts ← - (200) - 73.609 ms
+[32mhttp[39m:    GET /store/regions/reg_us_default ← - (200) - 23.717 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&is_giftcard=false ← - (200) - 166.759 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&id%5B0%5D=prod_01K7G7JN9CGZQT9958TTC172AM ← - (200) - 128.500 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 83.386 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 84.617 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 84.103 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 84.338 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 161.826 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 199.677 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 256.555 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 274.251 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 310.739 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7N3H7HM9JXREX4F2R9QMM6R?fields=id%2Cregion_id ← - (200) - 48.299 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 15.855 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 14.429 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 15.205 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 23.227 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 30.244 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 56.457 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 52.693 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 52.865 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7N3H7HM9JXREX4F2R9QMM6R ← - (200) - 425.153 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 48.790 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7N3H7HM9JXREX4F2R9QMM6R/line-items ← - (200) - 174.193 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 5.356 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 7.979 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7N3H7HM9JXREX4F2R9QMM6R ← - (200) - 303.605 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 13.461 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 24.375 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 28.640 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 37.307 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 48.480 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 49.386 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 41.185 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 32.919 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 27.867 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7N3H7HM9JXREX4F2R9QMM6R/line-items ← - (200) - 217.021 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 4.789 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 4.666 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7N3H7HM9JXREX4F2R9QMM6R ← - (200) - 318.141 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 9.014 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 22.024 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 22.390 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 22.247 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 29.459 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 29.354 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 26.701 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 39.087 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 34.754 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7N3H7HM9JXREX4F2R9QMM6R/line-items ← - (200) - 268.525 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 8.966 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 9.774 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 32.563 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 10.035 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 37.070 ms
+[32mhttp[39m:    GET /store/shipping-options?cart_id=cart_01K7N3H7HM9JXREX4F2R9QMM6R ← - (200) - 199.257 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 6.921 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 217.269 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 119.247 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&order=created_at ← - (200) - 1310.278 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 18.217 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&handle=sweatshirt ← - (200) - 267.560 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&is_giftcard=false ← - (200) - 207.145 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&id%5B0%5D=prod_01K7G7JN9CA0Y30P46FTZH000X ← - (200) - 197.039 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 203.861 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 142.638 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 230.760 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 304.214 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 293.954 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 231.059 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 297.658 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 223.938 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 248.233 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_01K7G7JN30V990EHS734AAX0FA&fields=handle ← - (200) - 273.737 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_us_default&fields=handle ← - (200) - 139.473 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 732.389 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 259.995 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 125.685 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 67.040 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 142.980 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 54.752 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 126.477 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 140.554 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 152.145 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 145.345 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 128.793 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 138.737 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 155.809 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 68.811 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 49.487 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 1014.877 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 135.365 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 307.984 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 365.485 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 361.106 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 326.589 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 269.544 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 105.922 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 264.964 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 79.713 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 26.161 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 21.584 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 75.756 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 27.910 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 43.024 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 46.300 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 64.407 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 62.045 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 68.017 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 54.443 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 31.675 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 217.779 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 79.480 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 20.450 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 59.690 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 54.813 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 78.021 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 81.493 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 120.594 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 125.252 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 130.943 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 117.508 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 114.164 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 13.358 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 468.593 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 35.219 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 36.157 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 37.323 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 36.073 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 49.282 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 48.961 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 35.669 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 173.551 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7XVDN6SFSBJZ8XSAQNE2VMM/line-items ← - (200) - 520.000 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 13.366 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 29.689 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7XVDN6SFSBJZ8XSAQNE2VMM?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 120.005 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 55.672 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 52.810 ms
+[32mhttp[39m:    GET /store/shipping-options?cart_id=cart_01K7XVDN6SFSBJZ8XSAQNE2VMM ← - (200) - 165.625 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 69.292 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 22.997 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 25.302 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 21.795 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 61.254 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 47.044 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 46.428 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 54.049 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 59.924 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 60.841 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 41.550 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 43.708 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 37.289 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 23.445 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 26.518 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 52.448 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 45.035 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 45.232 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 51.255 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 52.781 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 54.292 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 55.010 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 63.492 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 65.476 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 164.598 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 22.094 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&order=created_at ← - (200) - 216.784 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&handle=sweatshirt ← - (200) - 311.727 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&id%5B0%5D=prod_01K7G7JN9CA0Y30P46FTZH000X ← - (200) - 332.566 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&is_giftcard=false ← - (200) - 390.513 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 59.110 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 30.286 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 32.510 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 31.144 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 29.027 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 31.482 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 31.825 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 24.181 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 31.147 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_01K7G7JN30V990EHS734AAX0FA&fields=handle ← - (200) - 54.652 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_us_default&fields=handle ← - (200) - 37.528 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 353.971 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 103.179 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&order=created_at ← - (200) - 891.377 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 19.141 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&handle=sweatshirt ← - (200) - 268.734 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&is_giftcard=false ← - (200) - 199.059 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&id%5B0%5D=prod_01K7G7JN9CA0Y30P46FTZH000X ← - (200) - 220.395 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 40.830 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 117.631 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 115.822 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 130.160 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 123.011 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 121.273 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 120.481 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 121.656 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 113.951 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_01K7G7JN30V990EHS734AAX0FA&fields=handle ← - (200) - 69.027 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_us_default&fields=handle ← - (200) - 92.485 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 302.843 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7XVV0M90MNZGV8H1ETEPWJH/line-items ← - (200) - 461.695 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 22.515 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 4.719 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 41.016 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 51.219 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 48.898 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 47.241 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 38.743 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 60.996 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 29.354 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 37.539 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 13.996 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7XVV0M90MNZGV8H1ETEPWJH?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 58.957 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 45.968 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 35.514 ms
+[32mhttp[39m:    GET /store/shipping-options?cart_id=cart_01K7XVV0M90MNZGV8H1ETEPWJH ← - (200) - 207.157 ms
+[32mhttp[39m:    OPTIONS /store/payment-collections ← http://localhost:8000/ (204) - 3.623 ms
+[32mhttp[39m:    OPTIONS /store/payment-collections ← http://localhost:8000/ (204) - 0.524 ms
+[32mhttp[39m:    POST /store/payment-collections ← http://localhost:8000/ (200) - 245.826 ms
+[32mhttp[39m:    OPTIONS /store/payment-collections/pay_col_01K7XVV4NRW75QQNS9P4QDZ5JC/payment-sessions ← http://localhost:8000/ (204) - 1.396 ms
+[31merror[39m:   Cart cart_01K7XVV0M90MNZGV8H1ETEPWJH already has a payment collection
+{
+  message: 'Cart cart_01K7XVV0M90MNZGV8H1ETEPWJH already has a payment collection',
+  name: 'Error',
+  stack: 'Error: Cart cart_01K7XVV0M90MNZGV8H1ETEPWJH already has a payment collection\n' +
+    '    at Object.<anonymous> (/Users/mela/isis/skinLair/node_modules/@medusajs/core-flows/src/cart/workflows/create-payment-collection-for-cart.ts:56:13)\n' +
+    '    at Object.invoke (/Users/mela/isis/skinLair/node_modules/@medusajs/workflows-sdk/src/utils/composer/helpers/create-step-handler.ts:91:67)\n' +
+    '    at DistributedTransaction.handler (/Users/mela/isis/skinLair/node_modules/@medusajs/orchestration/src/workflow/workflow-manager.ts:214:43)\n' +
+    '    at stepHandler (/Users/mela/isis/skinLair/node_modules/@medusajs/orchestration/src/transaction/transaction-orchestrator.ts:1113:32)\n' +
+    '    at TransactionOrchestrator.executeSyncStep (/Users/mela/isis/skinLair/node_modules/@medusajs/orchestration/src/transaction/transaction-orchestrator.ts:1133:12)\n' +
+    '    at TransactionOrchestrator.executeNext (/Users/mela/isis/skinLair/node_modules/@medusajs/orchestration/src/transaction/transaction-orchestrator.ts:951:18)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async executeNext (/Users/mela/isis/skinLair/node_modules/@medusajs/orchestration/src/transaction/transaction-orchestrator.ts:1351:14)\n' +
+    '    at async TransactionOrchestrator.resume (/Users/mela/isis/skinLair/node_modules/@medusajs/orchestration/src/transaction/transaction-orchestrator.ts:1366:5)\n' +
+    '    at async LocalWorkflow.run (/Users/mela/isis/skinLair/node_modules/@medusajs/orchestration/src/workflow/local-workflow.ts:375:5)\n' +
+    '    at async originalExecution (/Users/mela/isis/skinLair/node_modules/@medusajs/workflows-sdk/src/helper/workflow-export.ts:139:26)\n' +
+    '    at async newRun (/Users/mela/isis/skinLair/node_modules/@medusajs/workflows-sdk/src/helper/workflow-export.ts:221:12)\n' +
+    '    at async Function.exportedWorkflow.run (/Users/mela/isis/skinLair/node_modules/@medusajs/workflows-sdk/src/helper/workflow-export.ts:497:12)\n' +
+    '    at async WorkflowOrchestratorService.run (/Users/mela/isis/skinLair/node_modules/@medusajs/workflow-engine-inmemory/src/services/workflow-orchestrator.ts:202:17)\n' +
+    '    at async WorkflowsModuleService.run (/Users/mela/isis/skinLair/node_modules/@medusajs/workflow-engine-inmemory/src/services/workflows-module.ts:188:17)\n' +
+    '    at async POST (/Users/mela/isis/skinLair/node_modules/@medusajs/medusa/src/api/store/payment-collections/route.ts:32:5)\n' +
+    '    at async POST (/Users/mela/isis/skinLair/node_modules/@medusajs/framework/src/http/utils/wrap-handler.ts:27:14)\n' +
+    '⮑ sat /Users/mela/isis/skinLair/node_modules/@medusajs/core-flows/dist/cart/workflows/create-payment-collection-for-cart.js: [create-payment-collection-for-cart -> validate-existing-payment-collection (invoke)]'
+}
+[32mhttp[39m:    POST /store/payment-collections ← http://localhost:8000/ (500) - 493.876 ms
+[32mhttp[39m:    POST /store/payment-collections/pay_col_01K7XVV4NRW75QQNS9P4QDZ5JC/payment-sessions ← http://localhost:8000/ (-) - - ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 26.105 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 62.304 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 35.930 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 26.846 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 77.729 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 11.829 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 52.498 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 55.550 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 64.505 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 68.611 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 68.808 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 41.496 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 28.037 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 47.960 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 12.072 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 43.530 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 18.569 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 30.484 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 44.297 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 47.379 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 47.330 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 38.997 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 32.426 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 27.172 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 21.305 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 32.045 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 59.408 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 50.995 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 57.682 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 54.334 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 73.545 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 65.832 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 56.920 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 58.407 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 30.293 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 195.544 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 121.477 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&order=created_at ← - (200) - 776.249 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 77.264 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&handle=sweatshirt ← - (200) - 493.456 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&id%5B0%5D=prod_01K7G7JN9CA0Y30P46FTZH000X ← - (200) - 359.330 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&is_giftcard=false ← - (200) - 468.311 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 123.140 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 100.723 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 105.013 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 109.664 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 103.752 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 137.183 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 147.814 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 122.014 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 109.836 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_01K7G7JN30V990EHS734AAX0FA&fields=handle ← - (200) - 177.067 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_us_default&fields=handle ← - (200) - 172.410 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 83.557 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 441.624 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 403.714 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 237.904 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 211.359 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 101.498 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 44.359 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 129.032 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 135.786 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 113.865 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 128.680 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 146.961 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 154.594 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 144.534 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 818.578 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 31.040 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 54.935 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 54.125 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 66.148 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 65.008 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 117.076 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 107.692 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 121.794 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 144.080 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7XWEEYC5XPE9YE42A2H21SH/line-items ← - (200) - 855.933 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 38.165 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 50.505 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 51.304 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 33.130 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7XWEEYC5XPE9YE42A2H21SH?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 145.127 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 101.759 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 128.168 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 78.048 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 77.684 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 71.987 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 150.103 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 87.841 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 85.532 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 89.633 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 523.525 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 11.847 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 140.178 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 141.567 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 142.956 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 349.809 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 373.566 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 407.801 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 430.238 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 437.806 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7XWET9TNBTBRCTD5FHEW61C/line-items ← - (200) - 1000.628 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 139.077 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 106.028 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7XWET9TNBTBRCTD5FHEW61C?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 161.427 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 195.036 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 110.555 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 73.581 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 115.416 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 125.068 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 80.970 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 84.998 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 88.806 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 87.306 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 114.022 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 123.042 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 96.595 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 122.188 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 736.094 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 58.443 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7XWFNJ8SKZCKQVPM3MK2NA4/line-items ← - (200) - 872.106 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 149.630 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 149.825 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 144.090 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 147.742 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 151.316 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 173.558 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 174.518 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 183.191 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 109.065 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 76.152 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7XWFNJ8SKZCKQVPM3MK2NA4?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 157.433 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 66.525 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 63.583 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 33.138 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 395.423 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 70.392 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 101.579 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 162.356 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 320.233 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 324.255 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 317.283 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 293.967 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 280.676 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 286.347 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 217.456 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 293.373 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 184.566 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 204.238 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 142.295 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 33.322 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 185.935 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 134.071 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 134.573 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 137.858 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 169.818 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 159.106 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 182.044 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 199.763 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 180.706 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 595.879 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 244.082 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 131.733 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 217.013 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 208.757 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 248.679 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 206.027 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 148.026 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 376.290 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 3139.118 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 14.759 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7XWN821DYRJ3YGYK00JCQ3V/line-items ← - (200) - 1501.956 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 19.673 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 54.099 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 14.493 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7XWN821DYRJ3YGYK00JCQ3V?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 93.002 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 136.703 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 235.841 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 235.309 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 251.898 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 243.921 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 266.981 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 259.668 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 254.265 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 240.325 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 124.711 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 44.639 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 218.958 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 357.509 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 356.102 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 352.287 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 375.234 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 371.833 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 368.982 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 359.868 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 265.280 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 668.650 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7XWP8A3367TBMGA78KD8ZSZ/line-items ← - (200) - 1014.373 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 135.698 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 80.975 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7XWP8A3367TBMGA78KD8ZSZ?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 198.278 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 168.225 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 197.668 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 49.486 ms
+[32mhttp[39m:    DELETE /store/carts/cart_01K7XWP8A3367TBMGA78KD8ZSZ/line-items/cali_01K7XWP98QY22WDJ6K6MG63WWS ← - (200) - 517.987 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 96.373 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 85.884 ms
+[32mhttp[39m:    DELETE /store/carts/cart_01K7XWP8A3367TBMGA78KD8ZSZ/line-items/cali_01K7XWP98QY22WDJ6K6MG63WWS ← - (200) - 1494.202 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 208.813 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7XWP8A3367TBMGA78KD8ZSZ?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 1035.127 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 269.144 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 398.688 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 129.446 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&order=created_at ← - (200) - 959.289 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 86.258 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&handle=sweatshirt ← - (200) - 865.229 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 799.788 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&id%5B0%5D=prod_01K7G7JN9CA0Y30P46FTZH000X ← - (200) - 1935.930 ms
+[32mhttp[39m:    GET /store/products?limit=12&offset=0&region_id=reg_us_default&fields=%2Avariants.calculated_price%2C%2Bvariants.inventory_quantity%2C%2Bmetadata%2C%2Btags&is_giftcard=false ← - (200) - 2028.252 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 302.510 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 258.875 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 306.360 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 311.115 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 309.762 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 253.027 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 208.643 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 185.352 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_01K7G7JN30V990EHS734AAX0FA&fields=handle ← - (200) - 190.035 ms
+[32mhttp[39m:    GET /store/products?limit=100&offset=0&region_id=reg_us_default&fields=handle ← - (200) - 178.743 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 280.063 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 161.149 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 70.069 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 39.933 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 97.196 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 177.169 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 191.836 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 192.923 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 224.002 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 153.948 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 129.324 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 60.769 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 77.711 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 79.504 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 81.044 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 423.380 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 79.920 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 148.297 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 338.914 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 382.694 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 361.404 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 376.081 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 331.284 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 399.644 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 92.676 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 184.863 ms
+[32mhttp[39m:    GET /static/1760568007575-download-1.jpeg ← - (200) - 79.317 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 219.630 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 79.670 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 99.548 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 112.630 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 113.065 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 66.667 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 132.756 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 72.150 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 80.618 ms
+[32mhttp[39m:    POST /store/carts ← - (200) - 985.738 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 71.780 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 44.002 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 52.112 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 73.384 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 85.333 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 93.964 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 88.816 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 84.971 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 86.024 ms
+[32mhttp[39m:    POST /store/carts/cart_01K7XX20HNDEM84EEKX4D6BTBN/line-items ← - (200) - 652.508 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 78.193 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 210.054 ms
+[32mhttp[39m:    GET /store/carts/cart_01K7XX20HNDEM84EEKX4D6BTBN?fields=%2Aitems%2C%20%2Aregion%2C%20%2Aitems.product%2C%20%2Aitems.variant%2C%20%2Aitems.thumbnail%2C%20%2Aitems.metadata%2C%20%2Bitems.total%2C%20%2Apromotions%2C%20%2Bshipping_methods.name%2C%20%2Apayment_collection%2C%20%2Apayment_collection.payment_sessions ← - (200) - 236.319 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 119.604 ms
+[32mhttp[39m:    GET /store/customers/me?fields=%2Aorders ← - (401) - 160.216 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 57.232 ms
+[32minfo[39m:    Region with id reg_01JFF3W7GRNDMX73FMVK1ZY54E not found when populating the pricing context
+[32mhttp[39m:    GET /store/products?region_id=reg_01JFF3W7GRNDMX73FMVK1ZY54E&limit=10&fields=*variants.inventory_quantity,*variants.manage_inventory,*variants.allow_backorder ← - (400) - 384.551 ms
+[32mhttp[39m:    GET /store/regions ← - (200) - 66.368 ms
+[32mhttp[39m:    GET /store/products?region_id=reg_us_default&limit=10&fields=*variants.inventory_quantity,*variants.manage_inventory,*variants.allow_backorder ← - (200) - 423.410 ms
+[32mhttp[39m:    GET /store/products?region_id=reg_us_default&limit=5 ← - (200) - 136.120 ms
+[32mhttp[39m:    GET /app/entry.jsx?t=1760867133980 ← http://localhost:9000/app/@vite/client (200) - 1223.572 ms
+[32mhttp[39m:    GET /app/login ← http://localhost:9000/app/login (304) - 268.257 ms
+[32mhttp[39m:    GET /app/index.css?t=1760867133938 ← http://localhost:9000/app/@vite/client (-) - - ms
+[32mhttp[39m:    GET /app/index.css?t=1760867133980 ← http://localhost:9000/app/@vite/client (-) - - ms
+[32mhttp[39m:    GET /app/index.css?t=1760867133981 ← http://localhost:9000/app/entry.jsx?t=1760867133980 (-) - - ms
+[32mhttp[39m:    GET /app/entry.jsx ← http://localhost:9000/app/login (200) - 0.300 ms
+[32mhttp[39m:    GET /app/index.css?t=1760867133981 ← http://localhost:9000/app/entry.jsx (200) - 2742.156 ms
+[32mhttp[39m:    GET /admin/feature-flags ← http://localhost:9000/app/login (304) - 14.390 ms
+[32minfo[39m:    Gracefully shutting down server
+[32minfo[39m:    yarn.lock modified: Restarting dev server
+[32minfo[39m:    package-lock.json modified: Restarting dev server
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    Skipping instrumentation registration. No register function found.
+[32minfo[39m:    redisUrl not found. A fake redis instance will be used.
+[32minfo[39m:    No link to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/links. skipped.
+[33mwarn[39m:    Local Event Bus installed. This is not recommended for production.
+[32minfo[39m:    Locking module: Using "in-memory" as default.
+[32minfo[39m:    No workflow to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/workflows. skipped.
+[32minfo[39m:    No subscriber to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/subscribers. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/medusa/dist/jobs. skipped.
+[32minfo[39m:    No job to load from /Users/mela/isis/skinLair/node_modules/@medusajs/draft-order/.medusa/server/src/jobs. skipped.
+- Creating server
+✔ Server is ready on port: 9000 – 27ms
+[32minfo[39m:    Admin URL → http://localhost:9000/app
