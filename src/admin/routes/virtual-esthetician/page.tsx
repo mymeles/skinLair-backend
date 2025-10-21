@@ -24,6 +24,22 @@ interface VirtualSession {
   meetingLink?: string
 }
 
+interface WorkingHours {
+  day: string
+  startTime: string
+  endTime: string
+  isWorking: boolean
+}
+
+interface BlockedDate {
+  id: string
+  date: string
+  startTime?: string
+  endTime?: string
+  reason: string
+  isAllDay: boolean
+}
+
 interface EstheticianProfile {
   name: string
   specialty: string
@@ -34,6 +50,8 @@ interface EstheticianProfile {
   availability: string[]
   bio: string
   services: string[]
+  workingHours: WorkingHours[]
+  blockedDates: BlockedDate[]
 }
 
 export const config = defineRouteConfig({
@@ -56,16 +74,48 @@ export default function VirtualEsthetician() {
       "Virtual Skin Analysis",
       "Treatment Planning",
       "Classic Facial",
-      "Microneedling", 
+      "Microneedling",
       "Chemical Peel",
       "HydraFacial",
       "Laser Hair Removal",
       "Anti-Aging Treatments"
+    ],
+    workingHours: [
+      { day: "Monday", startTime: "09:00", endTime: "17:00", isWorking: true },
+      { day: "Tuesday", startTime: "09:00", endTime: "17:00", isWorking: true },
+      { day: "Wednesday", startTime: "09:00", endTime: "17:00", isWorking: true },
+      { day: "Thursday", startTime: "09:00", endTime: "17:00", isWorking: true },
+      { day: "Friday", startTime: "09:00", endTime: "17:00", isWorking: true },
+      { day: "Saturday", startTime: "10:00", endTime: "15:00", isWorking: true },
+      { day: "Sunday", startTime: "10:00", endTime: "15:00", isWorking: false }
+    ],
+    blockedDates: [
+      {
+        id: "1",
+        date: "2024-12-25",
+        reason: "Christmas Day",
+        isAllDay: true
+      },
+      {
+        id: "2",
+        date: "2024-12-31",
+        reason: "New Year's Eve",
+        isAllDay: true
+      }
     ]
   })
   const [loading, setLoading] = useState(true)
   const [showSettings, setShowSettings] = useState(false)
   const [showEditForm, setShowEditForm] = useState(false)
+  const [showAvailabilityForm, setShowAvailabilityForm] = useState(false)
+  const [showBlockedDatesForm, setShowBlockedDatesForm] = useState(false)
+  const [newBlockedDate, setNewBlockedDate] = useState({
+    date: "",
+    startTime: "",
+    endTime: "",
+    reason: "",
+    isAllDay: true
+  })
   const [editForm, setEditForm] = useState({
     name: "",
     specialty: "",
@@ -188,6 +238,77 @@ export default function VirtualEsthetician() {
     setShowEditForm(false)
   }
 
+  const handleWorkingHoursChange = (day: string, field: string, value: string | boolean) => {
+    setProfile(prev => ({
+      ...prev,
+      workingHours: prev.workingHours.map(hour => 
+        hour.day === day 
+          ? { ...hour, [field]: value }
+          : hour
+      )
+    }))
+  }
+
+  const syncAvailabilityToBookingSystem = async () => {
+    try {
+      const response = await fetch('/admin/esthetician/availability', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(profile),
+      })
+
+      if (response.ok) {
+        console.log('✅ Availability synced to booking system')
+      } else {
+        console.error('❌ Failed to sync availability')
+      }
+    } catch (error) {
+      console.error('Error syncing availability:', error)
+    }
+  }
+
+  const addBlockedDate = async () => {
+    if (!newBlockedDate.date || !newBlockedDate.reason) return
+
+    const blockedDate: BlockedDate = {
+      id: Date.now().toString(),
+      date: newBlockedDate.date,
+      startTime: newBlockedDate.isAllDay ? undefined : newBlockedDate.startTime,
+      endTime: newBlockedDate.isAllDay ? undefined : newBlockedDate.endTime,
+      reason: newBlockedDate.reason,
+      isAllDay: newBlockedDate.isAllDay
+    }
+
+    setProfile(prev => ({
+      ...prev,
+      blockedDates: [...prev.blockedDates, blockedDate]
+    }))
+
+    // Sync to booking system
+    await syncAvailabilityToBookingSystem()
+
+    setNewBlockedDate({
+      date: "",
+      startTime: "",
+      endTime: "",
+      reason: "",
+      isAllDay: true
+    })
+    setShowBlockedDatesForm(false)
+  }
+
+  const removeBlockedDate = async (id: string) => {
+    setProfile(prev => ({
+      ...prev,
+      blockedDates: prev.blockedDates.filter(date => date.id !== id)
+    }))
+    
+    // Sync to booking system
+    await syncAvailabilityToBookingSystem()
+  }
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'scheduled': return 'blue'
@@ -268,6 +389,15 @@ export default function VirtualEsthetician() {
           <div className="text-right">
             <Text className="text-sm text-ui-fg-subtle">Experience</Text>
             <Text className="font-semibold">{profile.experience}</Text>
+            <div className="mt-2">
+              <Button
+                variant="primary"
+                size="small"
+                onClick={() => setShowAvailabilityForm(true)}
+              >
+                📅 Quick Schedule
+              </Button>
+            </div>
           </div>
         </div>
         
@@ -280,14 +410,29 @@ export default function VirtualEsthetician() {
                 <Text className="text-sm text-ui-fg-subtle">{profile.availability.join(", ")}</Text>
               </div>
             </div>
-            <Button
-              variant="secondary"
-              size="small"
-              onClick={handleEditProfile}
-              className="ml-4"
-            >
-              ✏️ Edit Profile
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant="secondary"
+                size="small"
+                onClick={handleEditProfile}
+              >
+                ✏️ Edit Profile
+              </Button>
+              <Button
+                variant="primary"
+                size="small"
+                onClick={() => setShowAvailabilityForm(true)}
+              >
+                🕒 Manage Hours
+              </Button>
+              <Button
+                variant="primary"
+                size="small"
+                onClick={() => setShowBlockedDatesForm(true)}
+              >
+                🚫 Block Dates
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -340,6 +485,85 @@ export default function VirtualEsthetician() {
               </div>
             </div>
             <Star className="w-8 h-8 text-yellow-600" />
+          </div>
+        </div>
+      </div>
+
+      {/* Availability Management Section */}
+      <div className="p-6 bg-ui-bg-subtle rounded-lg border border-ui-border-base">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <Heading level="h2" className="text-lg font-semibold text-ui-fg-base">
+              📅 Availability Management
+            </Heading>
+            <Text className="text-ui-fg-subtle mt-1">
+              Manage your working hours and block unavailable dates
+            </Text>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Working Hours Summary */}
+          <div className="p-4 bg-ui-bg-base rounded-lg border border-ui-border-base">
+            <div className="flex items-center justify-between mb-3">
+              <Text className="font-semibold text-ui-fg-base">🕒 Working Hours</Text>
+              <Button
+                variant="primary"
+                size="small"
+                onClick={() => setShowAvailabilityForm(true)}
+              >
+                Manage
+              </Button>
+            </div>
+            <div className="space-y-2">
+              {profile.workingHours.slice(0, 3).map((hour) => (
+                <div key={hour.day} className="flex items-center justify-between text-sm">
+                  <Text className="font-medium text-ui-fg-base">{hour.day}</Text>
+                  <Text className={hour.isWorking ? "text-green-600" : "text-ui-fg-muted"}>
+                    {hour.isWorking ? `${hour.startTime} - ${hour.endTime}` : "Off"}
+                  </Text>
+                </div>
+              ))}
+              {profile.workingHours.length > 3 && (
+                <Text className="text-xs text-ui-fg-muted">
+                  +{profile.workingHours.length - 3} more days
+                </Text>
+              )}
+            </div>
+          </div>
+
+          {/* Blocked Dates Summary */}
+          <div className="p-4 bg-ui-bg-base rounded-lg border border-ui-border-base">
+            <div className="flex items-center justify-between mb-3">
+              <Text className="font-semibold text-ui-fg-base">🚫 Blocked Dates</Text>
+              <Button
+                variant="primary"
+                size="small"
+                onClick={() => setShowBlockedDatesForm(true)}
+              >
+                Manage
+              </Button>
+            </div>
+            <div className="space-y-2">
+              {profile.blockedDates.slice(0, 3).map((blockedDate) => (
+                <div key={blockedDate.id} className="flex items-center justify-between text-sm">
+                  <Text className="font-medium text-ui-fg-base">
+                    {new Date(blockedDate.date).toLocaleDateString()}
+                  </Text>
+                  <Text className="text-orange-600 text-xs">
+                    {blockedDate.reason}
+                  </Text>
+                </div>
+              ))}
+              {profile.blockedDates.length > 3 && (
+                <Text className="text-xs text-ui-fg-muted">
+                  +{profile.blockedDates.length - 3} more dates
+                </Text>
+              )}
+              {profile.blockedDates.length === 0 && (
+                <Text className="text-xs text-ui-fg-muted">No blocked dates</Text>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -607,6 +831,223 @@ export default function VirtualEsthetician() {
                   onClick={handleSaveProfile}
                 >
                   Save Changes
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Working Hours Management Modal */}
+      {showAvailabilityForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-ui-bg-base p-6 rounded-lg border border-ui-border-base w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <Heading level="h3" className="text-lg font-semibold text-ui-fg-base">
+                🕒 Manage Working Hours
+              </Heading>
+              <Button
+                variant="transparent"
+                size="small"
+                onClick={() => setShowAvailabilityForm(false)}
+              >
+                ✕
+              </Button>
+            </div>
+            
+            <div className="space-y-4">
+              {profile.workingHours.map((hour) => (
+                <div key={hour.day} className="flex items-center gap-4 p-4 border border-ui-border-base rounded-lg">
+                  <div className="w-20">
+                    <Text className="font-medium">{hour.day}</Text>
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={hour.isWorking}
+                      onChange={(e) => handleWorkingHoursChange(hour.day, 'isWorking', e.target.checked)}
+                      className="w-4 h-4"
+                    />
+                    <Text className="text-sm">Working</Text>
+                  </div>
+                  
+                  {hour.isWorking && (
+                    <div className="flex items-center gap-2">
+                      <Input
+                        type="time"
+                        value={hour.startTime}
+                        onChange={(e) => handleWorkingHoursChange(hour.day, 'startTime', e.target.value)}
+                        className="w-32"
+                      />
+                      <Text className="text-sm">to</Text>
+                      <Input
+                        type="time"
+                        value={hour.endTime}
+                        onChange={(e) => handleWorkingHoursChange(hour.day, 'endTime', e.target.value)}
+                        className="w-32"
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+              
+                 <div className="flex justify-end gap-2 pt-4">
+                   <Button
+                     variant="secondary"
+                     onClick={() => setShowAvailabilityForm(false)}
+                   >
+                     Cancel
+                   </Button>
+                   <Button
+                     variant="primary"
+                     onClick={async () => {
+                       await syncAvailabilityToBookingSystem()
+                       setShowAvailabilityForm(false)
+                       alert("Working hours updated and synced to booking system!")
+                     }}
+                   >
+                     Save Changes
+                   </Button>
+                 </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Blocked Dates Management Modal */}
+      {showBlockedDatesForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-ui-bg-base p-6 rounded-lg border border-ui-border-base w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <Heading level="h3" className="text-lg font-semibold text-ui-fg-base">
+                🚫 Manage Blocked Dates
+              </Heading>
+              <Button
+                variant="transparent"
+                size="small"
+                onClick={() => setShowBlockedDatesForm(false)}
+              >
+                ✕
+              </Button>
+            </div>
+            
+            <div className="space-y-4">
+              {/* Add New Blocked Date Form */}
+              <div className="p-4 border border-ui-border-base rounded-lg">
+                <Heading level="h4" className="text-md font-semibold mb-4">
+                  Add Blocked Date
+                </Heading>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <Input
+                    label="Date"
+                    type="date"
+                    value={newBlockedDate.date}
+                    onChange={(e) => setNewBlockedDate(prev => ({ ...prev, date: e.target.value }))}
+                    required
+                  />
+                  <Input
+                    label="Reason"
+                    value={newBlockedDate.reason}
+                    onChange={(e) => setNewBlockedDate(prev => ({ ...prev, reason: e.target.value }))}
+                    placeholder="e.g., Vacation, Personal"
+                    required
+                  />
+                </div>
+                
+                <div className="flex items-center gap-2 mt-4">
+                  <input
+                    type="checkbox"
+                    checked={newBlockedDate.isAllDay}
+                    onChange={(e) => setNewBlockedDate(prev => ({ ...prev, isAllDay: e.target.checked }))}
+                    className="w-4 h-4"
+                  />
+                  <Text className="text-sm">All Day</Text>
+                </div>
+                
+                {!newBlockedDate.isAllDay && (
+                  <div className="grid grid-cols-2 gap-4 mt-4">
+                    <Input
+                      label="Start Time"
+                      type="time"
+                      value={newBlockedDate.startTime}
+                      onChange={(e) => setNewBlockedDate(prev => ({ ...prev, startTime: e.target.value }))}
+                    />
+                    <Input
+                      label="End Time"
+                      type="time"
+                      value={newBlockedDate.endTime}
+                      onChange={(e) => setNewBlockedDate(prev => ({ ...prev, endTime: e.target.value }))}
+                    />
+                  </div>
+                )}
+                
+                <div className="flex justify-end gap-2 mt-4">
+                  <Button
+                    variant="secondary"
+                    onClick={() => setNewBlockedDate({
+                      date: "",
+                      startTime: "",
+                      endTime: "",
+                      reason: "",
+                      isAllDay: true
+                    })}
+                  >
+                    Clear
+                  </Button>
+                  <Button
+                    variant="primary"
+                    onClick={addBlockedDate}
+                  >
+                    Add Blocked Date
+                  </Button>
+                </div>
+              </div>
+              
+              {/* Existing Blocked Dates List */}
+              <div>
+                <Heading level="h4" className="text-md font-semibold mb-4">
+                  Current Blocked Dates
+                </Heading>
+                
+                {profile.blockedDates.length === 0 ? (
+                  <Text className="text-ui-fg-subtle">No blocked dates set</Text>
+                ) : (
+                  <div className="space-y-2">
+                    {profile.blockedDates.map((blockedDate) => (
+                      <div key={blockedDate.id} className="flex items-center justify-between p-3 border border-ui-border-base rounded-lg">
+                        <div>
+                          <Text className="font-medium">
+                            {new Date(blockedDate.date).toLocaleDateString()}
+                          </Text>
+                          <Text className="text-sm text-ui-fg-subtle">
+                            {blockedDate.reason}
+                            {!blockedDate.isAllDay && blockedDate.startTime && blockedDate.endTime && 
+                              ` • ${blockedDate.startTime} - ${blockedDate.endTime}`
+                            }
+                          </Text>
+                        </div>
+                        <Button
+                          variant="transparent"
+                          size="small"
+                          onClick={() => removeBlockedDate(blockedDate.id)}
+                          className="text-red-600 hover:text-red-700"
+                        >
+                          🗑️
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              <div className="flex justify-end gap-2 pt-4">
+                <Button
+                  variant="secondary"
+                  onClick={() => setShowBlockedDatesForm(false)}
+                >
+                  Close
                 </Button>
               </div>
             </div>
