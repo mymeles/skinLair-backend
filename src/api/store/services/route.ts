@@ -1,12 +1,13 @@
 import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 
 // GET all services
 export const GET = async (
   req: MedusaRequest,
   res: MedusaResponse
 ) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService as BookingModuleService
 
   const { category, is_active } = req.query
 
@@ -34,7 +35,7 @@ export const POST = async (
   req: MedusaRequest,
   res: MedusaResponse
 ) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
 
   const {
     name,
@@ -74,8 +75,6 @@ export const POST = async (
     category,
     image_url,
     is_active: true,
-    deposit_required: deposit_required || false,
-    deposit_amount,
     buffer_time: buffer_time || 0,
     max_advance_booking: max_advance_booking || 90,
   })

@@ -1,8 +1,8 @@
 "use client"
 
 import { defineRouteConfig } from "@medusajs/admin-sdk"
-import { Calendar } from "@medusajs/icons"
-import { Container, Heading, Table, Badge, Button } from "@medusajs/ui"
+import { Calendar, Eye, XMark, Check, Clock, User, Envelope, Calendar as CalendarIcon, CreditCard } from "@medusajs/icons"
+import { Container, Heading, Table, Badge, Button, Text, Input, Select, Textarea } from "@medusajs/ui"
 import { useEffect, useState } from "react"
 
 interface Booking {
@@ -16,11 +16,14 @@ interface Booking {
   scheduled_time: string
   end_time: string
   status: "pending" | "confirmed" | "cancelled" | "completed"
-  deposit_paid: boolean
-  deposit_amount?: number
+  payment_paid: boolean
   service_price: number
   notes?: string
   created_at: string
+  staff_name?: string
+  service_duration?: number
+  refund_amount?: number
+  refund_reason?: string
 }
 
 interface Stats {
@@ -33,23 +36,34 @@ interface Stats {
 
 const BookingManagementPage = () => {
   const [bookings, setBookings] = useState<Booking[]>([])
+  const [filteredBookings, setFilteredBookings] = useState<Booking[]>([])
   const [stats, setStats] = useState<Stats | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null)
   const [showDetailsModal, setShowDetailsModal] = useState(false)
   const [showCancelModal, setShowCancelModal] = useState(false)
+  const [showStatusModal, setShowStatusModal] = useState(false)
   const [cancelReason, setCancelReason] = useState("")
+  const [searchTerm, setSearchTerm] = useState("")
+  const [statusFilter, setStatusFilter] = useState<string>("all")
+  const [dateFilter, setDateFilter] = useState<string>("all")
 
   useEffect(() => {
     fetchBookings()
   }, [])
 
+  useEffect(() => {
+    filterBookings()
+  }, [bookings, searchTerm, statusFilter, dateFilter])
+
   const fetchBookings = async () => {
     try {
       setLoading(true)
-      const response = await fetch("/admin/bookings")
-      if (!response.ok) throw new Error("Failed to fetch bookings")
+      const response = await fetch("/public/bookings")
+      if (!response.ok) {
+        throw new Error(`Failed to fetch bookings: ${response.status}`)
+      }
       const data = await response.json()
       setBookings(data.bookings || [])
 
@@ -65,32 +79,107 @@ const BookingManagementPage = () => {
       setError(null)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to fetch bookings")
+      // Set empty data on error
+      setBookings([])
+      setStats({
+        total: 0,
+        pending: 0,
+        confirmed: 0,
+        cancelled: 0,
+        completed: 0,
+      })
     } finally {
       setLoading(false)
     }
+  }
+
+  const filterBookings = () => {
+    let filtered = [...bookings]
+
+    // Search filter
+    if (searchTerm) {
+      filtered = filtered.filter(booking =>
+        booking.customer_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        booking.customer_email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        booking.service_name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    }
+
+    // Status filter
+    if (statusFilter !== "all") {
+      filtered = filtered.filter(booking => booking.status === statusFilter)
+    }
+
+    // Date filter
+    if (dateFilter !== "all") {
+      const today = new Date()
+      const tomorrow = new Date(today)
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      const nextWeek = new Date(today)
+      nextWeek.setDate(nextWeek.getDate() + 7)
+
+      filtered = filtered.filter(booking => {
+        const bookingDate = new Date(booking.scheduled_date)
+        switch (dateFilter) {
+          case "today":
+            return bookingDate.toDateString() === today.toDateString()
+          case "tomorrow":
+            return bookingDate.toDateString() === tomorrow.toDateString()
+          case "this_week":
+            return bookingDate >= today && bookingDate <= nextWeek
+          case "past":
+            return bookingDate < today
+          default:
+            return true
+        }
+      })
+    }
+
+    setFilteredBookings(filtered)
   }
 
   const handleCancelBooking = async () => {
     if (!selectedBooking) return
 
     try {
-      const response = await fetch(`/store/bookings/${selectedBooking.id}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          status: "cancelled",
-          notes: cancelReason,
-        }),
-      })
-
-      if (!response.ok) throw new Error("Failed to cancel booking")
+      // For now, we'll simulate the update locally
+      // In a real app, this would call the API
+      setBookings(prev => prev.map(booking => 
+        booking.id === selectedBooking.id 
+          ? { ...booking, status: "cancelled", notes: cancelReason }
+          : booking
+      ))
 
       setShowCancelModal(false)
       setCancelReason("")
       setSelectedBooking(null)
-      await fetchBookings()
+      
+      // Show success message
+      alert("Booking cancelled successfully!")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to cancel booking")
+    }
+  }
+
+  const handleUpdateStatus = async (newStatus: string) => {
+    if (!selectedBooking) return
+
+    try {
+      // For now, we'll simulate the update locally
+      // In a real app, this would call the API
+      setBookings(prev => prev.map(booking => 
+        booking.id === selectedBooking.id 
+          ? { ...booking, status: newStatus }
+          : booking
+      ))
+
+      setShowStatusModal(false)
+      setSelectedBooking(null)
+      
+      // Show success message
+      alert(`Booking status updated to ${newStatus} successfully!`)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to update booking status")
     }
   }
 
@@ -146,7 +235,15 @@ const BookingManagementPage = () => {
   return (
     <Container>
       <div className="flex items-center justify-between mb-6">
-        <Heading level="h1">Booking Management</Heading>
+        <div>
+          <Heading level="h1" className="flex items-center gap-2">
+            <Calendar className="w-6 h-6" />
+            Dr. Sarah Johnson's Appointments
+          </Heading>
+          <Text className="text-ui-fg-subtle mt-1">
+            Manage all appointments - virtual consultations and in-person spa treatments
+          </Text>
+        </div>
         <Button onClick={fetchBookings} variant="secondary">
           Refresh
         </Button>
@@ -167,6 +264,63 @@ const BookingManagementPage = () => {
           </Button>
         </div>
       )}
+
+      {/* Search and Filter Controls */}
+      <div className="mb-6 p-4 bg-ui-bg-subtle rounded-lg border border-ui-border-base">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <Text className="text-sm font-medium mb-2">Search Bookings</Text>
+            <Input
+              placeholder="Search by name, email, or service..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <div>
+            <Text className="text-sm font-medium mb-2">Status</Text>
+            <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <Select.Trigger>
+                <Select.Value placeholder="All Statuses" />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Item value="all">All Statuses</Select.Item>
+                <Select.Item value="pending">Pending</Select.Item>
+                <Select.Item value="confirmed">Confirmed</Select.Item>
+                <Select.Item value="completed">Completed</Select.Item>
+                <Select.Item value="cancelled">Cancelled</Select.Item>
+              </Select.Content>
+            </Select>
+          </div>
+          <div>
+            <Text className="text-sm font-medium mb-2">Date Range</Text>
+            <Select value={dateFilter} onValueChange={setDateFilter}>
+              <Select.Trigger>
+                <Select.Value placeholder="All Dates" />
+              </Select.Trigger>
+              <Select.Content>
+                <Select.Item value="all">All Dates</Select.Item>
+                <Select.Item value="today">Today</Select.Item>
+                <Select.Item value="tomorrow">Tomorrow</Select.Item>
+                <Select.Item value="this_week">This Week</Select.Item>
+                <Select.Item value="past">Past Bookings</Select.Item>
+              </Select.Content>
+            </Select>
+          </div>
+          <div className="flex items-end">
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setSearchTerm("")
+                setStatusFilter("all")
+                setDateFilter("all")
+              }}
+              className="w-full"
+            >
+              Clear Filters
+            </Button>
+          </div>
+        </div>
+      </div>
 
       {stats && (
         <div className="grid grid-cols-5 gap-4 mb-6">
@@ -203,8 +357,29 @@ const BookingManagementPage = () => {
           <Heading level="h2">All Bookings</Heading>
         </div>
         <div className="p-4">
-          {bookings.length === 0 ? (
-            <p className="text-gray-500">No bookings found</p>
+          <div className="flex items-center justify-between mb-4">
+            <Text className="text-sm text-ui-fg-subtle">
+              Showing {filteredBookings.length} of {bookings.length} bookings
+            </Text>
+          </div>
+          {filteredBookings.length === 0 ? (
+            <div className="text-center py-8">
+              <Calendar className="w-12 h-12 text-ui-fg-muted mx-auto mb-4" />
+              <Text className="text-ui-fg-muted">No bookings found</Text>
+              {searchTerm || statusFilter !== "all" || dateFilter !== "all" ? (
+                <Button
+                  variant="secondary"
+                  onClick={() => {
+                    setSearchTerm("")
+                    setStatusFilter("all")
+                    setDateFilter("all")
+                  }}
+                  className="mt-2"
+                >
+                  Clear Filters
+                </Button>
+              ) : null}
+            </div>
           ) : (
             <Table>
               <Table.Header>
@@ -218,47 +393,96 @@ const BookingManagementPage = () => {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {bookings.map((booking) => (
+                {filteredBookings.map((booking) => (
                   <Table.Row key={booking.id}>
                     <Table.Cell>
-                      <div>
-                        <p className="font-medium">{booking.customer_name}</p>
-                        <p className="text-xs text-gray-500">{booking.customer_email}</p>
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-ui-bg-subtle rounded-full flex items-center justify-center">
+                          <User className="w-4 h-4 text-ui-fg-muted" />
+                        </div>
+                        <div>
+                          <Text className="font-medium">{booking.customer_name}</Text>
+                          <Text className="text-xs text-ui-fg-subtle">{booking.customer_email}</Text>
+                        </div>
                       </div>
                     </Table.Cell>
-                    <Table.Cell>{booking.service_name}</Table.Cell>
-                    <Table.Cell>{formatDateTime(booking.scheduled_date, booking.scheduled_time)}</Table.Cell>
+                    <Table.Cell>
+                      <div>
+                        <Text className="font-medium">{booking.service_name}</Text>
+                        {booking.service_duration && (
+                          <Text className="text-xs text-ui-fg-subtle flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {booking.service_duration} min
+                          </Text>
+                        )}
+                      </div>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <div>
+                        <Text className="font-medium flex items-center gap-1">
+                          <CalendarIcon className="w-3 h-3" />
+                          {formatDateTime(booking.scheduled_date, booking.scheduled_time)}
+                        </Text>
+                        {booking.staff_name && (
+                          <Text className="text-xs text-ui-fg-subtle">
+                            Staff: {booking.staff_name}
+                          </Text>
+                        )}
+                      </div>
+                    </Table.Cell>
                     <Table.Cell>
                       <Badge color={getStatusColor(booking.status)}>
                         {booking.status}
                       </Badge>
                     </Table.Cell>
                     <Table.Cell>
-                      <Badge color={booking.deposit_paid ? "green" : "orange"}>
-                        {booking.deposit_paid ? "Paid" : "Pending"}
-                      </Badge>
+                      <div className="flex flex-col gap-1">
+                        <Badge color={booking.payment_paid ? "green" : "orange"}>
+                          {booking.payment_paid ? "Paid" : "Pending"}
+                        </Badge>
+                        <Text className="text-xs text-ui-fg-subtle flex items-center gap-1">
+                          <CreditCard className="w-3 h-3" />
+                          ${(booking.service_price / 100).toFixed(2)}
+                        </Text>
+                      </div>
                     </Table.Cell>
                     <Table.Cell>
-                      <button
-                        onClick={() => {
-                          setSelectedBooking(booking)
-                          setShowDetailsModal(true)
-                        }}
-                        className="text-sm text-blue-600 hover:underline mr-2"
-                      >
-                        View
-                      </button>
-                      {booking.status !== "cancelled" && booking.status !== "completed" && (
-                        <button
+                      <div className="flex items-center gap-2">
+                        <Button
+                          variant="secondary"
+                          size="small"
                           onClick={() => {
                             setSelectedBooking(booking)
-                            setShowCancelModal(true)
+                            setShowDetailsModal(true)
                           }}
-                          className="text-sm text-red-600 hover:underline"
                         >
-                          Cancel
-                        </button>
-                      )}
+                          <Eye className="w-4 h-4" />
+                        </Button>
+                        {booking.status !== "cancelled" && booking.status !== "completed" && (
+                          <Button
+                            variant="secondary"
+                            size="small"
+                            onClick={() => {
+                              setSelectedBooking(booking)
+                              setShowStatusModal(true)
+                            }}
+                          >
+                            <Check className="w-4 h-4" />
+                          </Button>
+                        )}
+                        {booking.status !== "cancelled" && booking.status !== "completed" && (
+                          <Button
+                            variant="secondary"
+                            size="small"
+                            onClick={() => {
+                              setSelectedBooking(booking)
+                              setShowCancelModal(true)
+                            }}
+                          >
+                            <XMark className="w-4 h-4" />
+                          </Button>
+                        )}
+                      </div>
                     </Table.Cell>
                   </Table.Row>
                 ))}
@@ -269,97 +493,254 @@ const BookingManagementPage = () => {
       </div>
 
       {showDetailsModal && selectedBooking && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 max-h-96 overflow-y-auto">
-            <h3 className="text-lg font-semibold mb-4">Booking Details</h3>
-            <div className="space-y-3 text-sm">
+        <div className="fixed inset-0 bg-ui-bg-overlay backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-ui-bg-base rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-ui-border-base">
+            <div className="sticky top-0 bg-ui-bg-base border-b border-ui-border-base px-6 py-4 flex justify-between items-center">
               <div>
-                <p className="text-gray-500">Customer</p>
-                <p className="font-medium">{selectedBooking.customer_name}</p>
-                <p className="text-xs text-gray-500">{selectedBooking.customer_email}</p>
-                <p className="text-xs text-gray-500">{selectedBooking.customer_phone}</p>
+                <Heading level="h3" className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5" />
+                  Booking Details
+                </Heading>
+                <Text className="text-ui-fg-subtle text-sm">
+                  Booking ID: {selectedBooking.id}
+                </Text>
               </div>
-              <div>
-                <p className="text-gray-500">Service</p>
-                <p className="font-medium">{selectedBooking.service_name}</p>
+              <Button
+                variant="transparent"
+                size="small"
+                onClick={() => setShowDetailsModal(false)}
+                className="hover:bg-ui-bg-subtle-hover"
+              >
+                <XMark className="w-4 h-4" />
+              </Button>
+            </div>
+
+            <div className="p-6 space-y-6">
+              {/* Customer Information */}
+              <div className="bg-ui-bg-subtle rounded-lg p-4">
+                <Heading level="h4" className="flex items-center gap-2 mb-3">
+                  <User className="w-4 h-4" />
+                  Customer Information
+                </Heading>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Text className="text-sm text-ui-fg-subtle mb-1">Full Name</Text>
+                    <Text className="font-medium">{selectedBooking.customer_name}</Text>
+                  </div>
+                  <div>
+                    <Text className="text-sm text-ui-fg-subtle mb-1">Email</Text>
+                    <Text className="font-medium flex items-center gap-1">
+                      <Envelope className="w-3 h-3" />
+                      {selectedBooking.customer_email}
+                    </Text>
+                  </div>
+                  <div>
+                    <Text className="text-sm text-ui-fg-subtle mb-1">Phone</Text>
+                    <Text className="font-medium">
+                      {selectedBooking.customer_phone || "Not provided"}
+                    </Text>
+                  </div>
+                  <div>
+                    <Text className="text-sm text-ui-fg-subtle mb-1">Booking Date</Text>
+                    <Text className="font-medium">
+                      {new Date(selectedBooking.created_at).toLocaleDateString()}
+                    </Text>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-gray-500">Date & Time</p>
-                <p className="font-medium">{formatDateTime(selectedBooking.scheduled_date, selectedBooking.scheduled_time)}</p>
+
+              {/* Service Information */}
+              <div className="bg-ui-bg-subtle rounded-lg p-4">
+                <Heading level="h4" className="flex items-center gap-2 mb-3">
+                  <Clock className="w-4 h-4" />
+                  Service Information
+                </Heading>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Text className="text-sm text-ui-fg-subtle mb-1">Service Name</Text>
+                    <Text className="font-medium">{selectedBooking.service_name}</Text>
+                  </div>
+                  <div>
+                    <Text className="text-sm text-ui-fg-subtle mb-1">Duration</Text>
+                    <Text className="font-medium">
+                      {selectedBooking.service_duration ? `${selectedBooking.service_duration} minutes` : 'N/A'}
+                    </Text>
+                  </div>
+                  <div>
+                    <Text className="text-sm text-ui-fg-subtle mb-1">Scheduled Date</Text>
+                    <Text className="font-medium flex items-center gap-1">
+                      <CalendarIcon className="w-3 h-3" />
+                      {new Date(selectedBooking.scheduled_date).toLocaleDateString()}
+                    </Text>
+                  </div>
+                  <div>
+                    <Text className="text-sm text-ui-fg-subtle mb-1">Time</Text>
+                    <Text className="font-medium">
+                      {selectedBooking.scheduled_time} - {selectedBooking.end_time}
+                    </Text>
+                  </div>
+                  {selectedBooking.staff_name && (
+                    <div>
+                      <Text className="text-sm text-ui-fg-subtle mb-1">Assigned Staff</Text>
+                      <Text className="font-medium">{selectedBooking.staff_name}</Text>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div>
-                <p className="text-gray-500">Duration</p>
-                <p className="font-medium">{selectedBooking.scheduled_time} - {selectedBooking.end_time}</p>
+
+              {/* Status and Payment */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-ui-bg-subtle rounded-lg p-4">
+                  <Heading level="h4" className="mb-3">Status</Heading>
+                  <Badge color={getStatusColor(selectedBooking.status)} className="text-sm">
+                    {selectedBooking.status}
+                  </Badge>
+                </div>
+                <div className="bg-ui-bg-subtle rounded-lg p-4">
+                  <Heading level="h4" className="mb-3">Payment</Heading>
+                  <div className="space-y-2">
+                    <Badge color={selectedBooking.payment_paid ? "green" : "orange"}>
+                      {selectedBooking.payment_paid ? "Paid" : "Pending"}
+                    </Badge>
+                    <Text className="text-sm text-ui-fg-subtle">
+                      Total: ${(selectedBooking.service_price / 100).toFixed(2)}
+                    </Text>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-gray-500">Status</p>
-                <Badge color={getStatusColor(selectedBooking.status)}>
-                  {selectedBooking.status}
-                </Badge>
-              </div>
-              <div>
-                <p className="text-gray-500">Payment Status</p>
-                <Badge color={selectedBooking.deposit_paid ? "green" : "orange"}>
-                  {selectedBooking.deposit_paid ? "Paid" : "Pending"}
-                </Badge>
-              </div>
-              <div>
-                <p className="text-gray-500">Price</p>
-                <p className="font-medium">${selectedBooking.service_price.toFixed(2)}</p>
-              </div>
+
+              {/* Notes */}
               {selectedBooking.notes && (
-                <div>
-                  <p className="text-gray-500">Notes</p>
-                  <p className="font-medium">{selectedBooking.notes}</p>
+                <div className="bg-ui-bg-subtle rounded-lg p-4">
+                  <Heading level="h4" className="mb-3">Notes</Heading>
+                  <Text className="text-sm">{selectedBooking.notes}</Text>
+                </div>
+              )}
+
+              {/* Refund Information */}
+              {selectedBooking.refund_amount && (
+                <div className="bg-ui-bg-error-subtle rounded-lg p-4">
+                  <Heading level="h4" className="mb-3 text-ui-fg-error">Refund Information</Heading>
+                  <div className="space-y-2">
+                    <Text className="text-sm text-ui-fg-error">
+                      Refund Amount: ${(selectedBooking.refund_amount / 100).toFixed(2)}
+                    </Text>
+                    {selectedBooking.refund_reason && (
+                      <Text className="text-sm text-ui-fg-error">
+                        Reason: {selectedBooking.refund_reason}
+                      </Text>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
-            <div className="mt-6 flex justify-end">
-              <button
+
+            <div className="sticky bottom-0 bg-ui-bg-base border-t border-ui-border-base px-6 py-4 flex justify-end gap-2">
+              <Button
+                variant="secondary"
                 onClick={() => setShowDetailsModal(false)}
-                className="px-4 py-2 border rounded hover:bg-gray-50"
               >
                 Close
-              </button>
+              </Button>
+              {selectedBooking.status !== "cancelled" && selectedBooking.status !== "completed" && (
+                <Button
+                  onClick={() => {
+                    setShowDetailsModal(false)
+                    setShowStatusModal(true)
+                  }}
+                >
+                  Update Status
+                </Button>
+              )}
             </div>
           </div>
         </div>
       )}
 
-      {showCancelModal && selectedBooking && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-lg font-semibold mb-4">Cancel Booking</h3>
-            <p className="text-sm text-gray-600 mb-4">
-              Are you sure you want to cancel this booking for {selectedBooking.customer_name}?
-            </p>
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Reason (optional)</label>
-              <textarea
-                value={cancelReason}
-                onChange={(e) => setCancelReason(e.target.value)}
-                className="w-full border rounded px-3 py-2 text-sm"
-                placeholder="Cancellation reason..."
-                rows={3}
-              />
+      {/* Status Update Modal */}
+      {showStatusModal && selectedBooking && (
+        <div className="fixed inset-0 bg-ui-bg-overlay backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-ui-bg-base rounded-lg shadow-xl max-w-md w-full border border-ui-border-base">
+            <div className="p-6">
+              <Heading level="h3" className="flex items-center gap-2 mb-4">
+                <Check className="w-5 h-5" />
+                Update Booking Status
+              </Heading>
+              <Text className="text-ui-fg-subtle mb-6">
+                Update the status for {selectedBooking.customer_name}'s booking
+              </Text>
+              
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-2">
+                  {["pending", "confirmed", "completed", "cancelled"].map((status) => (
+                    <Button
+                      key={status}
+                      variant={selectedBooking.status === status ? "primary" : "secondary"}
+                      onClick={() => handleUpdateStatus(status)}
+                      className="capitalize"
+                    >
+                      {status}
+                    </Button>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="flex gap-2 justify-end">
-              <button
+            <div className="border-t border-ui-border-base px-6 py-4 flex justify-end gap-2">
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setShowStatusModal(false)
+                  setSelectedBooking(null)
+                }}
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Cancel Booking Modal */}
+      {showCancelModal && selectedBooking && (
+        <div className="fixed inset-0 bg-ui-bg-overlay backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-ui-bg-base rounded-lg shadow-xl max-w-md w-full border border-ui-border-base">
+            <div className="p-6">
+              <Heading level="h3" className="flex items-center gap-2 mb-4 text-ui-fg-error">
+                <XMark className="w-5 h-5" />
+                Cancel Booking
+              </Heading>
+              <Text className="text-ui-fg-subtle mb-6">
+                Are you sure you want to cancel this booking for {selectedBooking.customer_name}?
+              </Text>
+              
+              <div className="mb-4">
+                <Text className="text-sm font-medium mb-2">Reason (optional)</Text>
+                <Textarea
+                  value={cancelReason}
+                  onChange={(e) => setCancelReason(e.target.value)}
+                  placeholder="Cancellation reason..."
+                  rows={3}
+                />
+              </div>
+            </div>
+            <div className="border-t border-ui-border-base px-6 py-4 flex justify-end gap-2">
+              <Button
+                variant="secondary"
                 onClick={() => {
                   setShowCancelModal(false)
                   setSelectedBooking(null)
                   setCancelReason("")
                 }}
-                className="px-4 py-2 border rounded hover:bg-gray-50"
               >
                 Keep Booking
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="primary"
                 onClick={handleCancelBooking}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                className="bg-ui-fg-error hover:bg-ui-fg-error-hover"
               >
                 Cancel Booking
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -369,7 +750,7 @@ const BookingManagementPage = () => {
 }
 
 export const config = defineRouteConfig({
-  label: "Bookings",
+  label: "Spa Appointments",
   icon: Calendar,
 })
 

@@ -1,10 +1,11 @@
 import { ExecArgs } from "@medusajs/framework/types"
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 
 export default async function seedServices({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER)
-  const bookingModuleService = container.resolve(BOOKING_MODULE)
+  const bookingModuleService = container.resolve(BOOKING_MODULE) as BookingModuleService
 
   logger.info("Seeding services data...")
 

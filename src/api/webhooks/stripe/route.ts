@@ -2,13 +2,14 @@ import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import Stripe from "stripe"
 import stripe from "@modules/payment/stripe-client"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 
 /**
  * Stripe webhook handler for /webhooks/stripe
  * Handles payment events and updates booking status
  */
 export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
 
   const sig = req.headers["stripe-signature"] as string
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
@@ -56,18 +57,14 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
             id: payment.id,
             status: "succeeded",
             stripe_charge_id: paymentIntent.latest_charge as string,
-            updated_at: new Date(),
           })
 
           // Update booking status
-          if (payment.payment_type === "deposit") {
-            await bookingModuleService.updateBookings({
-              id: payment.booking_id,
-              deposit_paid: true,
-              status: "confirmed",
-              updated_at: new Date(),
-            })
-          }
+          await bookingModuleService.updateBookings({
+            id: payment.booking_id,
+            payment_paid: true,
+            status: "confirmed",
+          })
 
           console.log("Payment and booking updated successfully")
         } else {
@@ -82,10 +79,10 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
         const failedPaymentRecord = await bookingModuleService.retrievePayment(failedPayment.id)
 
         if (failedPaymentRecord) {
-          await bookingModuleService.updatePayments(failedPaymentRecord.id as any, {
+          await bookingModuleService.updatePayments({
+            id: failedPaymentRecord.id,
             status: "failed",
-            updated_at: new Date(),
-          } as any)
+          })
           console.log("Payment marked as failed")
         }
         break
@@ -99,11 +96,11 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
         })
 
         if (refundedPayments && refundedPayments.length > 0) {
-          await bookingModuleService.updatePayments(refundedPayments[0].id as any, {
+          await bookingModuleService.updatePayments({
+            id: refundedPayments[0].id,
             status: "refunded",
             refund_amount: refund.amount_refunded,
-            updated_at: new Date(),
-          } as any)
+          })
           console.log("Payment marked as refunded")
         }
         break

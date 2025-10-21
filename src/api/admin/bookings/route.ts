@@ -1,49 +1,39 @@
-import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
+import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 
-// Admin endpoints for managing bookings
-
-// GET all bookings (admin view with more details)
-export const GET = async (
-  req: MedusaRequest,
-  res: MedusaResponse
-) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
-
-  const { status, date_from, date_to, staff_id } = req.query
-
-  const filters: any = {}
-  
-  if (status) {
-    filters.status = status
+export async function GET(req: MedusaRequest, res: MedusaResponse) {
+  try {
+    const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
+    
+    const bookings = await bookingModuleService.listBookings()
+    
+    res.json({
+      bookings: bookings || []
+    })
+  } catch (error) {
+    console.error("Error fetching bookings:", error)
+    res.status(500).json({
+      error: "Failed to fetch bookings"
+    })
   }
+}
 
-  if (staff_id) {
-    filters.staff_id = staff_id
+export async function POST(req: MedusaRequest, res: MedusaResponse) {
+  try {
+    const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
+    
+    const bookingData = req.body as any
+    
+    const booking = await bookingModuleService.createBookings(bookingData)
+    
+    res.status(201).json({
+      booking
+    })
+  } catch (error) {
+    console.error("Error creating booking:", error)
+    res.status(500).json({
+      error: "Failed to create booking"
+    })
   }
-
-  if (date_from || date_to) {
-    filters.scheduled_date = {}
-    if (date_from) {
-      filters.scheduled_date.$gte = new Date(date_from as string)
-    }
-    if (date_to) {
-      filters.scheduled_date.$lte = new Date(date_to as string)
-    }
-  }
-
-  const bookings = await bookingModuleService.listBookings(filters, {
-    order: { scheduled_date: "ASC" }
-  })
-
-  // Get statistics
-  const stats = {
-    total: bookings.length,
-    pending: bookings.filter((b: any) => b.status === 'pending').length,
-    confirmed: bookings.filter((b: any) => b.status === 'confirmed').length,
-    cancelled: bookings.filter((b: any) => b.status === 'cancelled').length,
-    completed: bookings.filter((b: any) => b.status === 'completed').length,
-  }
-
-  res.json({ bookings, stats })
 }

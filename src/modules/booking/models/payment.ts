@@ -14,7 +14,7 @@ const Payment = model.define("booking_payment", {
     "cancelled",
     "refunded"
   ]).default("pending"),
-  payment_type: model.enum(["full", "deposit"]).default("deposit"),
+  payment_type: model.enum(["full"]).default("full"),
   customer_email: model.text(),
   metadata: model.json().nullable(),
   refund_amount: model.number().nullable(),

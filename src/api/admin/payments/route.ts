@@ -1,5 +1,6 @@
 import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 
 /**
  * Get all payments with filtering
@@ -8,7 +9,7 @@ export const GET = async (
   req: MedusaRequest,
   res: MedusaResponse
 ) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
 
   const { booking_id, status, customer_email } = req.query
 

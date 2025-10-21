@@ -1,91 +1,39 @@
-import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
+import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 
-// GET all services (admin view - includes inactive)
-export const GET = async (
-  req: MedusaRequest,
-  res: MedusaResponse
-) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
-
-  const { category, is_active } = req.query
-
-  const filters: any = {}
-  
-  if (category) {
-    filters.category = category
-  }
-  
-  if (is_active !== undefined) {
-    filters.is_active = is_active === 'true'
-  }
-
-  const services = await bookingModuleService.listServices(filters, {
-    order: { name: "ASC" }
-  })
-
-  res.json({ services })
-}
-
-// POST create new service
-export const POST = async (
-  req: MedusaRequest,
-  res: MedusaResponse
-) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
-
-  const {
-    name,
-    description,
-    duration,
-    price,
-    category,
-    image_url,
-    is_active,
-    deposit_required,
-    deposit_amount,
-    buffer_time,
-    max_advance_booking,
-  } = req.body as {
-    name?: string
-    description?: string
-    duration?: number
-    price?: number
-    category?: string
-    image_url?: string
-    is_active?: boolean
-    deposit_required?: boolean
-    deposit_amount?: number
-    buffer_time?: number
-    max_advance_booking?: number
-  }
-
-  if (!name || duration === undefined || price === undefined) {
-    return res.status(400).json({
-      error: "Missing required fields: name, duration, price",
-      received: { name, duration, price }
-    })
-  }
-
+export async function GET(req: MedusaRequest, res: MedusaResponse) {
   try {
-    const service = await bookingModuleService.createServices({
-      name,
-      description: description || undefined,
-      duration,
-      price,
-      category: category || undefined,
-      image_url: image_url || undefined,
-      is_active: is_active !== undefined ? is_active : true,
-      deposit_required: deposit_required || false,
-      deposit_amount: deposit_amount || undefined,
-      buffer_time: buffer_time || 0,
-      max_advance_booking: max_advance_booking || 90,
+    const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
+    
+    const services = await bookingModuleService.listServices()
+    
+    res.json({
+      services: services || []
     })
-
-    res.status(201).json({ service })
   } catch (error) {
-    console.error("Service creation error:", error)
-    res.status(400).json({ error: (error as Error).message })
+    console.error("Error fetching services:", error)
+    res.status(500).json({
+      error: "Failed to fetch services"
+    })
   }
 }
 
+export async function POST(req: MedusaRequest, res: MedusaResponse) {
+  try {
+    const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
+    
+    const serviceData = req.body as any
+    
+    const service = await bookingModuleService.createServices(serviceData)
+    
+    res.status(201).json({
+      service
+    })
+  } catch (error) {
+    console.error("Error creating service:", error)
+    res.status(500).json({
+      error: "Failed to create service"
+    })
+  }
+}

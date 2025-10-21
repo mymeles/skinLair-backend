@@ -2,6 +2,7 @@
 
 import { defineRouteConfig } from "@medusajs/admin-sdk"
 import { Container, Heading, Table, Badge, Button, Input, Checkbox } from "@medusajs/ui"
+import { Sparkles } from "@medusajs/icons"
 import { useEffect, useState } from "react"
 
 interface Service {
@@ -58,13 +59,17 @@ const ServiceManagementPage = () => {
   const fetchServices = async () => {
     try {
       setLoading(true)
-      const response = await fetch("/admin/services")
-      if (!response.ok) throw new Error("Failed to fetch services")
+      const response = await fetch("http://localhost:9000/public/services")
+      if (!response.ok) {
+        throw new Error(`Failed to fetch services: ${response.status}`)
+      }
       const data = await response.json()
       setServices(data.services || [])
       setError(null)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to fetch services")
+      // Set empty data on error
+      setServices([])
     } finally {
       setLoading(false)
     }
@@ -73,7 +78,7 @@ const ServiceManagementPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const url = editingId ? `/admin/services/${editingId}` : "/admin/services"
+      const url = editingId ? `/public/services/${editingId}` : "/public/services"
       const method = editingId ? "PUT" : "POST"
 
       const response = await fetch(url, {
@@ -131,7 +136,7 @@ const ServiceManagementPage = () => {
     if (!confirm("Are you sure you want to delete this service?")) return
 
     try {
-      const response = await fetch(`/admin/services/${id}`, {
+      const response = await fetch(`/public/services/${id}`, {
         method: "DELETE",
       })
 
@@ -173,9 +178,9 @@ const ServiceManagementPage = () => {
     <Container>
       <div className="mb-8">
         <Heading level="h1" className="mb-2">
-          Services Management
+          Dr. Sarah Johnson's Services
         </Heading>
-        <p className="text-ui-fg-subtle">Manage your booking services</p>
+        <p className="text-ui-fg-subtle">Manage all spa services offered by your single esthetician - both virtual and in-person treatments</p>
       </div>
 
       {error && (
@@ -294,12 +299,14 @@ const ServiceManagementPage = () => {
       <div className="overflow-x-auto">
         <Table>
           <Table.Header>
-            <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Duration</Table.HeaderCell>
-            <Table.HeaderCell>Price</Table.HeaderCell>
-            <Table.HeaderCell>Status</Table.HeaderCell>
-            <Table.HeaderCell>Deposit</Table.HeaderCell>
-            <Table.HeaderCell>Actions</Table.HeaderCell>
+            <Table.Row>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Duration</Table.HeaderCell>
+              <Table.HeaderCell>Price</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
+              <Table.HeaderCell>Deposit</Table.HeaderCell>
+              <Table.HeaderCell>Actions</Table.HeaderCell>
+            </Table.Row>
           </Table.Header>
           <Table.Body>
             {services.map((service) => (
@@ -347,7 +354,8 @@ const ServiceManagementPage = () => {
 }
 
 export const config = defineRouteConfig({
-  label: "Services",
+  label: "Spa Treatments",
+  icon: Sparkles,
 })
 
 export default ServiceManagementPage

@@ -1,6 +1,7 @@
 import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { getPaymentIntent } from "@modules/payment/stripe-service"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 import { sendPaymentConfirmation } from "@modules/notification/email-service"
 
 /**
@@ -16,7 +17,7 @@ export const POST = async (
     contentType: req.headers["content-type"],
   })
 
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
 
   const { payment_intent_id } = req.body as { payment_intent_id?: string }
 
@@ -60,45 +61,22 @@ export const POST = async (
         id: payment.id,
         status: "succeeded",
         stripe_charge_id: paymentIntent.latest_charge as string,
-        updated_at: new Date(),
       })
     } catch (updateError: any) {
       console.error("updatePayments failed with error:", updateError.message)
       console.error("Error details:", updateError)
-      
-      // Try alternative approach using upsert
-      try {
-        console.log("Trying upsertPayments approach")
-        await bookingModuleService.upsertPayments([{
-          id: payment.id,
-          status: "succeeded",
-          stripe_charge_id: paymentIntent.latest_charge as string,
-          updated_at: new Date(),
-        }])
-      } catch (upsertError: any) {
-        console.error("upsertPayments also failed:", upsertError.message)
-        throw updateError // Throw original error
-      }
+      throw updateError
     }
 
     // Update booking
     const booking = await bookingModuleService.retrieveBooking(payment.booking_id)
 
-    if (payment.payment_type === "deposit") {
-      await bookingModuleService.updateBookings({
-        id: payment.booking_id,
-        deposit_paid: true,
-        status: "confirmed",
-        updated_at: new Date(),
-      })
-    } else if (payment.payment_type === "full") {
-      await bookingModuleService.updateBookings({
-        id: payment.booking_id,
-        deposit_paid: true,
-        status: "confirmed",
-        updated_at: new Date(),
-      })
-    }
+    // Update booking to mark payment as paid and confirm booking
+    await bookingModuleService.updateBookings({
+      id: payment.booking_id,
+      payment_paid: true,
+      status: "confirmed",
+    })
 
     // Send confirmation email
     const updatedBooking = await bookingModuleService.retrieveBooking(payment.booking_id)

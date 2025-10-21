@@ -1,5 +1,6 @@
 import { ExecArgs } from "@medusajs/framework/types"
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils"
+import BookingModuleService from "@modules/booking/service"
 
 /**
  * Seed script to populate initial booking data
@@ -128,7 +129,7 @@ export default async function seedBookingData({ container }: ExecArgs) {
         filters: { name: service.name },
       }).then(async (result: any) => {
         if (!result || result.length === 0) {
-          await container.resolve("booking").createServices(service)
+          await (container.resolve("booking") as BookingModuleService).createServices(service)
           logger.info(`Created service: ${service.name}`)
         } else {
           logger.info(`Service already exists: ${service.name}`)
@@ -162,7 +163,7 @@ export default async function seedBookingData({ container }: ExecArgs) {
         },
       }).then(async (result: any) => {
         if (!result || result.length === 0) {
-          await container.resolve("booking").createAvailabilities({
+          await (container.resolve("booking") as BookingModuleService).createAvailabilities({
             ...slot,
             staff_name: "SkinLair Team",
           })

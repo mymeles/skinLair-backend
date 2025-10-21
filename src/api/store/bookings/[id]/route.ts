@@ -1,5 +1,6 @@
 import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 import { sendBookingCancellation } from "@modules/notification/email-service"
 
 // GET single booking
@@ -7,7 +8,7 @@ export const GET = async (
   req: MedusaRequest,
   res: MedusaResponse
 ) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
   const { id } = req.params
 
   try {
@@ -23,7 +24,7 @@ export const POST = async (
   req: MedusaRequest,
   res: MedusaResponse
 ) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
   const { id } = req.params
 
   try {
@@ -43,7 +44,7 @@ export const DELETE = async (
   req: MedusaRequest,
   res: MedusaResponse
 ) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
   const { id } = req.params
 
   try {

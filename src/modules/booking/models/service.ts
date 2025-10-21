@@ -9,10 +9,11 @@ const Service = model.define("service", {
   category: model.text().nullable(),
   image_url: model.text().nullable(),
   is_active: model.boolean().default(true),
-  deposit_required: model.boolean().default(false),
-  deposit_amount: model.number().nullable(),
   buffer_time: model.number().default(0), // buffer between appointments
   max_advance_booking: model.number().default(90), // days in advance
+  // Link to Medusa's product system
+  product_id: model.text().nullable(), // Link to Medusa product
+  variant_id: model.text().nullable(), // Link to Medusa product variant
 })
 
 export default Service

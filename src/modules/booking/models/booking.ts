@@ -23,9 +23,18 @@ const Booking = model.define("booking", {
   notes: model.text().nullable(),
   staff_id: model.text().nullable(),
   staff_name: model.text().nullable(),
-  deposit_paid: model.boolean().default(false),
-  deposit_amount: model.number().nullable(),
+  payment_paid: model.boolean().default(false),
   reminder_sent: model.boolean().default(false),
+  // Integration with Medusa's order system
+  order_id: model.text().nullable(), // Link to Medusa order
+  cart_id: model.text().nullable(), // Link to Medusa cart
+  // QR code for check-in (following tutorial pattern)
+  qr_code: model.text().nullable(),
+  checked_in: model.boolean().default(false),
+  checked_in_at: model.dateTime().nullable(),
+  // Refund fields
+  refund_amount: model.number().nullable(),
+  refund_reason: model.text().nullable(),
 })
 
 export default Booking

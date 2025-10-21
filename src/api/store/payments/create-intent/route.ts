@@ -1,6 +1,7 @@
 import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { createPaymentIntent } from "@modules/payment/stripe-service"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 
 /**
  * Create a payment intent for a booking
@@ -15,16 +16,16 @@ export const POST = async (
     contentType: req.headers["content-type"],
   })
 
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
 
-  const { booking_id, payment_type } = req.body as { booking_id?: string; payment_type?: string }
+  const { booking_id } = req.body as { booking_id?: string }
 
-  console.log("[Payment] Request body:", { booking_id, payment_type })
+  console.log("[Payment] Request body:", { booking_id })
 
-  if (!booking_id || !payment_type) {
+  if (!booking_id) {
     console.error("[Payment] Missing required fields")
     return res.status(400).json({
-      error: "Missing required fields: booking_id, payment_type"
+      error: "Missing required field: booking_id"
     })
   }
 
@@ -36,22 +37,9 @@ export const POST = async (
       return res.status(404).json({ error: "Booking not found" })
     }
 
-    // Determine amount based on payment type
-    let amount = 0
-    let description = ""
-
-    if (payment_type === "deposit") {
-      if (!booking.deposit_amount) {
-        return res.status(400).json({ error: "No deposit required for this booking" })
-      }
-      amount = booking.deposit_amount
-      description = `Deposit for ${booking.service_name} - ${booking.customer_name}`
-    } else if (payment_type === "full") {
-      amount = booking.service_price
-      description = `Full payment for ${booking.service_name} - ${booking.customer_name}`
-    } else {
-      return res.status(400).json({ error: "Invalid payment_type. Must be 'deposit' or 'full'" })
-    }
+    // Always require full payment
+    const amount = booking.service_price
+    const description = `Full payment for ${booking.service_name} - ${booking.customer_name}`
 
     // Create payment intent
     const paymentIntent = await createPaymentIntent({
@@ -60,7 +48,7 @@ export const POST = async (
       description,
       metadata: {
         booking_id: booking.id,
-        payment_type,
+        payment_type: "full",
         service_name: booking.service_name,
         customer_name: booking.customer_name,
       },
@@ -74,7 +62,7 @@ export const POST = async (
       amount,
       currency: "usd",
       status: "pending",
-      payment_type,
+        payment_type: "full",
       customer_email: booking.customer_email,
       metadata: {
         service_name: booking.service_name,
@@ -89,7 +77,7 @@ export const POST = async (
         amount,
         currency: "usd",
         status: "pending",
-        payment_type,
+        payment_type: "full",
         customer_email: booking.customer_email,
         metadata: {
           service_name: booking.service_name,

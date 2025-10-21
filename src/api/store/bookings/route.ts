@@ -1,5 +1,6 @@
 import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 import { sendBookingConfirmation } from "@modules/notification/email-service"
 
 // GET all bookings (with filters)
@@ -7,9 +8,9 @@ export const GET = async (
   req: MedusaRequest,
   res: MedusaResponse
 ) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
 
-  const { customer_email, status, date_from, date_to } = req.query
+  const { customer_email, status, date_from, date_to, date } = req.query
 
   const filters: any = {}
   
@@ -21,7 +22,19 @@ export const GET = async (
     filters.status = status
   }
 
-  if (date_from || date_to) {
+  if (date) {
+    // Filter by specific date for day view
+    const targetDate = new Date(date as string)
+    const startOfDay = new Date(targetDate)
+    startOfDay.setHours(0, 0, 0, 0)
+    const endOfDay = new Date(targetDate)
+    endOfDay.setHours(23, 59, 59, 999)
+    
+    filters.scheduled_date = {
+      $gte: startOfDay,
+      $lte: endOfDay
+    }
+  } else if (date_from || date_to) {
     filters.scheduled_date = {}
     if (date_from) {
       filters.scheduled_date.$gte = new Date(date_from as string)
@@ -44,7 +57,7 @@ export const POST = async (
   req: MedusaRequest,
   res: MedusaResponse
 ) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
+  const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
 
   const {
     customer_id,
@@ -128,8 +141,7 @@ export const POST = async (
     notes,
     staff_id,
     status: "pending",
-    deposit_paid: false,
-    deposit_amount: service.deposit_required ? service.deposit_amount : null,
+    payment_paid: false,
   })
 
   // Send confirmation email

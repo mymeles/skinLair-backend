@@ -1,117 +1,60 @@
-import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
+import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { BOOKING_MODULE } from "@modules/booking"
+import BookingModuleService from "@modules/booking/service"
 
-// GET single service
-export const GET = async (
-  req: MedusaRequest,
-  res: MedusaResponse
-) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
-  const { id } = req.params
-
+export async function GET(req: MedusaRequest, res: MedusaResponse) {
   try {
+    const { id } = req.params
+    const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
+    
     const service = await bookingModuleService.retrieveService(id)
-    res.json({ service })
+    
+    res.json({
+      service
+    })
   } catch (error) {
-    res.status(404).json({ error: "Service not found" })
-  }
-}
-
-// PUT update service
-export const PUT = async (
-  req: MedusaRequest,
-  res: MedusaResponse
-) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
-  const { id } = req.params
-
-  // Debug logging
-  console.log("PUT /admin/services/[id] - Request params:", req.params)
-  console.log("PUT /admin/services/[id] - ID:", id)
-  console.log("PUT /admin/services/[id] - Request body:", req.body)
-
-  // Validate ID
-  if (!id || id === "") {
-    console.error("PUT /admin/services/[id] - Empty ID received")
-    return res.status(400).json({
-      error: "Service ID is required",
-      received_id: id,
-      params: req.params
+    console.error("Error fetching service:", error)
+    res.status(500).json({
+      error: "Failed to fetch service"
     })
   }
+}
 
-  const {
-    name,
-    description,
-    duration,
-    price,
-    category,
-    image_url,
-    is_active,
-    deposit_required,
-    deposit_amount,
-    buffer_time,
-    max_advance_booking,
-  } = req.body as {
-    name?: string
-    description?: string
-    duration?: number
-    price?: number
-    category?: string
-    image_url?: string
-    is_active?: boolean
-    deposit_required?: boolean
-    deposit_amount?: number
-    buffer_time?: number
-    max_advance_booking?: number
-  }
-
+export async function PUT(req: MedusaRequest, res: MedusaResponse) {
   try {
-    // First verify the service exists
-    const existingService = await bookingModuleService.retrieveService(id)
-    if (!existingService) {
-      return res.status(404).json({ error: `Service with id "${id}" not found` })
-    }
-
-    console.log("PUT /admin/services/[id] - Existing service found:", existingService.name)
-
-    // Update the service
-    const service = await bookingModuleService.updateServices(id as any, {
-      name,
-      description,
-      duration,
-      price,
-      category,
-      image_url,
-      is_active,
-      deposit_required,
-      deposit_amount,
-      buffer_time,
-      max_advance_booking,
-      updated_at: new Date(),
-    } as any)
-
-    console.log("PUT /admin/services/[id] - Service updated successfully")
-    res.json({ service })
+    const { id } = req.params
+    const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
+    
+    const serviceData = req.body as any
+    
+    const service = await bookingModuleService.updateServices({
+      id,
+      ...serviceData
+    })
+    
+    res.json({
+      service
+    })
   } catch (error) {
-    console.error("PUT /admin/services/[id] - Error:", error)
-    res.status(400).json({ error: (error as Error).message })
+    console.error("Error updating service:", error)
+    res.status(500).json({
+      error: "Failed to update service"
+    })
   }
 }
 
-// DELETE service (soft delete)
-export const DELETE = async (
-  req: MedusaRequest,
-  res: MedusaResponse
-) => {
-  const bookingModuleService = req.scope.resolve(BOOKING_MODULE)
-  const { id } = req.params
-
+export async function DELETE(req: MedusaRequest, res: MedusaResponse) {
   try {
+    const { id } = req.params
+    const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
+    
     await bookingModuleService.deleteServices(id)
-    res.json({ success: true })
+    
+    res.status(204).send()
   } catch (error) {
-    res.status(400).json({ error: (error as Error).message })
+    console.error("Error deleting service:", error)
+    res.status(500).json({
+      error: "Failed to delete service"
+    })
   }
 }
-

@@ -13,7 +13,7 @@ import type {
  */
 async function allowCustomStoreRoutes(
   req: MedusaRequest,
-  _res: MedusaResponse,
+  res: MedusaResponse,
   next: MedusaNextFunction
 ) {
   // Log the request for debugging
@@ -23,7 +23,49 @@ async function allowCustomStoreRoutes(
   console.log(`[Middleware] ${req.method} ${path}`)
   console.log(`[Middleware] Publishable Key Header: ${publishableKey ? "Present" : "Missing"}`)
 
-  // Just pass through - no validation needed for custom routes
+  // For our custom routes, we'll handle the request directly
+  if (path?.includes('/store/services') || path?.includes('/store/bookings')) {
+    // Import the booking module service and handle the request
+    try {
+      const { BOOKING_MODULE } = await import("../modules/booking/index.js")
+      const BookingModuleService = (await import("../modules/booking/service.js")).default
+      
+      const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as any
+      
+      if (path?.includes('/store/services')) {
+        const services = await bookingModuleService.listServices()
+        res.json({ services: services || [] })
+        return
+      }
+      
+      if (path?.includes('/store/bookings')) {
+        if (req.method === 'GET') {
+          const bookings = await bookingModuleService.listBookings()
+          res.json({ bookings: bookings || [] })
+          return
+        } else if (req.method === 'POST') {
+          // Handle booking updates
+          // Extract ID from path like /store/bookings/123
+          const pathParts = path.split('/')
+          const id = pathParts[pathParts.length - 1]
+          if (id && id !== 'bookings') {
+            const booking = await bookingModuleService.updateBookings(id as any, {
+              ...(req.body as any),
+              updated_at: new Date(),
+            } as any)
+            res.json({ booking })
+            return
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error in custom middleware:", error)
+      res.status(500).json({ error: "Internal server error" })
+      return
+    }
+  }
+
+  // For other routes, just pass through
   next()
 }
 
@@ -48,6 +90,22 @@ export default defineMiddlewares({
     },
     {
       matcher: "/store/payments*",
+      middlewares: [allowCustomStoreRoutes],
+    },
+    {
+      matcher: "/store/session-times*",
+      middlewares: [allowCustomStoreRoutes],
+    },
+    {
+      matcher: "/admin/bookings*",
+      middlewares: [allowCustomStoreRoutes],
+    },
+    {
+      matcher: "/admin/services*",
+      middlewares: [allowCustomStoreRoutes],
+    },
+    {
+      matcher: "/admin/session-times*",
       middlewares: [allowCustomStoreRoutes],
     },
     {

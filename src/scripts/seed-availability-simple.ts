@@ -1,8 +1,9 @@
 import { ExecArgs } from "@medusajs/framework/types"
+import BookingModuleService from "@modules/booking/service"
 
 export default async function seedAvailability({ container }: ExecArgs) {
   const logger = container.resolve("logger")
-  const bookingModuleService = container.resolve("booking")
+  const bookingModuleService = container.resolve("booking") as BookingModuleService
 
   try {
     logger.info("Seeding availability data...")

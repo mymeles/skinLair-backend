@@ -3,12 +3,22 @@ import Booking from "./models/booking"
 import Service from "./models/service"
 import Availability from "./models/availability"
 import Payment from "./models/payment"
+import SessionTime from "./models/session-time"
+import Venue from "./models/venue"
+import TicketProduct from "./models/ticket-product"
+import TicketProductVariant from "./models/ticket-product-variant"
+import TicketPurchase from "./models/ticket-purchase"
 
 class BookingModuleService extends MedusaService({
   Booking,
   Service,
   Availability,
   Payment,
+  SessionTime,
+  Venue,
+  TicketProduct,
+  TicketProductVariant,
+  TicketPurchase,
 }) {
   // Add debug method to test payment creation
   async testPaymentCreation() {

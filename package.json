@@ -15,6 +15,9 @@
   "scripts": {
     "build": "medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
+    "seed:session-times": "medusa exec ./src/scripts/seed-session-times.ts",
+    "migrate:booking-integration": "medusa exec ./src/modules/booking/migrations/enhance-booking-integration.ts",
+    "migrate:ticket-booking": "medusa exec ./src/modules/booking/migrations/create-ticket-booking-tables.ts",
     "start": "medusa start",
     "dev": "medusa develop",
     "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
@@ -32,9 +35,11 @@
     "@mikro-orm/migrations": "6.4.3",
     "@mikro-orm/postgresql": "6.4.3",
     "@types/nodemailer": "^7.0.2",
+    "@types/qrcode": "^1.5.5",
     "awilix": "^8.0.1",
     "nodemailer": "^7.0.9",
     "pg": "^8.13.0",
+    "qrcode": "^1.5.4",
     "resend": "^6.1.2",
     "stripe": "^19.1.0"
   },
