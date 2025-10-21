@@ -64,62 +64,13 @@ export default function SpaProductsPage() {
   const loadProducts = async () => {
     try {
       setLoading(true)
-      // Mock data - in real app, this would come from API
-      setProducts([
-        {
-          id: "1",
-          name: "HydraFacial Serum",
-          description: "Advanced hydrating serum with hyaluronic acid and peptides",
-          category: "Serums",
-          price: 89,
-          sku: "HF-SERUM-001",
-          stock: 45,
-          image_url: "/images/hydrafacial-serum.jpg",
-          ingredients: ["Hyaluronic Acid", "Peptides", "Vitamin C"],
-          skinTypes: ["All", "Dry", "Combination"],
-          concerns: ["Hydration", "Anti-Aging", "Brightening"],
-          rating: 4.8,
-          reviews: 127,
-          is_active: true,
-          created_at: "2023-10-15"
-        },
-        {
-          id: "2",
-          name: "Retinol Night Cream",
-          description: "Professional-grade retinol cream for overnight renewal",
-          category: "Moisturizers",
-          price: 125,
-          sku: "RET-NIGHT-002",
-          stock: 23,
-          image_url: "/images/retinol-cream.jpg",
-          ingredients: ["Retinol", "Niacinamide", "Ceramides"],
-          skinTypes: ["Normal", "Dry", "Combination"],
-          concerns: ["Anti-Aging", "Acne", "Texture"],
-          rating: 4.6,
-          reviews: 89,
-          is_active: true,
-          created_at: "2023-09-22"
-        },
-        {
-          id: "3",
-          name: "Vitamin C Brightening Mask",
-          description: "Intensive brightening mask with 20% vitamin C",
-          category: "Masks",
-          price: 65,
-          sku: "VC-MASK-003",
-          stock: 67,
-          image_url: "/images/vitamin-c-mask.jpg",
-          ingredients: ["Vitamin C", "Kojic Acid", "Licorice Extract"],
-          skinTypes: ["All", "Oily", "Combination"],
-          concerns: ["Brightening", "Pigmentation", "Uneven Tone"],
-          rating: 4.9,
-          reviews: 203,
-          is_active: true,
-          created_at: "2023-11-08"
-        }
-      ])
+      // For now, we'll use an empty array since we don't have a products API yet
+      // In a real app, this would fetch from a products API
+      setProducts([])
     } catch (error) {
       console.error('Error loading products:', error)
+      // Set empty array on error
+      setProducts([])
     } finally {
       setLoading(false)
     }

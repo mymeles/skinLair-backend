@@ -61,59 +61,49 @@ export default function ClientsPage() {
   const loadClients = async () => {
     try {
       setLoading(true)
-      // Mock data - in real app, this would come from API
-      setClients([
-        {
-          id: "1",
-          name: "Emma Wilson",
-          email: "emma@example.com",
-          phone: "+1 (555) 123-4567",
-          joinDate: "2023-06-15",
-          totalBookings: 12,
-          totalSpent: 2400,
-          lastVisit: "2024-01-10",
-          skinType: "Combination",
-          concerns: ["Acne", "Aging"],
-          allergies: ["Fragrance"],
-          notes: "Prefers gentle treatments, very satisfied with results",
-          rating: 5,
-          status: "vip"
-        },
-        {
-          id: "2",
-          name: "Jessica Chen",
-          email: "jessica@example.com",
-          phone: "+1 (555) 234-5678",
-          joinDate: "2023-08-22",
-          totalBookings: 8,
-          totalSpent: 1600,
-          lastVisit: "2024-01-08",
-          skinType: "Oily",
-          concerns: ["Acne", "Pigmentation"],
-          allergies: [],
-          notes: "Regular client, responds well to chemical peels",
-          rating: 4.8,
-          status: "active"
-        },
-        {
-          id: "3",
-          name: "Maria Rodriguez",
-          email: "maria@example.com",
-          phone: "+1 (555) 345-6789",
-          joinDate: "2023-11-03",
-          totalBookings: 3,
-          totalSpent: 600,
-          lastVisit: "2023-12-15",
-          skinType: "Dry",
-          concerns: ["Aging", "Sensitivity"],
-          allergies: ["Retinol"],
-          notes: "New to advanced treatments, needs gentle approach",
-          rating: 4.5,
-          status: "active"
+      // Fetch real bookings from API to extract client data
+      const response = await fetch("/public/bookings")
+      if (!response.ok) {
+        throw new Error(`Failed to fetch bookings: ${response.status}`)
+      }
+      const data = await response.json()
+      
+      // Extract unique clients from bookings
+      const clientMap = new Map()
+      const bookings = data.bookings || []
+      
+      bookings.forEach((booking: any) => {
+        const email = booking.customer_email
+        if (!clientMap.has(email)) {
+          clientMap.set(email, {
+            id: booking.customer_id || email,
+            name: booking.customer_name,
+            email: booking.customer_email,
+            phone: booking.customer_phone || "N/A",
+            joinDate: booking.created_at?.split('T')[0] || "N/A",
+            totalBookings: 0,
+            totalSpent: 0,
+            lastVisit: booking.scheduled_date?.split('T')[0] || "N/A",
+            skinType: "Unknown",
+            concerns: [],
+            allergies: [],
+            notes: booking.notes || "",
+            rating: 4.5,
+            status: "active" as 'active' | 'inactive' | 'vip'
+          })
         }
-      ])
+        
+        const client = clientMap.get(email)
+        client.totalBookings += 1
+        client.totalSpent += booking.service_price || 0
+      })
+      
+      const clientsData = Array.from(clientMap.values())
+      setClients(clientsData)
     } catch (error) {
       console.error('Error loading clients:', error)
+      // Set empty array on error
+      setClients([])
     } finally {
       setLoading(false)
     }

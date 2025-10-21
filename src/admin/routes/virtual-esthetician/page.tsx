@@ -66,43 +66,13 @@ export default function VirtualEsthetician() {
     specialty: "Advanced Skincare & Anti-Aging",
     experience: "8+ years",
     rating: 4.9,
-    totalSessions: 1247,
-    totalInPersonSessions: 892,
+    totalSessions: 0,
+    totalInPersonSessions: 0,
     availability: ["9:00 AM - 5:00 PM", "Monday - Friday"],
     bio: "Certified esthetician specializing in advanced skincare treatments, virtual consultations, and in-person spa services. Your one-stop skincare expert for all treatment needs.",
-    services: [
-      "Virtual Skin Analysis",
-      "Treatment Planning",
-      "Classic Facial",
-      "Microneedling",
-      "Chemical Peel",
-      "HydraFacial",
-      "Laser Hair Removal",
-      "Anti-Aging Treatments"
-    ],
-    workingHours: [
-      { day: "Monday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Tuesday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Wednesday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Thursday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Friday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Saturday", startTime: "10:00", endTime: "15:00", isWorking: true },
-      { day: "Sunday", startTime: "10:00", endTime: "15:00", isWorking: false }
-    ],
-    blockedDates: [
-      {
-        id: "1",
-        date: "2024-12-25",
-        reason: "Christmas Day",
-        isAllDay: true
-      },
-      {
-        id: "2",
-        date: "2024-12-31",
-        reason: "New Year's Eve",
-        isAllDay: true
-      }
-    ]
+    services: [],
+    workingHours: [],
+    blockedDates: []
   })
   const [loading, setLoading] = useState(true)
   const [showSettings, setShowSettings] = useState(false)
@@ -127,68 +97,55 @@ export default function VirtualEsthetician() {
 
   useEffect(() => {
     loadSessions()
+    loadProfile()
   }, [])
 
   const loadSessions = async () => {
     try {
       setLoading(true)
-      // Mock data - in real app, this would come from API
-      setSessions([
-        {
-          id: "1",
-          clientName: "Emma Wilson",
-          clientEmail: "emma@example.com",
-          serviceType: "Virtual Skin Analysis",
-          scheduledTime: "2024-01-15T10:00:00Z",
-          duration: 60,
-          status: "scheduled",
-          meetingLink: "https://meet.example.com/abc123"
-        },
-        {
-          id: "2",
-          clientName: "Jessica Chen",
-          clientEmail: "jessica@example.com",
-          serviceType: "In-Person: HydraFacial",
-          scheduledTime: "2024-01-15T14:00:00Z",
-          duration: 60,
-          status: "in_progress",
-          meetingLink: "https://meet.example.com/def456"
-        },
-        {
-          id: "3",
-          clientName: "Maria Rodriguez",
-          clientEmail: "maria@example.com",
-          serviceType: "Virtual Anti-Aging Consultation",
-          scheduledTime: "2024-01-14T16:00:00Z",
-          duration: 60,
-          status: "completed",
-          rating: 5,
-          notes: "Excellent consultation, client very satisfied with treatment plan."
-        },
-        {
-          id: "4",
-          clientName: "Lisa Thompson",
-          clientEmail: "lisa@example.com",
-          serviceType: "In-Person: Chemical Peel",
-          scheduledTime: "2024-01-16T11:00:00Z",
-          duration: 45,
-          status: "scheduled"
-        },
-        {
-          id: "5",
-          clientName: "Amanda Davis",
-          clientEmail: "amanda@example.com",
-          serviceType: "Virtual Treatment Planning",
-          scheduledTime: "2024-01-16T15:30:00Z",
-          duration: 30,
-          status: "scheduled",
-          meetingLink: "https://meet.example.com/ghi789"
-        }
-      ])
+      // Fetch real bookings from API
+      const response = await fetch("/public/bookings")
+      if (!response.ok) {
+        throw new Error(`Failed to fetch bookings: ${response.status}`)
+      }
+      const data = await response.json()
+      
+      // Transform bookings into sessions format
+      const sessionsData = (data.bookings || []).map((booking: any) => ({
+        id: booking.id,
+        clientName: booking.customer_name,
+        clientEmail: booking.customer_email,
+        serviceType: booking.service_name,
+        scheduledTime: booking.scheduled_date,
+        duration: booking.service_duration || 60,
+        status: booking.status === "confirmed" ? "scheduled" : 
+                booking.status === "completed" ? "completed" : 
+                booking.status === "cancelled" ? "cancelled" : "scheduled",
+        meetingLink: booking.status === "confirmed" ? `https://meet.skinlair.com/${booking.id}` : undefined,
+        notes: booking.notes
+      }))
+      
+      setSessions(sessionsData)
     } catch (error) {
       console.error('Error loading sessions:', error)
+      // Set empty array on error
+      setSessions([])
     } finally {
       setLoading(false)
+    }
+  }
+
+  const loadProfile = async () => {
+    try {
+      const response = await fetch("/admin/esthetician/profile")
+      if (!response.ok) {
+        throw new Error(`Failed to fetch profile: ${response.status}`)
+      }
+      const data = await response.json()
+      setProfile(data)
+    } catch (error) {
+      console.error('Error loading profile:', error)
+      // Keep default profile on error
     }
   }
 
@@ -261,6 +218,8 @@ export default function VirtualEsthetician() {
 
       if (response.ok) {
         console.log('✅ Availability synced to booking system')
+        // Reload profile to get updated data
+        await loadProfile()
       } else {
         console.error('❌ Failed to sync availability')
       }
