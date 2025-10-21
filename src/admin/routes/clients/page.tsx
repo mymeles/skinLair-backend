@@ -10,7 +10,7 @@ import {
   Plus,
   MagnifyingGlass,
 } from "@medusajs/icons"
-import { Container, Heading, Text, Badge, Button, Input, Table, Modal } from "@medusajs/ui"
+import { Container, Heading, Text, Badge, Button, Input, Table } from "@medusajs/ui"
 import { useEffect, useState } from "react"
 
 interface Client {
@@ -120,8 +120,8 @@ export default function ClientsPage() {
     switch (status) {
       case 'vip': return 'purple'
       case 'active': return 'green'
-      case 'inactive': return 'gray'
-      default: return 'gray'
+      case 'inactive': return 'grey'
+      default: return 'grey'
     }
   }
 
@@ -136,6 +136,10 @@ export default function ClientsPage() {
   const handleEditClient = () => {
     if (!selectedClient) return
     
+    // Close the modal first
+    setShowModal(false)
+    
+    // Set the edit form data
     setEditForm({
       name: selectedClient.name,
       email: selectedClient.email,
@@ -146,6 +150,8 @@ export default function ClientsPage() {
       notes: selectedClient.notes,
       status: selectedClient.status
     })
+    
+    // Open the edit form
     setShowEditForm(true)
   }
 
@@ -169,7 +175,10 @@ export default function ClientsPage() {
         : client
     ))
     
+    // Close the edit form
     setShowEditForm(false)
+    
+    // Show success message
     alert("Client updated successfully!")
   }
 
@@ -359,6 +368,10 @@ export default function ClientsPage() {
                     <Button
                       variant="transparent"
                       size="small"
+                      onClick={() => {
+                        setSelectedClient(client)
+                        setShowEditForm(true)
+                      }}
                     >
                       <div className="w-4 h-4">✏️</div>
                     </Button>
@@ -409,7 +422,7 @@ export default function ClientsPage() {
 
               {/* Skin Information */}
               <div>
-                <Heading level="h4" className="text-lg font-semibold mb-3">Skin Information</Heading>
+                <Heading level="h3" className="text-lg font-semibold mb-3">Skin Information</Heading>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <Text className="text-sm font-medium text-ui-fg-subtle">Skin Type</Text>
@@ -447,7 +460,7 @@ export default function ClientsPage() {
 
               {/* Treatment History */}
               <div>
-                <Heading level="h4" className="text-lg font-semibold mb-3">Treatment History</Heading>
+                <Heading level="h3" className="text-lg font-semibold mb-3">Treatment History</Heading>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
                     <Text className="text-sm font-medium text-ui-fg-subtle">Total Bookings</Text>
@@ -467,7 +480,7 @@ export default function ClientsPage() {
               {/* Notes */}
               {selectedClient.notes && (
                 <div>
-                  <Heading level="h4" className="text-lg font-semibold mb-3">Notes</Heading>
+                  <Heading level="h3" className="text-lg font-semibold mb-3">Notes</Heading>
                   <div className="p-4 bg-ui-bg-subtle rounded-lg">
                     <Text>{selectedClient.notes}</Text>
                   </div>
@@ -508,27 +521,33 @@ export default function ClientsPage() {
             
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <Input
-                  label="Name"
-                  value={editForm.name}
-                  onChange={(e) => setEditForm(prev => ({ ...prev, name: e.target.value }))}
-                  placeholder="Client Name"
-                />
-                <Input
-                  label="Email"
-                  value={editForm.email}
-                  onChange={(e) => setEditForm(prev => ({ ...prev, email: e.target.value }))}
-                  placeholder="client@example.com"
-                />
+                <div>
+                  <Text className="text-sm font-medium text-ui-fg-subtle mb-2">Name</Text>
+                  <Input
+                    value={editForm.name}
+                    onChange={(e) => setEditForm(prev => ({ ...prev, name: e.target.value }))}
+                    placeholder="Client Name"
+                  />
+                </div>
+                <div>
+                  <Text className="text-sm font-medium text-ui-fg-subtle mb-2">Email</Text>
+                  <Input
+                    value={editForm.email}
+                    onChange={(e) => setEditForm(prev => ({ ...prev, email: e.target.value }))}
+                    placeholder="client@example.com"
+                  />
+                </div>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
-                <Input
-                  label="Phone"
-                  value={editForm.phone}
-                  onChange={(e) => setEditForm(prev => ({ ...prev, phone: e.target.value }))}
-                  placeholder="+1 (555) 123-4567"
-                />
+                <div>
+                  <Text className="text-sm font-medium text-ui-fg-subtle mb-2">Phone</Text>
+                  <Input
+                    value={editForm.phone}
+                    onChange={(e) => setEditForm(prev => ({ ...prev, phone: e.target.value }))}
+                    placeholder="+1 (555) 123-4567"
+                  />
+                </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Status</label>
                   <select
@@ -544,8 +563,8 @@ export default function ClientsPage() {
               </div>
               
               <div>
+                <Text className="text-sm font-medium text-ui-fg-subtle mb-2">Skin Type</Text>
                 <Input
-                  label="Skin Type"
                   value={editForm.skinType}
                   onChange={(e) => setEditForm(prev => ({ ...prev, skinType: e.target.value }))}
                   placeholder="Oily, Dry, Combination, Sensitive"

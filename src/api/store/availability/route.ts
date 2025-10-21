@@ -119,49 +119,42 @@ export const GET = async (
 
   const requestedDate = new Date(date as string)
 
-  // Get esthetician profile (this would come from a database in production)
-  const estheticianProfile = {
-    name: "Dr. Sarah Johnson",
-    specialty: "Advanced Skincare & Anti-Aging",
-    experience: "8+ years",
-    rating: 4.9,
-    totalSessions: 1247,
-    totalInPersonSessions: 892,
-    availability: ["9:00 AM - 5:00 PM", "Monday - Friday"],
-    bio: "Certified esthetician specializing in advanced skincare treatments, virtual consultations, and in-person spa services.",
-    services: [
-      "Virtual Skin Analysis",
-      "Treatment Planning", 
-      "Classic Facial",
-      "Microneedling",
-      "Chemical Peel",
-      "HydraFacial",
-      "Laser Hair Removal",
-      "Anti-Aging Treatments"
-    ],
-    workingHours: [
-      { day: "Monday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Tuesday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Wednesday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Thursday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Friday", startTime: "09:00", endTime: "17:00", isWorking: true },
-      { day: "Saturday", startTime: "10:00", endTime: "15:00", isWorking: true },
-      { day: "Sunday", startTime: "10:00", endTime: "15:00", isWorking: false }
-    ],
-    blockedDates: [
-      {
-        id: "1",
-        date: "2024-12-25",
-        reason: "Christmas Day",
-        isAllDay: true
-      },
-      {
-        id: "2", 
-        date: "2024-12-31",
-        reason: "New Year's Eve",
-        isAllDay: true
+  // Get esthetician profile from database
+  const estheticianId = "esthetician-1" // This should come from user authentication
+  const availabilities = await bookingModuleService.listAvailabilities({
+    staff_id: estheticianId
+  })
+
+  // Convert availability records to working hours format
+  const workingHours = [
+    { day: "Monday", startTime: "09:00", endTime: "17:00", isWorking: false },
+    { day: "Tuesday", startTime: "09:00", endTime: "17:00", isWorking: false },
+    { day: "Wednesday", startTime: "09:00", endTime: "17:00", isWorking: false },
+    { day: "Thursday", startTime: "09:00", endTime: "17:00", isWorking: false },
+    { day: "Friday", startTime: "09:00", endTime: "17:00", isWorking: false },
+    { day: "Saturday", startTime: "10:00", endTime: "15:00", isWorking: false },
+    { day: "Sunday", startTime: "10:00", endTime: "15:00", isWorking: false }
+  ]
+
+  // Update working hours based on database records
+  availabilities.forEach(availability => {
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    const dayName = dayNames[availability.day_of_week]
+    const dayIndex = workingHours.findIndex(wh => wh.day === dayName)
+    if (dayIndex !== -1) {
+      workingHours[dayIndex] = {
+        day: dayName,
+        startTime: availability.start_time,
+        endTime: availability.end_time,
+        isWorking: availability.is_available
       }
-    ]
+    }
+  })
+
+  const estheticianProfile = {
+    name: "Dr. Sarah Johnson", // This should come from a user/profile table
+    workingHours,
+    blockedDates: [] // This should come from a blocked dates table
   }
 
   try {

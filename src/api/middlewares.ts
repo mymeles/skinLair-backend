@@ -24,7 +24,7 @@ async function allowCustomStoreRoutes(
   console.log(`[Middleware] Publishable Key Header: ${publishableKey ? "Present" : "Missing"}`)
 
   // For our custom routes, we'll handle the request directly
-  if (path?.includes('/store/services') || path?.includes('/store/bookings')) {
+  if (path?.includes('/store/services') || path?.includes('/store/bookings') || path?.includes('/store/payments')) {
     // Import the booking module service and handle the request
     try {
       const { BOOKING_MODULE } = await import("../modules/booking/index.js")
@@ -57,6 +57,14 @@ async function allowCustomStoreRoutes(
             return
           }
         }
+      }
+      
+      if (path?.includes('/store/payments')) {
+        // For payment routes, we'll let the actual route handler deal with it
+        // This middleware just bypasses the publishable key requirement
+        console.log(`[Middleware] Bypassing publishable key check for payment route: ${path}`)
+        next()
+        return
       }
     } catch (error) {
       console.error("Error in custom middleware:", error)

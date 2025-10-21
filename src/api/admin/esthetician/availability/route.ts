@@ -9,8 +9,10 @@ async function syncEstheticianAvailability(
 ): Promise<void> {
   try {
     // Clear existing availability for this esthetician
+    // In a real app, you'd get the esthetician ID from the authenticated user
+    const estheticianId = "esthetician-1" // This should come from user authentication
     const existingAvailabilities = await bookingModuleService.listAvailabilities({
-      staff_id: "esthetician-1" // Single esthetician ID
+      staff_id: estheticianId
     })
     
     for (const availability of existingAvailabilities) {
@@ -23,7 +25,7 @@ async function syncEstheticianAvailability(
         const dayOfWeek = getDayOfWeek(workingHour.day)
         
         await bookingModuleService.createAvailabilities({
-          staff_id: "esthetician-1",
+          staff_id: estheticianId,
           staff_name: profile.name,
           day_of_week: dayOfWeek,
           start_time: workingHour.startTime,
@@ -103,8 +105,10 @@ export const GET = async (
     const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
 
     // Get current availability records
+    // In a real app, you'd get the esthetician ID from the authenticated user
+    const estheticianId = "esthetician-1" // This should come from user authentication
     const availabilities = await bookingModuleService.listAvailabilities({
-      staff_id: "esthetician-1"
+      staff_id: estheticianId
     })
 
     res.json({ availabilities })

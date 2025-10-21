@@ -46,31 +46,22 @@ async function getEstheticianProfile(bookingModuleService: BookingModuleService)
     }
   })
 
+  // Get blocked dates from database (if you have a blocked dates table)
+  // For now, return empty array - this should come from a dedicated table
+  const blockedDates: any[] = []
+
   return {
-    name: "Dr. Sarah Johnson",
-    specialty: "Advanced Skincare & Anti-Aging",
-    experience: "8+ years",
-    rating: 4.9,
+    name: "Dr. Sarah Johnson", // This should come from a user/profile table
+    specialty: "Advanced Skincare & Anti-Aging", // This should come from a profile table
+    experience: "8+ years", // This should come from a profile table
+    rating: 4.9, // This should be calculated from reviews
     totalSessions,
     totalInPersonSessions,
-    availability: ["9:00 AM - 5:00 PM", "Monday - Friday"],
-    bio: "Certified esthetician specializing in advanced skincare treatments, virtual consultations, and in-person spa services. Your one-stop skincare expert for all treatment needs.",
+    availability: ["9:00 AM - 5:00 PM", "Monday - Friday"], // This should be calculated from workingHours
+    bio: "Certified esthetician specializing in advanced skincare treatments, virtual consultations, and in-person spa services. Your one-stop skincare expert for all treatment needs.", // This should come from a profile table
     services: serviceNames,
     workingHours,
-    blockedDates: [
-      {
-        id: "1",
-        date: "2024-12-25",
-        reason: "Christmas Day",
-        isAllDay: true
-      },
-      {
-        id: "2", 
-        date: "2024-12-31",
-        reason: "New Year's Eve",
-        isAllDay: true
-      }
-    ]
+    blockedDates
   }
 }
 
