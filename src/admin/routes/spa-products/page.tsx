@@ -64,9 +64,31 @@ export default function SpaProductsPage() {
   const loadProducts = async () => {
     try {
       setLoading(true)
-      // For now, we'll use an empty array since we don't have a products API yet
-      // In a real app, this would fetch from a products API
-      setProducts([])
+      // Fetch real products from API (using services as products)
+      const response = await fetch("/public/services")
+      if (!response.ok) {
+        throw new Error(`Failed to fetch products: ${response.status}`)
+      }
+      const data = await response.json()
+      // Transform services to products format
+      const products = (data.services || []).map((service: any) => ({
+        id: service.id,
+        name: service.name,
+        description: service.description,
+        category: service.category || "Services",
+        price: service.price,
+        sku: `SVC-${service.id}`,
+        stock: 999,
+        image_url: service.image_url,
+        ingredients: [],
+        skinTypes: ["All"],
+        concerns: [],
+        rating: 4.5,
+        reviews: 0,
+        is_active: service.is_active,
+        created_at: service.created_at
+      }))
+      setProducts(products)
     } catch (error) {
       console.error('Error loading products:', error)
       // Set empty array on error
@@ -105,29 +127,49 @@ export default function SpaProductsPage() {
     e.preventDefault()
     try {
       const productData = {
-        ...formData,
-        ingredients: formData.ingredients.split(", ").filter(i => i.trim()),
-        skinTypes: formData.skinTypes.split(", ").filter(s => s.trim()),
-        concerns: formData.concerns.split(", ").filter(c => c.trim()),
-        rating: 0,
-        reviews: 0,
-        created_at: new Date().toISOString()
+        name: formData.name,
+        description: formData.description,
+        category: formData.category,
+        price: formData.price,
+        image_url: formData.image_url,
+        is_active: formData.is_active
       }
 
       if (editingId) {
-        // Update existing product
+        // Update existing product - for now, just update locally
         setProducts(prev => prev.map(product => 
           product.id === editingId 
             ? { ...product, ...productData, id: editingId }
             : product
         ))
       } else {
-        // Add new product
-        const newProduct: SpaProduct = {
-          id: Date.now().toString(),
-          ...productData
+        // Create new product via API
+        const response = await fetch("/admin/products", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productData)
+        })
+
+        if (response.ok) {
+          const result = await response.json()
+          const newProduct: SpaProduct = {
+            id: result.product.id,
+            ...productData,
+            sku: `SVC-${result.product.id}`,
+            stock: 999,
+            ingredients: [],
+            skinTypes: ["All"],
+            concerns: [],
+            rating: 4.5,
+            reviews: 0,
+            created_at: result.product.created_at
+          }
+          setProducts(prev => [newProduct, ...prev])
+        } else {
+          throw new Error("Failed to create product")
         }
-        setProducts(prev => [newProduct, ...prev])
       }
 
       setShowForm(false)
@@ -147,6 +189,7 @@ export default function SpaProductsPage() {
       })
     } catch (err) {
       console.error("Error saving product:", err)
+      alert("Failed to save product. Please try again.")
     }
   }
 
