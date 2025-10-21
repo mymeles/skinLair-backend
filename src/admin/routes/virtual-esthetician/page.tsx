@@ -568,6 +568,77 @@ export default function VirtualEsthetician() {
         </div>
       </div>
 
+      {/* Refund Authority Section */}
+      <div className="p-6 bg-ui-bg-subtle rounded-lg border border-ui-border-base">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <Heading level="h2" className="text-lg font-semibold text-ui-fg-base">
+              💳 Refund Authority
+            </Heading>
+            <Text className="text-ui-fg-subtle mt-1">
+              You have full authority to override the 24-hour refund policy
+            </Text>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Refund Policy Summary */}
+          <div className="p-4 bg-ui-bg-base rounded-lg border border-ui-border-base">
+            <div className="flex items-center justify-between mb-3">
+              <Text className="font-semibold text-ui-fg-base">📋 Standard Policy</Text>
+            </div>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <Text className="text-ui-fg-subtle">24+ hours:</Text>
+                <Text className="font-medium text-green-600">100% refund</Text>
+              </div>
+              <div className="flex justify-between">
+                <Text className="text-ui-fg-subtle">12-24 hours:</Text>
+                <Text className="font-medium text-yellow-600">50% refund</Text>
+              </div>
+              <div className="flex justify-between">
+                <Text className="text-ui-fg-subtle">2-12 hours:</Text>
+                <Text className="font-medium text-orange-600">25% refund</Text>
+              </div>
+              <div className="flex justify-between">
+                <Text className="text-ui-fg-subtle">Less than 2 hours:</Text>
+                <Text className="font-medium text-red-600">No refund</Text>
+              </div>
+            </div>
+          </div>
+
+          {/* Override Authority */}
+          <div className="p-4 bg-ui-bg-base rounded-lg border border-ui-border-base">
+            <div className="flex items-center justify-between mb-3">
+              <Text className="font-semibold text-ui-fg-base">⚡ Your Authority</Text>
+            </div>
+            <div className="space-y-2 text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <Text className="text-ui-fg-subtle">Medical emergencies</Text>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <Text className="text-ui-fg-subtle">Client hardship</Text>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <Text className="text-ui-fg-subtle">Service issues</Text>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <Text className="text-ui-fg-subtle">Professional judgment</Text>
+              </div>
+            </div>
+            <div className="mt-3 p-2 bg-green-50 border border-green-200 rounded">
+              <Text className="text-xs text-green-700">
+                You can override any refund policy for compassionate client care
+              </Text>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Services Offered */}
       <div className="p-6 bg-ui-bg-subtle rounded-lg border border-ui-border-base">
         <Heading level="h3" className="text-lg font-semibold mb-4">

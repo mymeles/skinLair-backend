@@ -44,7 +44,11 @@ const BookingManagementPage = () => {
   const [showDetailsModal, setShowDetailsModal] = useState(false)
   const [showCancelModal, setShowCancelModal] = useState(false)
   const [showStatusModal, setShowStatusModal] = useState(false)
+  const [showRefundModal, setShowRefundModal] = useState(false)
   const [cancelReason, setCancelReason] = useState("")
+  const [refundReason, setRefundReason] = useState("")
+  const [refundEligibility, setRefundEligibility] = useState<any>(null)
+  const [forceRefund, setForceRefund] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState<string>("all")
   const [dateFilter, setDateFilter] = useState<string>("all")
@@ -158,6 +162,85 @@ const BookingManagementPage = () => {
       alert("Booking cancelled successfully!")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to cancel booking")
+    }
+  }
+
+  const checkRefundEligibility = async (booking: Booking) => {
+    try {
+      const response = await fetch(`/admin/bookings/${booking.id}/refund-check`)
+      if (response.ok) {
+        const data = await response.json()
+        setRefundEligibility(data)
+        setSelectedBooking(booking)
+        setShowRefundModal(true)
+      } else {
+        const error = await response.json()
+        alert(`Error checking refund eligibility: ${error.error}`)
+      }
+    } catch (error) {
+      console.error("Error checking refund eligibility:", error)
+      alert("Failed to check refund eligibility")
+    }
+  }
+
+  const handleRefund = async () => {
+    if (!selectedBooking) return
+
+    try {
+      const response = await fetch(`/admin/bookings/${selectedBooking.id}/refund`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          reason: refundReason,
+          force_refund: forceRefund
+        })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        alert(data.message)
+        
+        // Update booking locally
+        setBookings(prev => 
+          prev.map(booking => 
+            booking.id === selectedBooking.id 
+              ? { 
+                  ...booking, 
+                  status: "cancelled" as const,
+                  refund_amount: data.refund_amount,
+                  refund_reason: data.refund_policy
+                }
+              : booking
+          )
+        )
+        
+        setFilteredBookings(prev => 
+          prev.map(booking => 
+            booking.id === selectedBooking.id 
+              ? { 
+                  ...booking, 
+                  status: "cancelled" as const,
+                  refund_amount: data.refund_amount,
+                  refund_reason: data.refund_policy
+                }
+              : booking
+          )
+        )
+
+        setShowRefundModal(false)
+        setSelectedBooking(null)
+        setRefundReason("")
+        setForceRefund(false)
+        setRefundEligibility(null)
+      } else {
+        const error = await response.json()
+        alert(`Error processing refund: ${error.error}`)
+      }
+    } catch (error) {
+      console.error("Error processing refund:", error)
+      alert("Failed to process refund")
     }
   }
 
@@ -482,6 +565,16 @@ const BookingManagementPage = () => {
                             <XMark className="w-4 h-4" />
                           </Button>
                         )}
+                        {booking.payment_paid && booking.status !== "cancelled" && (
+                          <Button
+                            variant="secondary"
+                            size="small"
+                            onClick={() => checkRefundEligibility(booking)}
+                            className="text-orange-600 hover:text-orange-700"
+                          >
+                            <CreditCard className="w-4 h-4" />
+                          </Button>
+                        )}
                       </div>
                     </Table.Cell>
                   </Table.Row>
@@ -741,6 +834,116 @@ const BookingManagementPage = () => {
               >
                 Cancel Booking
               </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Refund Modal */}
+      {showRefundModal && selectedBooking && refundEligibility && (
+        <div className="fixed inset-0 bg-ui-bg-overlay backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-ui-bg-base rounded-lg shadow-xl max-w-md w-full border border-ui-border-base">
+            <div className="p-6">
+              <Heading level="h3" className="flex items-center gap-2 mb-4 text-orange-600">
+                <CreditCard className="w-5 h-5" />
+                Process Refund
+              </Heading>
+              
+              <div className="mb-6 space-y-4">
+                <div className="p-4 bg-ui-bg-subtle rounded-lg border border-ui-border-base">
+                  <Text className="font-medium mb-2">Refund Eligibility</Text>
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <Text className="text-sm">Hours until booking:</Text>
+                      <Text className="text-sm font-medium">{refundEligibility.hours_until_booking}h</Text>
+                    </div>
+                    <div className="flex justify-between">
+                      <Text className="text-sm">Service price:</Text>
+                      <Text className="text-sm font-medium">${refundEligibility.service_price}</Text>
+                    </div>
+                    <div className="flex justify-between">
+                      <Text className="text-sm">Refund amount:</Text>
+                      <Text className="text-sm font-medium text-green-600">${refundEligibility.refund_amount}</Text>
+                    </div>
+                    <div className="flex justify-between">
+                      <Text className="text-sm">Policy:</Text>
+                      <Text className="text-sm text-ui-fg-subtle">{refundEligibility.refund_policy}</Text>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <Text className="text-sm font-medium mb-2">Refund Reason (Optional)</Text>
+                  <Textarea
+                    placeholder="Enter reason for refund..."
+                    value={refundReason}
+                    onChange={(e) => setRefundReason(e.target.value)}
+                    rows={3}
+                  />
+                </div>
+
+                {!refundEligibility.can_refund && (
+                  <div className="p-3 bg-ui-bg-error-subtle border border-ui-border-error rounded-lg">
+                    <Text className="text-sm text-ui-fg-error">
+                      No refund available due to cancellation policy. 
+                      As the esthetician, you can override this policy for special circumstances.
+                    </Text>
+                    <div className="mt-2">
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          checked={forceRefund}
+                          onChange={(e) => setForceRefund(e.target.checked)}
+                          className="rounded"
+                        />
+                        <Text className="text-sm">Override policy - Full refund (esthetician discretion)</Text>
+                      </label>
+                    </div>
+                  </div>
+                )}
+
+                {refundEligibility.can_refund && refundEligibility.refund_amount < refundEligibility.service_price && (
+                  <div className="p-3 bg-ui-bg-warning-subtle border border-ui-border-warning rounded-lg">
+                    <Text className="text-sm text-ui-fg-warning">
+                      Partial refund due to cancellation policy. 
+                      You can override to provide full refund if needed.
+                    </Text>
+                    <div className="mt-2">
+                      <label className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          checked={forceRefund}
+                          onChange={(e) => setForceRefund(e.target.checked)}
+                          className="rounded"
+                        />
+                        <Text className="text-sm">Override policy - Full refund (esthetician discretion)</Text>
+                      </label>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex gap-3 justify-end">
+                <Button
+                  variant="secondary"
+                  onClick={() => {
+                    setShowRefundModal(false)
+                    setSelectedBooking(null)
+                    setRefundReason("")
+                    setForceRefund(false)
+                    setRefundEligibility(null)
+                  }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant="primary"
+                  onClick={handleRefund}
+                  className="bg-orange-600 hover:bg-orange-700"
+                >
+                  Process Refund
+                </Button>
+              </div>
             </div>
           </div>
         </div>

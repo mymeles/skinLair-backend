@@ -2,14 +2,12 @@ import type { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 import { BOOKING_MODULE } from "@modules/booking"
 import BookingModuleService from "@modules/booking/service"
 
-export const POST = async (
+export const GET = async (
   req: MedusaRequest,
   res: MedusaResponse
 ) => {
   const bookingModuleService = req.scope.resolve(BOOKING_MODULE) as BookingModuleService
   const { id } = req.params
-
-  const { reason, force_refund } = req.body as { reason?: string; force_refund?: boolean }
 
   try {
     // Get the booking
@@ -20,20 +18,27 @@ export const POST = async (
 
     // Check if booking can be refunded
     if (booking.status === "cancelled") {
-      return res.status(400).json({ error: "Booking is already cancelled" })
+      return res.status(400).json({ 
+        error: "Booking is already cancelled",
+        can_refund: false 
+      })
     }
 
     if (!booking.payment_paid) {
-      return res.status(400).json({ error: "No payment to refund" })
+      return res.status(400).json({ 
+        error: "No payment to refund",
+        can_refund: false 
+      })
     }
 
-    // Calculate refund amount based on 24-hour policy
+    // Calculate refund eligibility based on 24-hour policy
     const now = new Date()
     const bookingDate = new Date(booking.scheduled_date)
     const hoursUntilBooking = (bookingDate.getTime() - now.getTime()) / (1000 * 60 * 60)
     
     let refundAmount = 0
     let refundPolicy = ""
+    let canRefund = true
     
     if (hoursUntilBooking >= 24) {
       // Full refund if cancelled 24+ hours before
@@ -51,59 +56,34 @@ export const POST = async (
       // No refund if cancelled less than 2 hours before
       refundAmount = 0
       refundPolicy = "No refund (cancelled less than 2 hours before appointment)"
+      canRefund = false
     }
 
-    // Allow esthetician/admin to override refund policy
-    if (force_refund) {
-      refundAmount = booking.service_price
-      refundPolicy = "Full refund (esthetician override)"
-    }
-
-    // Find the payment record
+    // Check if payment exists
     const payments = await bookingModuleService.listPayments({
       booking_id: id,
       status: "succeeded"
     })
 
     if (payments.length === 0) {
-      return res.status(400).json({ error: "No successful payment found for this booking" })
-    }
-
-    const payment = payments[0]
-
-    // Update booking status to cancelled
-    await bookingModuleService.updateBookings({
-      id,
-      status: "cancelled",
-      refund_amount: refundAmount,
-      refund_reason: reason || refundPolicy,
-    })
-
-    // Update payment status to refunded (only if refund amount > 0)
-    if (refundAmount > 0) {
-      await bookingModuleService.updatePayments({
-        id: payment.id,
-        status: "refunded",
-        refund_amount: refundAmount,
-        refund_reason: reason || refundPolicy,
+      return res.status(400).json({ 
+        error: "No successful payment found for this booking",
+        can_refund: false 
       })
     }
 
-    // Get updated booking
-    const updatedBooking = await bookingModuleService.retrieveBooking(id)
-
-    res.json({ 
-      success: true, 
-      booking: updatedBooking,
+    res.json({
+      can_refund: canRefund,
       refund_amount: refundAmount,
       refund_policy: refundPolicy,
       hours_until_booking: Math.round(hoursUntilBooking * 10) / 10,
-      message: refundAmount > 0 ? 
-        `Refund of $${refundAmount.toFixed(2)} processed successfully` : 
-        "No refund due to cancellation policy"
+      booking_date: booking.scheduled_date,
+      service_price: booking.service_price,
+      current_status: booking.status,
+      payment_paid: booking.payment_paid
     })
   } catch (error: any) {
-    console.error("Error processing refund:", error)
-    res.status(500).json({ error: error.message || "Failed to process refund" })
+    console.error("Error checking refund eligibility:", error)
+    res.status(500).json({ error: error.message || "Failed to check refund eligibility" })
   }
 }
